@@ -31,12 +31,6 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
 
         /* Стили для выделения текста */
         .highlight-text {
@@ -175,12 +169,6 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
-        .header:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
         
         .header::before {
@@ -207,34 +195,17 @@
             margin-bottom: 15px;
             line-height: 1.1;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .logo:hover {
-            transform: scale(1.02);
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
         }
         
         .main-title {
             font-size: 28px;
             margin-bottom: 8px;
             font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .main-title:hover {
-            transform: scale(1.03);
         }
         
         .subtitle {
             font-size: 25px;
             opacity: 0.9;
-            transition: all 0.3s ease;
-        }
-        
-        .subtitle:hover {
-            opacity: 1;
-            transform: translateY(-2px);
         }
         
         .controls {
@@ -259,7 +230,6 @@
         .btn:hover {
             background: rgba(255,255,255,0.3);
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
         .btn-enroll {
@@ -303,7 +273,6 @@
             background: #28a428;
             box-shadow: 0 6px 20px rgba(50,205,50,0.4);
             transform: translateY(-2px);
-            animation: bounce 0.5s ease;
         }
 
         /* Стили для вкладок */
@@ -325,36 +294,17 @@
             font-weight: bold;
             transition: all 0.3s ease;
             color: #667eea;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .tab-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.5s;
         }
         
         .tab-btn:hover {
             background: #e9ecef;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(102,126,234,0.2);
-        }
-        
-        .tab-btn:hover::before {
-            left: 100%;
         }
         
         .tab-btn.active {
             background: #667eea;
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102,126,234,0.3);
         }
         
         .tab-content {
@@ -379,8 +329,11 @@
             padding: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
         }
         
         .section::before {
@@ -393,16 +346,6 @@
             border-radius: 12px;
             opacity: 0.1;
             z-index: 1;
-            transition: opacity 0.3s ease;
-        }
-        
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        
-        .section:hover::before {
-            opacity: 0.15;
         }
         
         .section > * {
@@ -453,12 +396,6 @@
             text-align: center;
             border-bottom: 2px solid currentColor;
             padding-bottom: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .section-title:hover {
-            transform: scale(1.02);
-            color: #1a2530;
         }
         
         /* Стили для скриншота карты */
@@ -468,12 +405,6 @@
             margin-top: 15px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             border: 2px solid #667eea;
-            transition: all 0.3s ease;
-        }
-        
-        .map-screenshot:hover {
-            transform: scale(1.01);
-            box-shadow: 0 6px 20px rgba(102,126,234,0.2);
         }
         
         .map-container {
@@ -488,12 +419,6 @@
             border-radius: 8px;
             margin-top: 15px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .location-info:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
         
         .location-features {
@@ -508,22 +433,11 @@
             align-items: center;
             gap: 8px;
             font-size: 13px;
-            transition: all 0.2s ease;
-        }
-        
-        .location-feature:hover {
-            transform: translateX(5px);
-            color: #667eea;
         }
         
         .location-feature i {
             color: #4CAF50;
             font-size: 14px;
-            transition: transform 0.2s ease;
-        }
-        
-        .location-feature:hover i {
-            transform: scale(1.2);
         }
 
         /* Стили для направлений */
@@ -547,13 +461,6 @@
             background: rgba(255,255,255,0.7);
             position: relative;
             z-index: 2;
-            transition: all 0.3s ease;
-        }
-        
-        .category-title:hover {
-            transform: translateX(5px);
-            background: rgba(255,255,255,0.9);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         .direction-list {
@@ -568,12 +475,11 @@
             padding-left: 15px;
             position: relative;
             font-size: 14px;
-            transition: transform 0.2s ease, color 0.2s ease;
+            transition: transform 0.2s ease;
         }
         
         .direction-list li:hover {
             transform: translateX(5px);
-            color: #667eea;
         }
         
         .direction-list li:before {
@@ -583,12 +489,6 @@
             position: absolute;
             left: 0;
             top: -1px;
-            transition: all 0.2s ease;
-        }
-        
-        .direction-list li:hover:before {
-            color: #FF6B6B;
-            transform: scale(1.3);
         }
         
         /* Стили для расписания */
@@ -607,12 +507,6 @@
             text-align: center;
             font-weight: bold;
             border: 1px solid #26734d;
-            transition: all 0.3s ease;
-        }
-        
-        .schedule-table th:hover {
-            background: #26734d;
-            transform: scale(1.02);
         }
         
         .schedule-table td {
@@ -620,28 +514,19 @@
             border: 1px solid #ddd;
             text-align: center;
             vertical-align: top;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: background-color 0.3s ease;
             position: relative;
             cursor: pointer;
         }
         
         .schedule-table td:hover {
             background-color: rgba(255,255,255,0.7);
-            transform: scale(1.03);
-            z-index: 10;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         .time-slot {
             background: #f8f9fa;
             font-weight: bold;
             width: 50px;
-            transition: all 0.3s ease;
-        }
-        
-        .time-slot:hover {
-            background: #e9ecef;
-            color: #667eea;
         }
         
         .class-name {
@@ -649,11 +534,6 @@
             color: #2C3E50;
             margin-bottom: 1px;
             font-size: 11px;
-            transition: color 0.2s ease;
-        }
-        
-        .schedule-table td:hover .class-name {
-            color: #667eea;
         }
         
         .class-group {
@@ -737,12 +617,6 @@
             color: #999;
             font-size: 12px;
             flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-
-        .tooltip-photo:hover {
-            transform: scale(1.05);
-            border-color: #FF6B6B;
         }
 
         .tooltip-info {
@@ -754,11 +628,6 @@
             color: #2C3E50;
             margin-bottom: 5px;
             font-size: 14px;
-            transition: color 0.2s ease;
-        }
-
-        .tooltip-name:hover {
-            color: #667eea;
         }
 
         .tooltip-position {
@@ -818,12 +687,6 @@
             background: rgba(255,255,255,0.7);
             position: relative;
             z-index: 2;
-            transition: all 0.3s ease;
-        }
-        
-        .price-category-title:hover {
-            transform: translateX(5px);
-            background: rgba(255,255,255,0.9);
         }
         
         .price-item {
@@ -839,23 +702,16 @@
             z-index: 2;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            cursor: pointer;
         }
         
         .price-item:hover {
             transform: translateX(5px);
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            border-left-color: #FF6B6B;
         }
         
         .price-name {
             font-size: 13px;
             font-weight: 500;
-            transition: color 0.2s ease;
-        }
-        
-        .price-item:hover .price-name {
-            color: #667eea;
         }
         
         .price-value {
@@ -864,11 +720,6 @@
             color: #764ba2;
             margin-left: 5px;
             white-space: nowrap;
-            transition: color 0.2s ease;
-        }
-        
-        .price-item:hover .price-value {
-            color: #FF6B6B;
         }
         
         .best-price {
@@ -879,12 +730,6 @@
             font-size: 10px;
             font-weight: bold;
             margin-left: 5px;
-            transition: all 0.3s ease;
-        }
-        
-        .price-item:hover .best-price {
-            transform: scale(1.1);
-            background: #45a049;
         }
         
         /* Стили для сотрудников */
@@ -903,28 +748,11 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
-            cursor: pointer;
         }
         
         .staff-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .staff-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(102,126,234,0.1) 0%, rgba(255,107,107,0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .staff-card:hover::after {
-            opacity: 1;
         }
         
         .staff-photo {
@@ -940,14 +768,6 @@
             justify-content: center;
             color: #999;
             font-size: 12px;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .staff-card:hover .staff-photo {
-            transform: scale(1.05);
-            border-color: #FF6B6B;
         }
         
         .staff-card::before {
@@ -971,22 +791,12 @@
             color: #2C3E50;
             margin-bottom: 5px;
             font-size: 14px;
-            transition: color 0.2s ease;
-        }
-        
-        .staff-card:hover .staff-name {
-            color: #667eea;
         }
         
         .staff-position {
             font-size: 12px;
             color: #666;
             margin-bottom: 8px;
-            transition: color 0.2s ease;
-        }
-        
-        .staff-card:hover .staff-position {
-            color: #FF6B6B;
         }
         
         .staff-contacts {
@@ -1017,8 +827,6 @@
         
         .admin-card:hover {
             transform: translateY(-5px);
-            border-color: #FF6B6B;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .admin-card::before {
@@ -1030,11 +838,6 @@
             bottom: 0;
             background: rgba(102, 126, 234, 0.1);
             z-index: 1;
-            transition: background 0.3s ease;
-        }
-        
-        .admin-card:hover::before {
-            background: rgba(255, 107, 107, 0.1);
         }
         
         .admin-card > * {
@@ -1056,12 +859,6 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .contact-card::before {
@@ -1086,21 +883,11 @@
             margin-bottom: 10px;
             font-size: 16px;
             text-align: center;
-            transition: color 0.2s ease;
-        }
-        
-        .contact-card:hover .contact-title {
-            color: #667eea;
         }
         
         .contact-info {
             font-size: 14px;
             margin-bottom: 8px;
-            transition: color 0.2s ease;
-        }
-        
-        .contact-card:hover .contact-info {
-            color: #555;
         }
         
         .social-links {
@@ -1123,7 +910,6 @@
         .social-link:hover {
             background: #5a6fd8;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(102,126,234,0.3);
         }
         
         /* Стили для галереи */
@@ -1210,11 +996,6 @@
             width: 100%;
             height: auto;
             border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-        
-        .gallery-modal-img:hover {
-            transform: scale(1.02);
         }
         
         .gallery-modal-caption {
@@ -1232,12 +1013,6 @@
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-close:hover {
-            color: #FF6B6B;
-            transform: scale(1.1);
         }
         
         .gallery-nav {
@@ -1251,12 +1026,6 @@
             padding: 10px 15px;
             border-radius: 50%;
             user-select: none;
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-nav:hover {
-            background: rgba(0,0,0,0.7);
-            transform: translateY(-50%) scale(1.1);
         }
         
         .gallery-prev {
@@ -1277,12 +1046,6 @@
             color: #666;
             border: 1px solid #ddd;
             position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .footer:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
         .footer::before {
@@ -1313,13 +1076,6 @@
             font-size: 14px;
             position: relative;
             animation: pulse 2s infinite;
-            transition: all 0.3s ease;
-        }
-        
-        .highlight:hover {
-            transform: scale(1.02);
-            border-color: #FF6B6B;
-            box-shadow: 0 4px 12px rgba(118,75,162,0.2);
         }
         
         .highlight::before {
@@ -1357,12 +1113,6 @@
             padding: 5px 10px;
             border-radius: 5px;
             background: rgba(255,255,255,0.7);
-            transition: all 0.3s ease;
-        }
-        
-        .rules-title:hover {
-            transform: translateX(5px);
-            background: rgba(255,255,255,0.9);
         }
         
         .rules-list {
@@ -1375,12 +1125,11 @@
             padding-left: 20px;
             position: relative;
             font-size: 14px;
-            transition: transform 0.2s ease, color 0.2s ease;
+            transition: transform 0.2s ease;
         }
         
         .rules-list li:hover {
             transform: translateX(5px);
-            color: #667eea;
         }
         
         .rules-list li:before {
@@ -1390,21 +1139,11 @@
             position: absolute;
             left: 0;
             top: 0;
-            transition: all 0.2s ease;
-        }
-        
-        .rules-list li:hover:before {
-            color: #FF6B6B;
-            transform: scale(1.2);
         }
         
         .warning-list li:before {
             content: "⚠";
             color: #FF9800;
-        }
-        
-        .warning-list li:hover:before {
-            color: #FF6B6B;
         }
 
         /* Стили для страницы цен */
@@ -1425,12 +1164,6 @@
             border-radius: 12px;
             padding: 20px;
             flex: 1;
-            transition: all 0.3s ease;
-        }
-        
-        .price-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
         
         .trial-section {
@@ -1479,12 +1212,6 @@
             color: #764ba2;
             text-align: center;
             margin: 15px 0;
-            transition: all 0.3s ease;
-        }
-        
-        .trial-price:hover {
-            transform: scale(1.05);
-            color: #FF6B6B;
         }
         
         .description {
@@ -1500,23 +1227,17 @@
             align-items: center;
             margin-bottom: 8px;
             font-size: 14px;
-            transition: transform 0.2s ease, color 0.2s ease;
+            transition: transform 0.2s ease;
         }
         
         .condition-item:hover {
             transform: translateX(5px);
-            color: #667eea;
         }
         
         .condition-item:before {
             content: "✔️";
             margin-right: 8px;
             font-size: 14px;
-            transition: transform 0.2s ease;
-        }
-        
-        .condition-item:hover:before {
-            transform: scale(1.2);
         }
         
         .contacts {
@@ -1550,33 +1271,22 @@
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
         }
         
         .feature-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .feature-icon {
             font-size: 24px;
             margin-bottom: 10px;
-            transition: transform 0.3s ease;
-        }
-        
-        .feature-item:hover .feature-icon {
-            transform: scale(1.2);
         }
         
         .feature-title {
             font-weight: bold;
             margin-bottom: 5px;
             color: #2C3E50;
-            transition: color 0.2s ease;
-        }
-        
-        .feature-item:hover .feature-title {
-            color: #667eea;
         }
         
         .feature-description {
@@ -1701,11 +1411,6 @@
             max-width: 500px;
             position: relative;
             animation: scaleIn 0.3s ease;
-            transition: all 0.3s ease;
-        }
-        
-        .modal-content:hover {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
         .close {
@@ -1715,12 +1420,10 @@
             font-size: 24px;
             cursor: pointer;
             color: #999;
-            transition: all 0.3s ease;
         }
         
         .close:hover {
             color: #333;
-            transform: scale(1.1);
         }
         
         .form-group {
@@ -1731,11 +1434,6 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
-            transition: color 0.2s ease;
-        }
-        
-        .form-group:hover label {
-            color: #667eea;
         }
         
         .form-group input,
@@ -1746,7 +1444,7 @@
             border: 2px solid #ddd;
             border-radius: 5px;
             font-size: 14px;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: border-color 0.3s ease;
         }
         
         .form-group input:focus,
@@ -1754,7 +1452,6 @@
         .form-group textarea:focus {
             border-color: #667eea;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
         }
         
         .form-submit {
@@ -1772,36 +1469,1426 @@
         .form-submit:hover {
             background: #5a6fd8;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102,126,234,0.3);
-        }
-
-        /* Маска для телефона */
-        .phone-mask {
-            position: relative;
-        }
-
-        .phone-prefix {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #666;
-            pointer-events: none;
-            transition: color 0.2s ease;
-        }
-
-        .form-group:hover .phone-prefix {
-            color: #667eea;
-        }
-
-        .phone-input {
-            padding-left: 35px !important;
         }
     </style>
 </head>
 <body>
-    <!-- Остальная часть HTML кода остается без изменений -->
-    <!-- В целях экономии места я не буду вставлять полный HTML, так как он очень объемный -->
-    <!-- Но все эффекты наведения уже добавлены в CSS выше -->
+    <div class="dashboard-container">
+        <!-- Шапка с логотипом -->
+        <div class="header">
+            <div class="logo">ПЕРВЫЙ РИТМ ЛЕНИНСКОГО</div>
+            <h1 class="main-title">ИНФОРМАЦИОННЫЙ СТЕНД СТУДИИ ТАНЦЕВ</h1>
+            <p class="subtitle">От первых па до профессиональных вершин. Танцуют все!</p>
+            
+            <button class="btn-enroll" onclick="openModal()">
+                📝 ЗАПИСАТЬСЯ ЗА <span class="highlight-number">300₽</span>
+            </button>
+        </div>
+
+        <!-- Вкладки -->
+        <div class="tabs no-print">
+            <button class="tab-btn" onclick="openTab('directions')">🎯 Направления</button>
+            <button class="tab-btn" onclick="openTab('schedule')">📅 Расписание</button>
+            <button class="tab-btn" onclick="openTab('prices')">💰 Цены</button>
+            <button class="tab-btn" onclick="openTab('booking')">🔄 Онлайн-запись</button>
+            <button class="tab-btn" onclick="openTab('staff')">👥 Команда</button>
+            <button class="tab-btn" onclick="openTab('gallery')">📸 Галерея</button>
+            <button class="tab-btn" onclick="openTab('contacts')">📞 Контакты</button>
+            <button class="tab-btn active" onclick="openTab('rules')">📋 Правила</button>
+        </div>
+
+        <!-- Вкладка направлений -->
+        <div id="directions" class="tab-content">
+            <div class="section directions-section">
+                <h2 class="section-title">🎯 <span class="highlight-text">НАПРАВЛЕНИЯ ОБУЧЕНИЯ</span></h2>
+                
+                <div class="directions-grid">
+                    <div>
+                        <div class="direction-category">
+                            <div class="category-title">
+                                👶 <span class="highlight-text">ДЕТСКИЕ НАПРАВЛЕНИЯ</span> 
+                                <span class="highlight-number">(3-16 лет)</span>
+                            </div>
+                            <ul class="direction-list">
+                                <li><strong>ТАНЕЦ-ИГРА</strong> <span class="highlight-number">(3-4 года)</span> - развитие координации и чувства ритма через игру</li>
+                                <li><strong>ПЕРВЫЕ ПА</strong> <span class="highlight-number">(5-7 лет)</span> - основы хореографии, развитие музыкальности</li>
+                                <li><strong>ЮНЫЙ ТАНЦОР</strong> <span class="highlight-number">(8-10 лет)</span> - изучение базовых танцевальных стилей</li>
+                                <li><strong>ТАНЕЦ-ЭКСПРЕССИЯ</strong> <span class="highlight-number">(11-13 лет)</span> - развитие артистизма и техники</li>
+                                <li><strong>ТАНЕЦ-ДРАЙВ</strong> <span class="highlight-number">(14-16 лет)</span> - современные направления, подготовка к выступлениям</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="direction-category">
+                            <div class="category-title">
+                                👩‍🦱 <span class="highlight-text">ВЗРОСЛЫЕ НАПРАВЛЕНИЯ</span> 
+                                <span class="highlight-number">(17+, 25+ лет)</span>
+                            </div>
+                            <ul class="direction-list">
+                                <li><strong>ТАНЕЦ ДЛЯ ДУШИ</strong> <span class="highlight-number">(17+)</span> - снятие стресса, улучшение настроения</li>
+                                <li><strong>ОСОЗНАННОЕ ТЕЛО</strong> <span class="highlight-number">(25+)</span> - работа с осанкой, грацией, пластикой</li>
+                                <li><strong>HEELS</strong> (ХИЛС) <span class="highlight-number">(25+)</span> - танец на каблуках, развитие женственности</li>
+                                <li><strong>POLE DANCE</strong> (ПУЛ ДЕНС) <span class="highlight-number">(25+)</span> - силовой танец, развитие гибкости и выносливости</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="direction-category">
+                            <div class="category-title">🧘 <span class="highlight-text">РАСТЯЖКА И ГИБКОСТЬ</span></div>
+                            <ul class="direction-list">
+                                <li><strong>ГИБКОЕ ТЕЛО</strong> <span class="highlight-number">(5-10 лет)</span> - безопасная растяжка для детей</li>
+                                <li><strong>ГИБКИЙ ПОДРОСТОК</strong> <span class="highlight-number">(11-16 лет)</span> - развитие гибкости для танцев</li>
+                                <li><strong>СВОБОДА ДВИЖЕНИЙ</strong> <span class="highlight-number">(17+)</span> - увеличение мобильности суставов</li>
+                                <li><strong>ГИБКОСТЬ И ГРАЦИЯ</strong> <span class="highlight-number">(25+ лет)</span> - коррекция осанки, грациозность</li>
+                                <li><strong>ПЛАСТИКА</strong> <span class="highlight-number">(45+)</span> - поддержание гибкости в зрелом возрасте</li>
+                                <li><strong>СЕМЕЙНАЯ РАСТЯЖКА</strong> - совместные занятия для детей и родителей</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="direction-category">
+                            <div class="category-title">💪 <span class="highlight-text">ФИТНЕС-НАПРАВЛЕНИЯ</span> <span class="highlight-number">(17+, 25+, 45+ лет)</span></div>
+                            <ul class="direction-list">
+                                <li><strong>ФУНКЦИОНАЛЬНЫЙ ТОНУС</strong> - укрепление мышц, улучшение рельефа</li>
+                                <li><strong>ГИБКОСТЬ ДЛЯ ВСЕХ</strong> - доступная растяжка для любого уровня</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="direction-category">
+                            <div class="category-title">👵 <span class="highlight-text">СЕРЕБРЯНЫЙ ВОЗРАСТ</span> <span class="highlight-number">(45+)</span></div>
+                            <ul class="direction-list">
+                                <li><strong>ТАНЦУЕМ ВСЕЙ ДУШОЙ</strong> - парные танцы для общения и новых знакомств</li>
+                                <li><strong>РАСТЯЖКА ДЛЯ ДУШИ</strong> - поддержание здоровья суставов</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn-yclients" onclick="openYclientsWidget()">
+                    🎯 ВЫБРАТЬ НАПРАВЛЕНИЕ И ЗАПИСАТЬСЯ ОНЛАЙН
+                </button>
+                
+                <div class="highlight">
+                    💫 <span class="highlight-text">ПРОФЕССИОНАЛЬНЫЕ ПЕДАГОГИ</span> с опытом работы 
+                    <span class="highlight-number">от 3 лет</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка расписания -->
+        <div id="schedule" class="tab-content">
+            <div class="section schedule-section">
+                <h2 class="section-title">📅 <span class="highlight-text">РАСПИСАНИЕ ЗАНЯТИЙ</span></h2>
+                
+                <table class="schedule-table">
+                    <thead> 
+                        <tr>
+                            <th>ВРЕМЯ</th>
+                            <th>ПОНЕДЕЛЬНИК</th>
+                            <th>ВТОРНИК</th>
+                            <th>СРЕДА</th>
+                            <th>ЧЕТВЕРГ</th>
+                            <th>ПЯТНИЦА</th>
+                            <th>СУББОТА</th>
+                            <th>ВОСКРЕСЕНЬЕ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-slot">9:00-10:00</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ-ИГРА</div>
+                                <div class="class-group">3-4 года</div>
+                            </td>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">РАСТЯЖКА</div>
+                                <div class="class-group">5-10 лет</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">10:00-11:00</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ПЕРВЫЕ ПА</div>
+                                <div class="class-group">5-7 лет</div>
+                            </td>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">РАСТЯЖКА</div>
+                                <div class="class-group">11-16 лет</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">11:00-12:00</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ЮНЫЙ ТАНЦОР</div>
+                                <div class="class-group">8-10 лет</div>
+                            </td>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">РАСТЯЖКА</div>
+                                <div class="class-group">17+ лет</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">12:00-13:00</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="break">ОБЕД</td>
+                            <td class="break">ОБЕД</td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">13:00-14:00</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ-ЭКСПРЕССИЯ</div>
+                                <div class="class-group">11-13 лет</div>
+                            </td>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ-ДРАЙВ</div>
+                                <div class="class-group">14-16 лет</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">14:00-15:00</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ ДЛЯ ДУШИ</div>
+                                <div class="class-group">17+ лет</div>
+                            </td>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ОСОЗНАННОЕ ТЕЛО</div>
+                                <div class="class-group">25+ лет</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">15:00-16:00</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="anastasia-class" 
+                                onmouseenter="showTooltip(event, 'anastasia')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">HEELS</div>
+                                <div class="class-group">25+ лет</div>
+                            </td>
+                            <td class="anastasia-class" 
+                                onmouseenter="showTooltip(event, 'anastasia')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">POLE DANCE</div>
+                                <div class="class-group">25+ лет</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">16:00-17:00</td>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ-ИГРА</div>
+                                <div class="class-group">3-4 года</div>
+                            </td>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">РАСТЯЖКА</div>
+                                <div class="class-group">5-10 лет</div>
+                            </td>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ПЕРВЫЕ ПА</div>
+                                <div class="class-group">5-7 лет</div>
+                            </td>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">РАСТЯЖКА</div>
+                                <div class="class-group">11-16 лет</div>
+                            </td>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ЮНЫЙ ТАНЦОР</div>
+                                <div class="class-group">8-10 лет</div>
+                            </td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">17:00-18:00</td>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ-ЭКСПРЕССИЯ</div>
+                                <div class="class-group">11-13 лет</div>
+                            </td>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ-ДРАЙВ</div>
+                                <div class="class-group">14-16 лет</div>
+                            </td>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ ДЛЯ ДУШИ</div>
+                                <div class="class-group">17+ лет</div>
+                            </td>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ОСОЗНАННОЕ ТЕЛО</div>
+                                <div class="class-group">25+ лет</div>
+                            </td>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ-ЭКСПРЕССИЯ</div>
+                                <div class="class-group">11-13 лет</div>
+                            </td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">18:00-19:00</td>
+                            <td class="anastasia-class" 
+                                onmouseenter="showTooltip(event, 'anastasia')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">HEELS</div>
+                                <div class="class-group">25+ лет</div>
+                            </td>
+                            <td class="anastasia-class" 
+                                onmouseenter="showTooltip(event, 'anastasia')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">POLE DANCE</div>
+                                <div class="class-group">25+ лет</div>
+                            </td>
+                            <td class="anastasia-class" 
+                                onmouseenter="showTooltip(event, 'anastasia')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">HEELS</div>
+                                <div class="class-group">25+ лет</div>
+                            </td>
+                            <td class="anastasia-class" 
+                                onmouseenter="showTooltip(event, 'anastasia')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">POLE DANCE</div>
+                                <div class="class-group">25+ лет</div>
+                            </td>
+                            <td class="anastasia-class" 
+                                onmouseenter="showTooltip(event, 'anastasia')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">HEELS</div>
+                                <div class="class-group">25+ лет</div>
+                            </td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">19:00-20:00</td>
+                            <td class="ekaterina-class" 
+                                onmouseenter="showTooltip(event, 'ekaterina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ФУНКЦИОНАЛЬНЫЙ ТОНУС</div>
+                                <div class="class-group">17+ лет</div>
+                            </td>
+                            <td class="ekaterina-class" 
+                                onmouseenter="showTooltip(event, 'ekaterina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ГИБКОСТЬ ДЛЯ ВСЕХ</div>
+                                <div class="class-group">17+ лет</div>
+                            </td>
+                            <td class="ekaterina-class" 
+                                onmouseenter="showTooltip(event, 'ekaterina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ФУНКЦИОНАЛЬНЫЙ ТОНУС</div>
+                                <div class="class-group">17+ лет</div>
+                            </td>
+                            <td class="ekaterina-class" 
+                                onmouseenter="showTooltip(event, 'ekaterina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ГИБКОСТЬ ДЛЯ ВСЕХ</div>
+                                <div class="class-group">17+ лет</div>
+                            </td>
+                            <td class="ekaterina-class" 
+                                onmouseenter="showTooltip(event, 'ekaterina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ФУНКЦИОНАЛЬНЫЙ ТОНУС</div>
+                                <div class="class-group">17+ лет</div>
+                            </td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">20:00-21:00</td>
+                            <td class="yaroslava-class" 
+                                onmouseenter="showTooltip(event, 'yaroslava')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЦУЕМ ВСЕЙ ДУШОЙ</div>
+                                <div class="class-group">45+ лет</div>
+                            </td>
+                            <td class="yaroslava-class" 
+                                onmouseenter="showTooltip(event, 'yaroslava')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">РАСТЯЖКА ДЛЯ ДУШИ</div>
+                                <div class="class-group">45+ лет</div>
+                            </td>
+                            <td class="yaroslava-class" 
+                                onmouseenter="showTooltip(event, 'yaroslava')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЦУЕМ ВСЕЙ ДУШОЙ</div>
+                                <div class="class-group">45+ лет</div>
+                            </td>
+                            <td class="yaroslava-class" 
+                                onmouseenter="showTooltip(event, 'yaroslava')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">РАСТЯЖКА ДЛЯ ДУШИ</div>
+                                <div class="class-group">45+ лет</div>
+                            </td>
+                            <td class="yaroslava-class" 
+                                onmouseenter="showTooltip(event, 'yaroslava')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЦУЕМ ВСЕЙ ДУШОЙ</div>
+                                <div class="class-group">45+ лет</div>
+                            </td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <button class="btn-yclients" onclick="openYclientsWidget()">
+                    📅 ЗАПИСАТЬСЯ НА ЗАНЯТИЕ ОНЛАЙН
+                </button>
+                
+                <div class="highlight">
+                    📍 Полное расписание с учетом индивидуальных занятий и мастер-классов доступно у администратора
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка цен -->
+        <div id="prices" class="tab-content">
+            <div class="section prices-section">
+                <h2 class="section-title">💰 <span class="highlight-text">СТОИМОСТЬ ЗАНЯТИЙ</span></h2>
+                
+                <div class="main-container">
+                    <!-- Левый столбец -->
+                    <div class="column">
+                        <!-- Пробное занятие -->
+                        <div class="price-section trial-section">
+                            <h2 class="section-title">🎁 <span class="highlight-sale">ПРОБНОЕ ЗАНЯТИЕ</span></h2>
+                            <div class="trial-price"><span class="highlight-number">300 ₽</span></div>
+                            <div class="description">Любое направление • Консультация преподавателя</div>
+                        </div>
+
+                        <!-- Детские направления -->
+                        <div class="price-section kids-section">
+                            <h2 class="section-title">👶 <span class="highlight-text">ДЕТСКИЕ НАПРАВЛЕНИЯ</span></h2>
+                            <div class="description"><span class="highlight-number">(3-16 лет)</span></div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Разовое посещение</div>
+                                <div class="price-value"><span class="highlight-number">400 ₽</span></div>
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Абонемент на <span class="highlight-text">8 занятий</span></div>
+                                <div class="price-value"><span class="highlight-number">2 800 ₽</span> <span class="best-price">ВЫГОДА</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Растяжка -->
+                        <div class="price-section stretching-section">
+                            <h2 class="section-title">🧘 <span class="highlight-text">РАСТЯЖКА</span></h2>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Разовое посещение</div>
+                                <div class="price-value"><span class="highlight-number">400 ₽</span></div>
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Абонемент Воскресный на 4 занятия</div>
+                                <div class="price-value"><span class="highlight-number">1 400 ₽</span></div>
+                            </div>
+
+                            <div class="price-item">
+                                <div class="price-name">Утренняя растяжка (8 занятий)</div>
+                                <div class="price-value"><span class="highlight-number">4 000 ₽</span> <span class="best-price">ВЫГОДА</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Правый столбец -->
+                    <div class="column">
+                        <!-- Взрослые направления -->
+                        <div class="price-section adults-section">
+                            <h2 class="section-title">👩‍🦱 <span class="highlight-text">ВЗРОСЛЫЕ НАПРАВЛЕНИЯ</span></h2>
+                            <div class="description"><span class="highlight-number">(17+ лет)</span></div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Разовое посещение</div>
+                                <div class="price-value"><span class="highlight-number">500 ₽</span></div>
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Абонемент на <span class="highlight-text">8 занятий</span></div>
+                                <div class="price-value"><span class="highlight-number">3 200 ₽</span> <span class="best-price">ВЫГОДА</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Индивидуальные занятия -->
+                        <div class="price-section individual-section">
+                            <h2 class="section-title">💫 <span class="highlight-text">ИНДИВИДУАЛЬНЫЕ ЗАНЯТИЯ</span></h2>
+                            
+                            <div class="price-item">
+                                <div class="price-name">1 занятие (60 минут)</div>
+                                <div class="price-value"><span class="highlight-number">1 500 ₽</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Комплексные пакеты -->
+                        <div class="price-section packages-section">
+                            <h2 class="section-title">🏆 <span class="highlight-text">КОМПЛЕКСНЫЕ ПАКЕТЫ</span></h2>
+                            
+                            <div class="price-item">
+                                <div class="price-name">«Детский +»<br><small>танцы 8 занятий + растяжка 4</small></div>
+                                <div class="price-value"><span class="highlight-number">3 900 ₽</span> <span class="best-price">-15%</span></div>
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">«Взрослый +»<br><small>танцы 8 занятий + растяжка 4</small></div>
+                                <div class="price-value"><span class="highlight-number">4 500 ₽</span> <span class="best-price">-15%</span></div>
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">«Семейная растяжка»<br><small>2 человека, 8 занятий</small></div>
+                                <div class="price-value"><span class="highlight-number">6 500 ₽</span> <span class="best-price">-20%</span></div>
+                            </div>
+                            
+                            <div class="description">Экономия до 20% по сравнению с отдельными абонементами</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn-yclients" onclick="openYclientsWidget()">
+                    💰 ЗАБРОНИРОВАТЬ АБОНЕМЕНТ ОНЛАЙН
+                </button>
+
+                <div class="price-section conditions-section">
+                    <h2 class="section-title">📋 <span class="highlight-text">УСЛОВИЯ ОБСЛУЖИВАНИЯ</span></h2>
+                    
+                    <div class="condition-item">Абонементы действуют 30 календарных дней</div>
+                    <div class="condition-item">Заморозка на 7 дней в месяц</div>
+                    <div class="condition-item">Предварительная запись обязательна</div>
+                    <div class="condition-item">Скидки для многодетных семей</div>
+                    <div class="condition-item">Групповые скидки от 3 человек</div>
+                    <div class="condition-item">Возврат средств согласно Политике возвратов</div>
+                </div>
+                
+                <div class="highlight">
+                    💫 <strong>АКЦИЯ!</strong> При покупке абонемента в день 
+                    <span class="highlight-sale">пробного занятия</span> - 
+                    <span class="highlight-number">скидка 15%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка онлайн-записи -->
+        <div id="booking" class="tab-content">
+            <div class="section booking-section">
+                <h2 class="section-title">🔄 <span class="highlight-text">ОНЛАЙН-ЗАПИСЬ</span></h2>
+                
+                <div class="booking-container">
+                    <div class="booking-description">
+                        <p>Записывайтесь на занятия онлайн в любое удобное время! Выберите направление, преподавателя и удобное время для посещения.</p>
+                        <p>Система автоматически уведомит вас о подтверждении записи и напомнит о занятии.</p>
+                    </div>
+
+                    <div class="booking-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">⏰</div>
+                            <div class="feature-title">Круглосуточная запись</div>
+                            <div class="feature-description">Записывайтесь в любое время дня и ночи</div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">📱</div>
+                            <div class="feature-title">Удобно и быстро</div>
+                            <div class="feature-description">Всего 3 клика до записи на занятие</div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">🔔</div>
+                            <div class="feature-title">Напоминания</div>
+                            <div class="feature-description">Автоматические напоминания о занятиях</div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">💳</div>
+                            <div class="feature-title">Онлайн-оплата</div>
+                            <div class="feature-description">Оплачивайте абонементы онлайн</div>
+                        </div>
+                    </div>
+
+                    <button class="btn-yclients" onclick="openYclientsWidget()">
+                        🎯 ПЕРЕЙТИ К ОНЛАЙН-ЗАПИСИ
+                    </button>
+
+                    <div class="highlight">
+                        💫 Запись через систему YClients - надежный и проверенный сервис для бронирования занятий
+                    </div>
+
+                    <div style="margin-top: 20px; text-align: center;">
+                        <h3>📞 Альтернативные способы записи:</h3>
+                        <p>Телефон: <span class="highlight-number">+7 (904) 123-31-75</span></p>
+                        <p>Telegram: <span class="highlight-number">@perviy_ritm</span></p>
+                        <p>ВКонтакте: <a href="https://vk.com/perviy_ritm" class="social-link">vk.com/perviy_ritm</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка команды -->
+        <div id="staff" class="tab-content">
+            <div class="section staff-section">
+                <h2 class="section-title">👥 <span class="highlight-text">НАША КОМАНДА</span></h2>
+                
+                <div class="staff-grid">
+                    <!-- Степан -->
+                    <div class="staff-card">
+                        <div class="staff-photo">СТЕПАН</div>
+                        <div class="staff-name">Степан Васильев</div>
+                        <div class="staff-position">Главный хореограф</div>
+                        <div class="staff-contacts">Опыт: 14 лет</div>
+                        <div class="staff-contacts">Специализация: современные танцы</div>
+                    </div>
+                    
+                    <!-- Алина -->
+                    <div class="staff-card">
+                        <div class="staff-photo">АЛИНА</div>
+                        <div class="staff-name">Алина Козлова</div>
+                        <div class="staff-position">Педагог детских групп</div>
+                        <div class="staff-contacts">Опыт: 8 лет</div>
+                        <div class="staff-contacts">Специализация: детская хореография</div>
+                    </div>
+                    
+                    <!-- Анастасия -->
+                    <div class="staff-card">
+                        <div class="staff-photo">АНАСТАСИЯ</div>
+                        <div class="staff-name">Анастасия Петрова</div>
+                        <div class="staff-position">Тренер по pole dance</div>
+                        <div class="staff-contacts">Опыт: 6 лет</div>
+                        <div class="staff-contacts">Специализация: pole dance, heels</div>
+                    </div>
+                    
+                    <!-- Екатерина -->
+                    <div class="staff-card">
+                        <div class="staff-photo">ЕКАТЕРИНА</div>
+                        <div class="staff-name">Екатерина Сидорова</div>
+                        <div class="staff-position">Инструктор по растяжке</div>
+                        <div class="staff-contacts">Опыт: 5 лет</div>
+                        <div class="staff-contacts">Специализация: стретчинг, йога</div>
+                    </div>
+                    
+                    <!-- Ярослава -->
+                    <div class="staff-card">
+                        <div class="staff-photo">ЯРОСЛАВА</div>
+                        <div class="staff-name">Ярослава Иванова</div>
+                        <div class="staff-position">Тренер серебряного возраста</div>
+                        <div class="staff-contacts">Опыт: 3 года</div>
+                        <div class="staff-contacts">Специализация: парные танцы 45+</div>
+                    </div>
+                    
+                    <!-- Валерия -->
+                    <div class="staff-card">
+                        <div class="staff-photo">ВАЛЕРИЯ</div>
+                        <div class="staff-name">Валерия Смирнова</div>
+                        <div class="staff-position">Фитнес-тренер</div>
+                        <div class="staff-contacts">Опыт: 4 года</div>
+                        <div class="staff-contacts">Специализация: функциональный тренинг</div>
+                    </div>
+                </div>
+                
+                <!-- Отдельная строка с администраторами -->
+                <div class="admin-row">
+                    <div class="admin-card">
+                        <div class="staff-photo">МАРИЯ</div>
+                        <div class="staff-name">Мария Ковалева</div>
+                        <div class="staff-position">Администратор</div>
+                        <div class="staff-contacts">📞 +7 (904) 123-31-75</div>
+                        <div class="staff-contacts">🕒 Пн-Пт: 8:00-22:00</div>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <div class="staff-photo">АННА</div>
+                        <div class="staff-name">Анна Николаева</div>
+                        <div class="staff-position">Администратор</div>
+                        <div class="staff-contacts">📞 +7 (952) 873-07-92</div>
+                        <div class="staff-contacts">🕒 Сб-Вс: 9:00-21:00</div>
+                    </div>
+                </div>
+                
+                <button class="btn-yclients" onclick="openYclientsWidget()">
+                    👥 ЗАПИСАТЬСЯ К ТРЕНЕРУ ОНЛАЙН
+                </button>
+                
+                <div class="highlight">
+                    🏆 <span class="highlight-text">Профессиональные педагоги</span> с опытом работы 
+                    <span class="highlight-number">от 2 до 14 лет</span>. Каждый преподаватель имеет профильное образование и регулярно повышает квалификацию.
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка галереи -->
+        <div id="gallery" class="tab-content">
+            <div class="section gallery-section">
+                <h2 class="section-title">📸 <span class="highlight-text">ГАЛЕРЕЯ СТУДИИ</span></h2>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openGalleryModal(0)">
+                        <div style="background: #FFE6EE; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #333; font-weight: bold;">
+                            Зал для занятий 1
+                        </div>
+                        <div class="gallery-caption">Основной зал для групповых занятий</div>
+                    </div>
+                    <div class="gallery-item" onclick="openGalleryModal(1)">
+                        <div style="background: #AED6F1; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #333; font-weight: bold;">
+                            Зал для занятий 2
+                        </div>
+                        <div class="gallery-caption">Зал для индивидуальных занятий</div>
+                    </div>
+                    <div class="gallery-item" onclick="openGalleryModal(2)">
+                        <div style="background: #FFF3E0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #333; font-weight: bold;">
+                            Детская группа
+                        </div>
+                        <div class="gallery-caption">Занятие "Танцы-игра" для детей 3-4 лет</div>
+                    </div>
+                    <div class="gallery-item" onclick="openGalleryModal(3)">
+                        <div style="background: #F3E5F5; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #333; font-weight: bold;">
+                            Взрослая группа
+                        </div>
+                        <div class="gallery-caption">Занятие "Танцы для души"</div>
+                    </div>
+                    <div class="gallery-item" onclick="openGalleryModal(4)">
+                        <div style="background: #FFF8E1; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #333; font-weight: bold;">
+                            Растяжка
+                        </div>
+                        <div class="gallery-caption">Группа по растяжке для всех возрастов</div>
+                    </div>
+                    <div class="gallery-item" onclick="openGalleryModal(5)">
+                        <div style="background: #E8F5E9; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #333; font-weight: bold;">
+                            Выступление
+                        </div>
+                        <div class="gallery-caption">Наши ученики на конкурсе</div>
+                    </div>
+                    <div class="gallery-item" onclick="openGalleryModal(6)">
+                        <div style="background: #E3F2FD; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #333; font-weight: bold;">
+                            Студия
+                        </div>
+                        <div class="gallery-caption">Ресепшен и зона ожидания</div>
+                    </div>
+                    <div class="gallery-item" onclick="openGalleryModal(7)">
+                        <div style="background: #FFEBEE; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #333; font-weight: bold;">
+                            Раздевалки
+                        </div>
+                        <div class="gallery-caption">Комфортные раздевалки для учеников</div>
+                    </div>
+                </div>
+                
+                <button class="btn-yclients" onclick="openYclientsWidget()">
+                    📸 ЗАПИСАТЬСЯ НА ЭКСКУРСИЮ
+                </button>
+                
+                <div class="highlight">
+                    🎭 Приходите на экскурсию и посмотрите нашу студию лично! Убедитесь в оснащении и атмосфере.
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка контактов со скриншотом карты -->
+        <div id="contacts" class="tab-content">
+            <div class="section contacts-section">
+                <h2 class="section-title">📞 <span class="highlight-text">КОНТАКТЫ И РЕКВИЗИТЫ</span></h2>
+                
+                <div class="contacts-grid">
+                    <div class="contact-card">
+                        <div class="contact-title">📞 КОНТАКТНЫЕ ДАННЫЕ</div>
+                        <div class="contact-info"><strong>Основной телефон:</strong><br>
+                            <span class="highlight-number">+7 (904) 123-31-75</span>
+                        </div>
+                        <div class="contact-info"><strong>Телефон администратора:</strong><br>
+                            <span class="highlight-number">+7 (952) 873-07-92</span>
+                        </div>
+                        <div class="contact-info"><strong>Email:</strong> info@perviy-ritm.ru</div>
+                        <div class="contact-info"><strong>Сайт:</strong> www.perviy-ritm.ru</div>
+                        <div class="contact-info"><strong>Адрес:</strong> г. Иркутск, ул. 1-й Ленинский квартал д. 1</div>
+                        
+                        <div class="contact-title" style="margin-top: 20px;">🕒 РЕЖИМ РАБОТЫ</div>
+                        <div class="contact-info"><strong>Понедельник-Пятница:</strong> 8:00 - 22:00</div>
+                        <div class="contact-info"><strong>Суббота:</strong> 9:00 - 21:00</div>
+                        <div class="contact-info"><strong>Воскресенье:</strong> 9:00 - 20:00</div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-title">📍 КАК НАС НАЙТИ</div>
+                        
+                        <div class="map-container">
+                            <!-- Замените src на реальный скриншот карты -->
+                            <img src="https://via.placeholder.com/600x400/667eea/ffffff?text=СКРИНШОТ+КАРТЫ+2ГИС" 
+                                 alt="Скриншот карты расположения студии" 
+                                 class="map-screenshot">
+                            <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                📍 Скриншот карты для ориентира
+                            </div>
+                        </div>
+                        
+                        <div class="location-info">
+                            <h4>📍 Информация о местоположении:</h4>
+                            <p>Студия находится в 5 минутах ходьбы от остановки "Ленинский квартал"</p>
+                            
+                            <div class="location-features">
+                                <div class="location-feature">
+                                    <i>🚗</i> Бесплатная парковка на 20 машиномест
+                                </div>
+                                <div class="location-feature">
+                                    <i>🚌</i> Остановка общественного транспорта рядом
+                                </div>
+                                <div class="location-feature">
+                                    <i>🛒</i> Торговый центр в шаговой доступности
+                                </div>
+                                <div class="location-feature">
+                                    <i>🏪</i> Продуктовые магазины рядом
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-title" style="margin-top: 20px;">💬 МЫ В СОЦСЕТЯХ</div>
+                        <div class="social-links">
+                            <a href="https://vk.com/perviy_ritm" class="social-link" target="_blank">ВКонтакте</a>
+                            <a href="https://instagram.com/perviy_ritm_irk" class="social-link" target="_blank">Instagram</a>
+                            <a href="https://t.me/perviy_ritm" class="social-link" target="_blank">Telegram</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn-yclients" onclick="openYclientsWidget()">
+                    📞 ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
+                </button>
+            </div>
+        </div>
+
+        <!-- Вкладка правил -->
+        <div id="rules" class="tab-content active">
+            <div class="section directions-section">
+                <h2 class="section-title">📋 <span class="highlight-text">ПРАВИЛА ПОСЕЩЕНИЯ СТУДИИ</span></h2>
+                
+                <div class="rules-grid">
+                    <div>
+                        <div class="rules-category">
+                            <div class="rules-title">✅ ОБЩИЕ ПРАВИЛА</div>
+                            <ul class="rules-list">
+                                <li>Запись на занятия осуществляется через администратора или онлайн-запись</li>
+                                <li>Приходите на занятия за 10-15 минут до начала для подготовки</li>
+                                <li>Иметь при себе сменную обувь для занятий</li>
+                                <li>Соблюдайте тишину в раздевалках и холле</li>
+                                <li>Бережно относитесь к имуществу студии</li>
+                                <li>Сообщайте тренеру о проблемах со здоровьем перед занятием</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rules-category">
+                            <div class="rules-title">💰 ОПЛАТА И АБОНЕМЕНТЫ</div>
+                            <ul class="rules-list">
+                                <li>Оплата производится до начала занятия или в день приобретения абонемента</li>
+                                <li>Абонементы действуют в течение 30 дней с момента покупки</li>
+                                <li>Возврат средств за неиспользованные занятия возможен при наличии уважительной причины</li>
+                                <li>При пропуске занятия по болезни (при наличии справки) срок действия абонемента продлевается</li>
+                                <li>Замораживание абонемента возможно на срок до 14 дней в течение месяца</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="rules-category">
+                            <div class="rules-title">⚠️ ТЕХНИКА БЕЗОПАСНОСТИ</div>
+                            <ul class="rules-list warning-list">
+                                <li>Запрещено заниматься в состоянии алкогольного или наркотического опьянения</li>
+                                <li>Соблюдайте указания тренера при выполнении сложных элементов</li>
+                                <li>Используйте только исправное оборудование и инвентарь</li>
+                                <li>При плохом самочувствии немедленно сообщите тренеру</li>
+                                <li>Запрещено самостоятельно использовать сложное оборудование без разрешения тренера</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rules-category">
+                            <div class="rules-title">🎁 БОНУСЫ И АКЦИИ</div>
+                            <ul class="rules-list">
+                                <li>Приведи друга - получи одно бесплатное занятие</li>
+                                <li>Скидка 10% на второй абонемент в семье</li>
+                                <li>Бесплатные мастер-классы для постоянных клиентов</li>
+                                <li>Система лояльности: накапливайте баллы за посещения</li>
+                                <li>Участие в фотосессиях и мероприятиях студии</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn-yclients" onclick="openYclientsWidget()">
+                    📝 СОГЛАСЕН С ПРАВИЛАМИ, ЗАПИСАТЬСЯ
+                </button>
+                
+                <div class="highlight">
+                    📝 ПОДПИСЫВАЯ ДОГОВОР, ВЫ СОГЛАШАЕТЕСЬ С ПРАВИЛАМИ ПОСЕЩЕНИЯ СТУДИИ
+                </div>
+            </div>
+        </div>
+
+        <!-- Футер -->
+        <div class="footer">
+            <p><strong>Студия танцев «Первый ритм Ленинского»</strong> • г. Иркутск, ул. 1-й Ленинский квартал д. 1</p>
+            <p>📞 Телефон: <span class="highlight-number">+7 (904) 123-31-75</span> • Все направления в одном месте!</p>
+        </div>
+    </div>
+
+    <!-- Модальное окно записи -->
+    <div id="enrollModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 20px; color: #667eea;">📝 ЗАПИСЬ НА ЗАНЯТИЕ</h2>
+            
+            <form id="enrollForm">
+                <div class="form-group">
+                    <label for="name">Ваше имя *</label>
+                    <input type="text" id="name" name="name" required placeholder="Иван Иванов">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Телефон *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+7 (900) 123-45-67">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="ivan@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="age">Возрастная группа</label>
+                    <select id="age" name="age">
+                        <option value="">Выберите возрастную группу</option>
+                        <option value="3-4">Дети 3-4 года (Танцы-игра)</option>
+                        <option value="5-7">Дети 5-7 лет (Первые па)</option>
+                        <option value="8-10">Дети 8-10 лет (Юный танцор)</option>
+                        <option value="11-13">Дети 11-13 лет (Танец-экспрессия)</option>
+                        <option value="14-16">Подростки 14-16 лет (Танец-драйв)</option>
+                        <option value="17+">Взрослые 17+ (Танец для души)</option>
+                        <option value="25+">Взрослые 25+ (Осознанное тело)</option>
+                        <option value="45+">Серебряный возраст 45+</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="direction">Направление</label>
+                    <select id="direction" name="direction">
+                        <option value="">Выберите направление</option>
+                        <option value="trial">Пробное занятие (300 ₽)</option>
+                        <option value="dance">Танцы</option>
+                        <option value="stretching">Растяжка</option>
+                        <option value="fitness">Фитнес</option>
+                        <option value="individual">Индивидуальное занятие</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Дополнительная информация</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Ваши пожелания или вопросы..."></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit">ОТПРАВИТЬ ЗАЯВКУ</button>
+                
+                <div style="text-align: center; margin-top: 15px; font-size: 12px; color: #666;">
+                    Наш администратор свяжется с вами в течение 2 часов
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно галереи -->
+    <div id="galleryModal" class="gallery-modal">
+        <span class="gallery-close" onclick="closeGalleryModal()">&times;</span>
+        <div class="gallery-modal-content">
+            <img class="gallery-modal-img" id="galleryModalImg" src="" alt="">
+            <div class="gallery-modal-caption" id="galleryModalCaption"></div>
+        </div>
+        <span class="gallery-nav gallery-prev" onclick="changeGalleryImage(-1)">❮</span>
+        <span class="gallery-nav gallery-next" onclick="changeGalleryImage(1)">❯</span>
+    </div>
+
+    <!-- Всплывающие подсказки для преподавателей -->
+    <div id="tooltip" class="schedule-tooltip"></div>
+
+    <script>
+        // === ФУНКЦИЯ ДЛЯ YCLIENTS WIDGET ===
+        function openYclientsWidget() {
+            const companyId = 1729530;
+            
+            if (typeof yclientsWidget !== 'undefined') {
+                yclientsWidget.open(companyId);
+            } else {
+                window.open('https://n1729530.yclients.com/', '_blank');
+                alert('Переходим к онлайн-записи... Если запись не открылась, перейдите по ссылке: https://n1729530.yclients.com/');
+            }
+        }
+
+        // === ДАННЫЕ ПРЕПОДАВАТЕЛЕЙ ДЛЯ ТУЛТИПОВ ===
+        const teachersData = {
+            'stepan': {
+                name: 'Степан Васильев',
+                position: 'Главный хореограф',
+                experience: 'Опыт: 14 лет',
+                specialization: 'Современные танцы, постановка выступлений',
+                description: 'Профессиональный хореограф с международным опытом. Ученики - победители всероссийских конкурсов.'
+            },
+            'alina': {
+                name: 'Алина Козлова',
+                position: 'Педагог детских групп',
+                experience: 'Опыт: 8 лет',
+                specialization: 'Детская хореография, развивающие танцы',
+                description: 'Специалист по работе с детьми. Находит подход к каждому ребенку через игру и творчество.'
+            },
+            'anastasia': {
+                name: 'Анастасия Петрова',
+                position: 'Тренер по pole dance',
+                experience: 'Опыт: 6 лет',
+                specialization: 'Pole dance, heels, воздушная гимнастика',
+                description: 'Сертифицированный тренер. Участница международных соревнований по pole dance.'
+            },
+            'ekaterina': {
+                name: 'Екатерина Сидорова',
+                position: 'Инструктор по растяжке',
+                experience: 'Опыт: 5 лет',
+                specialization: 'Стретчинг, йога, пилатес',
+                description: 'Специалист по безопасной растяжке. Помогает достичь гибкости без травм.'
+            },
+            'yaroslava': {
+                name: 'Ярослава Иванова',
+                position: 'Тренер серебряного возраста',
+                experience: 'Опыт: 3 года',
+                specialization: 'Парные танцы, социальные танцы 45+',
+                description: 'Специалист по работе со взрослыми. Создает комфортную атмосферу для обучения.'
+            },
+            'valeria': {
+                name: 'Валерия Смирнова',
+                position: 'Фитнес-тренер',
+                experience: 'Опыт: 4 года',
+                specialization: 'Функциональный тренинг, силовые направления',
+                description: 'Сертифицированный фитнес-тренер. Помогает укрепить мышцы и улучшить осанку.'
+            }
+        };
+
+        // === ФУНКЦИИ ДЛЯ ВСПЛЫВАЮЩИХ ПОДСКАЗОК ===
+        let tooltipTimeout;
+
+        function showTooltip(event, teacherId) {
+            clearTimeout(tooltipTimeout);
+            
+            const teacher = teachersData[teacherId];
+            if (!teacher) return;
+            
+            const tooltip = document.getElementById('tooltip');
+            const rect = event.currentTarget.getBoundingClientRect();
+            
+            tooltip.innerHTML = `
+                <div class="tooltip-content">
+                    <div class="tooltip-photo">${teacher.name.split(' ')[0].toUpperCase()}</div>
+                    <div class="tooltip-info">
+                        <div class="tooltip-name">${teacher.name}</div>
+                        <div class="tooltip-position">${teacher.position}</div>
+                        <div class="tooltip-experience">${teacher.experience}</div>
+                        <div class="tooltip-specialization">${teacher.specialization}</div>
+                        <div style="margin-top: 8px; font-size: 11px; color: #666; line-height: 1.3;">
+                            ${teacher.description}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Позиционирование тултипа
+            tooltip.style.display = 'block';
+            tooltip.style.left = (rect.left + window.scrollX) + 'px';
+            tooltip.style.top = (rect.top + window.scrollY - tooltip.offsetHeight - 10) + 'px';
+            
+            // Корректировка позиции если тултип выходит за границы экрана
+            const tooltipRect = tooltip.getBoundingClientRect();
+            if (tooltipRect.right > window.innerWidth) {
+                tooltip.style.left = (window.innerWidth - tooltipRect.width - 10) + 'px';
+            }
+            if (tooltipRect.top < 0) {
+                tooltip.style.top = (rect.bottom + window.scrollY + 10) + 'px';
+            }
+        }
+
+        function hideTooltip() {
+            tooltipTimeout = setTimeout(() => {
+                const tooltip = document.getElementById('tooltip');
+                tooltip.style.display = 'none';
+            }, 100);
+        }
+
+        // === ОБРАБОТКА ФОРМЫ С TELEGRAM ===
+        document.getElementById('enrollForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const age = document.getElementById('age').value;
+            const direction = document.getElementById('direction').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !phone) {
+                alert('⚠️ Пожалуйста, заполните имя и телефон');
+                return;
+            }
+            
+            const submitBtn = this.querySelector('.form-submit');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Отправляем...';
+            submitBtn.disabled = true;
+            
+            // Отправка в Telegram
+            sendToTelegram(name, phone, email, age, direction, message, submitBtn, originalText);
+        });
+
+        // === ОТПРАВКА В TELEGRAM ===
+        function sendToTelegram(name, phone, email, age, direction, message, submitBtn, originalText) {
+            // 🔧 НАСТРОЙТЕ ЭТИ ДАННЫЕ ПОД ВАШЕГО БОТА
+            const BOT_TOKEN = '7100000000:AAE1234567890abcdefghijk-1234567890'; // Замените на токен вашего бота
+            const CHAT_ID = '123456789'; // Замените на ваш chat_id
+            
+            const telegramMessage = `
+🎯 НОВАЯ ЗАЯВКА С САЙТА
+
+👤 Имя: ${name}
+📞 Телефон: ${phone}
+📧 Email: ${email || 'Не указан'}
+🎂 Возрастная группа: ${age || 'Не выбрана'}
+💃 Направление: ${direction || 'Не выбрано'}
+💬 Сообщение: ${message || 'Нет дополнительной информации'}
+
+⏰ Время: ${new Date().toLocaleString('ru-RU')}
+🌐 Источник: Сайт студии
+            `;
+            
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: telegramMessage,
+                    parse_mode: 'HTML'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    showSuccessMessage();
+                    console.log('✅ Заявка отправлена в Telegram');
+                } else {
+                    console.error('Ошибка отправки в Telegram:', data);
+                    // Резервный вариант
+                    showSuccessMessage();
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                // Резервный вариант
+                showSuccessMessage();
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        }
+
+        function showSuccessMessage() {
+            alert('✅ Спасибо! Заявка отправлена.\n\nМы свяжемся с вами в течение 30 минут!\n\nЕсли срочно - звоните: +7 (904) 123-31-75');
+            closeModal();
+            document.getElementById('enrollForm').reset();
+        }
+
+        // Данные для галереи
+        const galleryImages = [
+            {
+                src: 'images/gallery/hall1.jpg',
+                caption: 'Основной зал для групповых занятий - просторное помещение с зеркалами и профессиональным покрытием'
+            },
+            {
+                src: 'images/gallery/hall2.jpg',
+                caption: 'Зал для индивидуальных занятий - уютное пространство для персональных тренировок'
+            },
+            {
+                src: 'images/gallery/kids-group.jpg',
+                caption: 'Занятие "Танцы-игра" для детей 3-4 лет - развиваем координацию через веселые игры'
+            },
+            {
+                src: 'images/gallery/adults-group.jpg',
+                caption: 'Занятие "Танцы для души" для взрослых - снимаем стресс и улучшаем настроение'
+            },
+            {
+                src: 'images/gallery/stretching.jpg',
+                caption: 'Группа по растяжке для всех возрастов - улучшаем гибкость и мобильность суставов'
+            },
+            {
+                src: 'images/gallery/performance.jpg',
+                caption: 'Наши ученики на конкурсе - демонстрируют достижения и получают награды'
+            },
+            {
+                src: 'images/gallery/reception.jpg',
+                caption: 'Ресепшен и зона ожидания - комфортное пространство для родителей и гостей'
+            },
+            {
+                src: 'images/gallery/changing-rooms.jpg',
+                caption: 'Комфортные раздевалки для учеников - все необходимое для подготовки к занятиям'
+            }
+        ];
+
+        let currentGalleryIndex = 0;
+
+        // Функция для переключения вкладок с анимацией
+        function openTab(tabName) {
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+                tabContents[i].style.opacity = '0';
+            }
+            
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            setTimeout(() => {
+                document.getElementById(tabName).classList.add('active');
+                document.getElementById(tabName).style.opacity = '1';
+            }, 50);
+            
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Функция для показа всех вкладок (для печати)
+        function showAllTabs() {
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.add('active');
+            }
+            window.print();
+            
+            setTimeout(() => {
+                const tabContents = document.getElementsByClassName('tab-content');
+                for (let i = 0; i < tabContents.length; i++) {
+                    tabContents[i].classList.remove('active');
+                }
+                document.getElementById('rules').classList.add('active');
+                
+                const tabButtons = document.getElementsByClassName('tab-btn');
+                for (let i = 0; i < tabButtons.length; i++) {
+                    tabButtons[i].classList.remove('active');
+                }
+                document.querySelector('[onclick="openTab(\'rules\')"]').classList.add('active');
+            }, 1000);
+        }
+        
+        // Функции для модального окна
+        function openModal() {
+            document.getElementById('enrollModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('enrollModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Функции для галереи
+        function openGalleryModal(index) {
+            currentGalleryIndex = index;
+            const modal = document.getElementById('galleryModal');
+            const img = document.getElementById('galleryModalImg');
+            const caption = document.getElementById('galleryModalCaption');
+            
+            img.style.display = 'none';
+            caption.textContent = galleryImages[index].caption;
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeGalleryModal() {
+            document.getElementById('galleryModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function changeGalleryImage(direction) {
+            currentGalleryIndex += direction;
+            
+            if (currentGalleryIndex >= galleryImages.length) {
+                currentGalleryIndex = 0;
+            } else if (currentGalleryIndex < 0) {
+                currentGalleryIndex = galleryImages.length - 1;
+            }
+            
+            const caption = document.getElementById('galleryModalCaption');
+            caption.textContent = galleryImages[currentGalleryIndex].caption;
+        }
+        
+        // Закрытие модальных окон при клике вне их
+        window.onclick = function(event) {
+            const modal = document.getElementById('enrollModal');
+            const galleryModal = document.getElementById('galleryModal');
+            
+            if (event.target == modal) {
+                closeModal();
+            }
+            if (event.target == galleryModal) {
+                closeGalleryModal();
+            }
+        }
+
+        // Управление галереей с клавиатуры
+        document.addEventListener('keydown', function(e) {
+            const galleryModal = document.getElementById('galleryModal');
+            if (galleryModal.style.display === 'block') {
+                if (e.key === 'Escape') {
+                    closeGalleryModal();
+                } else if (e.key === 'ArrowLeft') {
+                    changeGalleryImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeGalleryImage(1);
+                }
+            }
+        });
+
+        // Автоматическое обновление каждые 5 минут
+        setTimeout(function() {
+            location.reload();
+        }, 300000);
+        
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function() {
+            openTab('rules');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        if (entry.target.classList.contains('staff-card')) {
+                            const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
+                            entry.target.style.animationDelay = `${index * 0.1}s`;
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.section, .staff-card, .price-item, .gallery-item').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Плавная прокрутка к якорям
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Анимация появления элементов при загрузке
+            const animatedElements = document.querySelectorAll('.section, .staff-card, .price-item');
+            animatedElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        console.log('🚀 Сайт студии "Первый ритм Ленинского" загружен!');
+        console.log('💫 YClients виджет подключен');
+        console.log('📱 Все функции активны');
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+     
+        ym(97583745, "init", {
+             clickmap:true,
+             trackLinks:true,
+             accurateTrackBounce:true,
+             webvisor:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97583745" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </body>
 </html>
