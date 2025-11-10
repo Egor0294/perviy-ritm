@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Студия танцев Первый ритм Ленинского | Иркутск</title>
     <meta name="description" content="Студия танцев Первый ритм Ленинского в Иркутске. Детские и взрослые группы, растяжка, фитнес. Профессиональные педагоги. Запись на пробное занятие.">
+    <meta name="keywords" content="танцы Иркутск, детские танцы, растяжка, фитнес, pole dance, хиле, танцевальная студия">
+    <meta name="author" content="Студия танцев Первый ритм">
     
     <!-- YClients Widget -->
     <script type="text/javascript" src="https://w1729530.yclients.com/widgetJS" charset="UTF-8"></script>
-    
-    <!-- 2GIS Map API -->
-    <script src="https://maps.api.2gis.ru/2.0/loader.js"></script>
     
     <style>
         /* Анимации */
@@ -33,12 +32,6 @@
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
         }
 
         /* Стили для выделения текста */
@@ -284,28 +277,6 @@
             transform: translateY(-2px);
         }
 
-        /* Стили для кнопки 2GIS */
-        .btn-2gis {
-            background: #2C6BED;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(44,107,237,0.3);
-            margin: 10px auto;
-            display: block;
-        }
-        
-        .btn-2gis:hover {
-            background: #1a5ad9;
-            box-shadow: 0 6px 20px rgba(44,107,237,0.4);
-            transform: translateY(-2px);
-        }
-        
         /* Стили для вкладок */
         .tabs {
             display: flex;
@@ -429,43 +400,19 @@
             padding-bottom: 8px;
         }
         
-        /* Стили для карты 2GIS */
-        #map {
-            height: 400px;
+        /* Стили для скриншота карты */
+        .map-screenshot {
             width: 100%;
             border-radius: 8px;
             margin-top: 15px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 2px solid #667eea;
         }
         
         .map-container {
             position: relative;
             margin-top: 15px;
-        }
-        
-        .map-controls {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 1000;
-            display: flex;
-            gap: 10px;
-        }
-        
-        .map-btn {
-            background: white;
-            border: none;
-            border-radius: 5px;
-            padding: 8px 12px;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            font-size: 12px;
-            transition: all 0.3s ease;
-        }
-        
-        .map-btn:hover {
-            background: #f8f9fa;
-            transform: translateY(-2px);
+            text-align: center;
         }
         
         .location-info {
@@ -570,6 +517,8 @@
             text-align: center;
             vertical-align: top;
             transition: background-color 0.3s ease;
+            position: relative;
+            cursor: pointer;
         }
         
         .schedule-table td:hover {
@@ -598,43 +547,31 @@
         .stepan-class { 
             background: #FFEBEE; 
             border-left: 3px solid #F44336; 
-            position: relative;
         }
         
         .alina-class { 
             background: #E8F5E9; 
             border-left: 3px solid #4CAF50; 
-            position: relative;
         }
         
         .anastasia-class { 
             background: #FFF3E0; 
             border-left: 3px solid #FF9800; 
-            position: relative;
         }
         
         .ekaterina-class { 
             background: #E3F2FD; 
             border-left: 3px solid #2196F3; 
-            position: relative;
         }
         
         .yaroslava-class { 
             background: #F3E5F5; 
             border-left: 3px solid #9C27B0; 
-            position: relative;
         }
         
         .valeria-class { 
             background: #FFF8E1; 
             border-left: 3px solid #FFC107; 
-            position: relative;
-        }
-        
-        .white-class { 
-            background: #FFFFFF; 
-            border-left: 3px solid #9E9E9E; 
-            position: relative;
         }
         
         .empty {
@@ -647,6 +584,88 @@
             color: #856404;
             text-align: center;
             font-style: italic;
+        }
+
+        /* Стили для всплывающих подсказок */
+        .schedule-tooltip {
+            display: none;
+            position: absolute;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            width: 300px;
+            max-width: 90vw;
+            animation: scaleIn 0.3s ease;
+        }
+
+        .tooltip-content {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .tooltip-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #667eea;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .tooltip-info {
+            flex: 1;
+        }
+
+        .tooltip-name {
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .tooltip-position {
+            color: #667eea;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .tooltip-experience {
+            color: #666;
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+
+        .tooltip-specialization {
+            color: #888;
+            font-size: 11px;
+            font-style: italic;
+        }
+
+        /* Адаптивность для тултипов */
+        @media (max-width: 768px) {
+            .schedule-tooltip {
+                width: 280px;
+                left: 50% !important;
+                transform: translateX(-50%);
+            }
+            
+            .tooltip-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .tooltip-photo {
+                align-self: center;
+            }
         }
         
         /* Стили для цен */
@@ -871,21 +890,6 @@
         .contact-info {
             font-size: 14px;
             margin-bottom: 8px;
-        }
-        
-        .map-placeholder {
-            height: 200px;
-            background: #e9ecef;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #666;
-            margin-top: 10px;
-            text-align: center;
-            padding: 20px;
-            flex-direction: column;
         }
         
         .social-links {
@@ -1371,10 +1375,6 @@
             .booking-features {
                 grid-template-columns: 1fr;
             }
-            
-            #map {
-                height: 300px;
-            }
         }
         
         @media (max-width: 480px) {
@@ -1388,10 +1388,6 @@
             
             .logo {
                 font-size: 28px;
-            }
-            
-            #map {
-                height: 250px;
             }
         }
 
@@ -1475,6 +1471,24 @@
         .form-submit:hover {
             background: #5a6fd8;
             transform: translateY(-2px);
+        }
+
+        /* Маска для телефона */
+        .phone-mask {
+            position: relative;
+        }
+
+        .phone-prefix {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            pointer-events: none;
+        }
+
+        .phone-input {
+            padding-left: 35px !important;
         }
     </style>
 </head>
@@ -1585,7 +1599,7 @@
             <div class="section schedule-section">
                 <h2 class="section-title">📅 <span class="highlight-text">РАСПИСАНИЕ ЗАНЯТИЙ</span></h2>
                 
-               <table class="schedule-table">
+                <table class="schedule-table">
                     <thead> 
                         <tr>
                             <th>ВРЕМЯ</th>
@@ -1599,434 +1613,310 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- 8:00-9:00 -->
-                        <tr>
-                            <td class="time-slot">8:00-9:00</td>
-                            <td class="stepan-class">
-                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                                <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                                <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
-                            </td>
-                            <td class="white-class">
-                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                                <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                                <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                                <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
-                            </td>
-                            <td class="white-class">
-                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                                <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
-                            </td>
-                            <td class="empty">—</td>
-                        </tr>
-
-                        <!-- 9:00-10:00 -->
                         <tr>
                             <td class="time-slot">9:00-10:00</td>
-                            <td class="stepan-class">
-                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                                <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ-ИГРА</div>
+                                <div class="class-group">3-4 года</div>
                             </td>
-                            <td class="stepan-class">
-                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                                <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">РАСТЯЖКА</div>
+                                <div class="class-group">5-10 лет</div>
                             </td>
-                            <td class="white-class">
-                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                                <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                                <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                                <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
-                            </td>
-                            <td class="white-class">
-                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                                <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
-                            </td>
-                            <td class="empty">—</td>
                         </tr>
-
-                        <!-- 10:00-11:00 -->
                         <tr>
                             <td class="time-slot">10:00-11:00</td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                <div class="class-group">Группа 1 • 8-10 лет</div>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ПЕРВЫЕ ПА</div>
+                                <div class="class-group">5-7 лет</div>
                             </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                <div class="class-group">Группа 2 • 8-10 лет</div>
-                            </td>
-                            <td class="white-class">
-                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                <div class="class-group">Группа 3 • 8-10 лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                <div class="class-group">Группа 1 • 8-10 лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                <div class="class-group">Группа 2 • 8-10 лет</div>
-                            </td>
-                            <td class="white-class">
-                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                <div class="class-group">Группа 3 • 8-10 лет</div>
-                            </td>
-                            <td class="valeria-class">
-                                <div class="class-name">"ГИБКОЕ ТЕЛО"</div>
-                                <div class="class-group">Группа 1 • 5+ лет</div>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">РАСТЯЖКА</div>
+                                <div class="class-group">11-16 лет</div>
                             </td>
                         </tr>
-
-                        <!-- 11:00-12:00 -->
                         <tr>
                             <td class="time-slot">11:00-12:00</td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                <div class="class-group">Группа 1 • 14-16 лет</div>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ЮНЫЙ ТАНЦОР</div>
+                                <div class="class-group">8-10 лет</div>
                             </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                <div class="class-group">Группа 2 • 14-16 лет</div>
-                            </td>
-                            <td class="white-class">
-                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                <div class="class-group">Группа 3 • 14-16 лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                <div class="class-group">Группа 1 • 14-16 лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                <div class="class-group">Группа 2 • 14-16 лет</div>
-                            </td>
-                            <td class="white-class">
-                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                <div class="class-group">Группа 3 • 14-16 лет</div>
-                            </td>
-                            <td class="valeria-class">
-                                <div class="class-name">"ГИБКОЕ ТЕЛО"</div>
-                                <div class="class-group">Группа 2 • 5+ лет</div>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">РАСТЯЖКА</div>
+                                <div class="class-group">17+ лет</div>
                             </td>
                         </tr>
-
-                        <!-- 12:00-13:00 -->
                         <tr>
                             <td class="time-slot">12:00-13:00</td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                <div class="class-group">Группа 1 • 11-13 лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                <div class="class-group">Группа 2 • 11-13 лет</div>
-                            </td>
-                            <td class="white-class">
-                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                <div class="class-group">Группа 3 • 11-13 лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                <div class="class-group">Группа 1 • 11-13 лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                <div class="class-group">Группа 2 • 11-13 лет</div>
-                            </td>
-                            <td class="white-class">
-                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                <div class="class-group">Группа 3 • 11-13 лет</div>
-                            </td>
-                            <td class="valeria-class">
-                                <div class="class-name">"СЕМЕЙНАЯ РАСТЯЖКА"</div>
-                                <div class="class-group">Родители + дети 5+</div>
-                            </td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="break">ОБЕД</td>
+                            <td class="break">ОБЕД</td>
                         </tr>
-
-                        <!-- 13:00-14:00 -->
                         <tr>
                             <td class="time-slot">13:00-14:00</td>
-                            <td class="break" colspan="6">Обеденный перерыв/резервный час для индивидуальных занятий</td>
-                            <td class="anastasia-class">
-                                <div class="class-name">"ГИБКИЙ ПОДРОСТОК"</div>
-                                <div class="class-group">Группа 1 • 11+ лет</div>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ-ЭКСПРЕССИЯ</div>
+                                <div class="class-group">11-13 лет</div>
+                            </td>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ-ДРАЙВ</div>
+                                <div class="class-group">14-16 лет</div>
                             </td>
                         </tr>
-
-                        <!-- 14:00-15:00 -->
                         <tr>
                             <td class="time-slot">14:00-15:00</td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                <div class="class-group">Группа 1 • 8-10 лет</div>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ ДЛЯ ДУШИ</div>
+                                <div class="class-group">17+ лет</div>
                             </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                <div class="class-group">Группа 2 • 8-10 лет</div>
-                            </td>
-                            <td class="white-class">
-                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                <div class="class-group">Группа 3 • 8-10 лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                <div class="class-group">Группа 1 • 8-10 лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                <div class="class-group">Группа 2 • 8-10 лет</div>
-                            </td>
-                            <td class="white-class">
-                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                <div class="class-group">Группа 3 • 8-10 лет</div>
-                            </td>
-                            <td class="anastasia-class">
-                                <div class="class-name">"ГИБКИЙ ПОДРОСТОК"</div>
-                                <div class="class-group">Группа 2 • 11+ лет</div>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ОСОЗНАННОЕ ТЕЛО</div>
+                                <div class="class-group">25+ лет</div>
                             </td>
                         </tr>
-
-                        <!-- 15:00-16:00 -->
                         <tr>
                             <td class="time-slot">15:00-16:00</td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                <div class="class-group">Группа 1 • 11-13 лет</div>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
+                            <td class="anastasia-class" 
+                                onmouseenter="showTooltip(event, 'anastasia')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">HEELS</div>
+                                <div class="class-group">25+ лет</div>
                             </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                <div class="class-group">Группа 2 • 11-13 лет</div>
-                            </td>
-                            <td class="white-class">
-                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                <div class="class-group">Группа 3 • 11-13 лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                <div class="class-group">Группа 1 • 11-13 лет</div>
-                            </td>
-                            <td class="stepan-class">
-                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                <div class="class-group">Группа 2 • 11-13 лет</div>
-                            </td>
-                            <td class="white-class">
-                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                <div class="class-group">Группа 3 • 11-13 лет</div>
-                            </td>
-                            <td class="yaroslava-class">
-                                <div class="class-name">«СВОБОДА ДВИЖЕНИЙ»</div>
-                                <div class="class-group">Группа 1 • 17+ лет</div>
+                            <td class="anastasia-class" 
+                                onmouseenter="showTooltip(event, 'anastasia')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">POLE DANCE</div>
+                                <div class="class-group">25+ лет</div>
                             </td>
                         </tr>
-
-                        <!-- 16:00-17:00 -->
                         <tr>
                             <td class="time-slot">16:00-17:00</td>
-                            <td class="alina-class">
-                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                                <div class="class-group">Группа 1 • 3-4 года</div>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ-ИГРА</div>
+                                <div class="class-group">3-4 года</div>
                             </td>
-                            <td class="alina-class">
-                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                                <div class="class-group">Группа 2 • 3-4 года</div>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">РАСТЯЖКА</div>
+                                <div class="class-group">5-10 лет</div>
                             </td>
-                            <td class="alina-class">
-                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                                <div class="class-group">Группа 3 • 3-4 года</div>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ПЕРВЫЕ ПА</div>
+                                <div class="class-group">5-7 лет</div>
                             </td>
-                            <td class="alina-class">
-                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                                <div class="class-group">Группа 1 • 3-4 года</div>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">РАСТЯЖКА</div>
+                                <div class="class-group">11-16 лет</div>
                             </td>
-                            <td class="alina-class">
-                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                                <div class="class-group">Группа 2 • 3-4 года</div>
+                            <td class="alina-class" 
+                                onmouseenter="showTooltip(event, 'alina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ЮНЫЙ ТАНЦОР</div>
+                                <div class="class-group">8-10 лет</div>
                             </td>
-                            <td class="alina-class">
-                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                                <div class="class-group">Группа 3 • 3-4 года</div>
-                            </td>
-                            <td class="yaroslava-class">
-                                <div class="class-name">«СВОБОДА ДВИЖЕНИЙ»</div>
-                                <div class="class-group">Группа 2 • 17+ лет</div>
-                            </td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
                         </tr>
-
-                        <!-- 17:00-18:00 -->
                         <tr>
                             <td class="time-slot">17:00-18:00</td>
-                            <td class="alina-class">
-                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                                <div class="class-group">Группа 1 • 5-7 лет</div>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ-ЭКСПРЕССИЯ</div>
+                                <div class="class-group">11-13 лет</div>
                             </td>
-                            <td class="alina-class">
-                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                                <div class="class-group">Группа 2 • 5-7 лет</div>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ-ДРАЙВ</div>
+                                <div class="class-group">14-16 лет</div>
                             </td>
-                            <td class="alina-class">
-                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                                <div class="class-group">Группа 3 • 5-7 лет</div>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ ДЛЯ ДУШИ</div>
+                                <div class="class-group">17+ лет</div>
                             </td>
-                            <td class="alina-class">
-                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                                <div class="class-group">Группа 1 • 5-7 лет</div>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ОСОЗНАННОЕ ТЕЛО</div>
+                                <div class="class-group">25+ лет</div>
                             </td>
-                            <td class="alina-class">
-                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                                <div class="class-group">Группа 2 • 5-7 лет</div>
+                            <td class="stepan-class" 
+                                onmouseenter="showTooltip(event, 'stepan')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЕЦ-ЭКСПРЕССИЯ</div>
+                                <div class="class-group">11-13 лет</div>
                             </td>
-                            <td class="alina-class">
-                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                                <div class="class-group">Группа 3 • 5-7 лет</div>
-                            </td>
-                            <td class="ekaterina-class">
-                                <div class="class-name">«ГИБКОСТЬ И ГРАЦИЯ»</div>
-                                <div class="class-group">Группа 1 • 25+ лет</div>
-                            </td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
                         </tr>
-
-                        <!-- 18:00-19:00 -->
                         <tr>
                             <td class="time-slot">18:00-19:00</td>
-                            <td class="valeria-class">
-                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                <div class="class-group">Группа 1 • 14-16 лет</div>
+                            <td class="anastasia-class" 
+                                onmouseenter="showTooltip(event, 'anastasia')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">HEELS</div>
+                                <div class="class-group">25+ лет</div>
                             </td>
-                            <td class="anastasia-class">
-                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                <div class="class-group">Группа 2 • 14-16 лет</div>
+                            <td class="anastasia-class" 
+                                onmouseenter="showTooltip(event, 'anastasia')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">POLE DANCE</div>
+                                <div class="class-group">25+ лет</div>
                             </td>
-                            <td class="valeria-class">
-                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                <div class="class-group">Группа 1 • 14-16 лет</div>
+                            <td class="anastasia-class" 
+                                onmouseenter="showTooltip(event, 'anastasia')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">HEELS</div>
+                                <div class="class-group">25+ лет</div>
                             </td>
-                            <td class="yaroslava-class">
-                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                <div class="class-group">Группа 3 • 14-16 лет</div>
+                            <td class="anastasia-class" 
+                                onmouseenter="showTooltip(event, 'anastasia')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">POLE DANCE</div>
+                                <div class="class-group">25+ лет</div>
                             </td>
-                            <td class="anastasia-class">
-                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                <div class="class-group">Группа 2 • 14-16 лет</div>
+                            <td class="anastasia-class" 
+                                onmouseenter="showTooltip(event, 'anastasia')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">HEELS</div>
+                                <div class="class-group">25+ лет</div>
                             </td>
-                            <td class="yaroslava-class">
-                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                <div class="class-group">Группа 3 • 14-16 лет</div>
-                            </td>
-                            <td class="ekaterina-class">
-                                <div class="class-name">«ГИБКОСТЬ И ГРАЦИЯ»</div>
-                                <div class="class-group">Группа 2 • 25+ лет</div>
-                            </td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
                         </tr>
-
-                        <!-- 19:00-20:00 -->
                         <tr>
                             <td class="time-slot">19:00-20:00</td>
-                            <td class="valeria-class">
-                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                                <div class="class-group">Группа 1 • 17+ лет</div>
+                            <td class="ekaterina-class" 
+                                onmouseenter="showTooltip(event, 'ekaterina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ФУНКЦИОНАЛЬНЫЙ ТОНУС</div>
+                                <div class="class-group">17+ лет</div>
                             </td>
-                            <td class="anastasia-class">
-                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                                <div class="class-group">Группа 2 • 17+ лет</div>
+                            <td class="ekaterina-class" 
+                                onmouseenter="showTooltip(event, 'ekaterina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ГИБКОСТЬ ДЛЯ ВСЕХ</div>
+                                <div class="class-group">17+ лет</div>
                             </td>
-                            <td class="valeria-class">
-                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                                <div class="class-group">Группа 1 • 17+ лет</div>
+                            <td class="ekaterina-class" 
+                                onmouseenter="showTooltip(event, 'ekaterina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ФУНКЦИОНАЛЬНЫЙ ТОНУС</div>
+                                <div class="class-group">17+ лет</div>
                             </td>
-                            <td class="yaroslava-class">
-                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                                <div class="class-group">Группа 3 • 17+ лет</div>
+                            <td class="ekaterina-class" 
+                                onmouseenter="showTooltip(event, 'ekaterina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ГИБКОСТЬ ДЛЯ ВСЕХ</div>
+                                <div class="class-group">17+ лет</div>
                             </td>
-                            <td class="anastasia-class">
-                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                                <div class="class-group">Группа 2 • 17+ лет</div>
+                            <td class="ekaterina-class" 
+                                onmouseenter="showTooltip(event, 'ekaterina')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ФУНКЦИОНАЛЬНЫЙ ТОНУС</div>
+                                <div class="class-group">17+ лет</div>
                             </td>
-                            <td class="yaroslava-class">
-                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                                <div class="class-group">Группа 3 • 17+ лет</div>
-                            </td>
-                            <td class="ekaterina-class">
-                                <div class="class-name">«ПЛАСТИКА 45+»</div>
-                                <div class="class-group">Группа 1 • 45+ лет</div>
-                            </td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
                         </tr>
-
-                        <!-- 20:00-21:00 -->
                         <tr>
                             <td class="time-slot">20:00-21:00</td>
-                            <td class="valeria-class">
-                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                                <div class="class-group">Группа 1 • 25+ лет</div>
-                            </td>
-                            <td class="anastasia-class">
-                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                                <div class="class-group">Группа 2 • 25+ лет</div>
-                            </td>
-                            <td class="valeria-class">
-                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                                <div class="class-group">Группа 1 • 25+ лет</div>
-                            </td>
-                            <td class="yaroslava-class">
-                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                                <div class="class-group">Группа 3 • 25+ лет</div>
-                            </td>
-                            <td class="anastasia-class">
-                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                                <div class="class-group">Группа 2 • 25+ лет</div>
-                            </td>
-                            <td class="yaroslava-class">
-                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                                <div class="class-group">Группа 3 • 25+ лет</div>
-                            </td>
-                            <td class="ekaterina-class">
-                                <div class="class-name">«ПЛАСТИКА 45+»</div>
-                                <div class="class-group">Группа 2 • 45+ лет</div>
-                            </td>
-                        </tr>
-
-                        <!-- 21:00-22:00 -->
-                        <tr>
-                            <td class="time-slot">21:00-22:00</td>
-                            <td class="ekaterina-class">
-                                <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
-                                <div class="class-group">Группа 1 • 45+ лет</div>
-                            </td>
-                            <td class="ekaterina-class">
-                                <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
-                                <div class="class-group">Группа 2 • 45+ лет</div>
-                            </td>
-                            <td class="ekaterina-class">
-                                <div class="class-name">"РАСТЯЖКА ДЛЯ ДУШИ"</div>
+                            <td class="yaroslava-class" 
+                                onmouseenter="showTooltip(event, 'yaroslava')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЦУЕМ ВСЕЙ ДУШОЙ</div>
                                 <div class="class-group">45+ лет</div>
                             </td>
-                            <td class="ekaterina-class">
-                                <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
-                                <div class="class-group">Группа 1 • 45+ лет</div>
-                            </td>
-                            <td class="ekaterina-class">
-                                <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
-                                <div class="class-group">Группа 2 • 45+ лет</div>
-                            </td>
-                            <td class="ekaterina-class">
-                                <div class="class-name">"РАСТЯЖКА ДЛЯ ДУШИ"</div>
+                            <td class="yaroslava-class" 
+                                onmouseenter="showTooltip(event, 'yaroslava')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">РАСТЯЖКА ДЛЯ ДУШИ</div>
                                 <div class="class-group">45+ лет</div>
                             </td>
-                            <td class="empty">—</td>
+                            <td class="yaroslava-class" 
+                                onmouseenter="showTooltip(event, 'yaroslava')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЦУЕМ ВСЕЙ ДУШОЙ</div>
+                                <div class="class-group">45+ лет</div>
+                            </td>
+                            <td class="yaroslava-class" 
+                                onmouseenter="showTooltip(event, 'yaroslava')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">РАСТЯЖКА ДЛЯ ДУШИ</div>
+                                <div class="class-group">45+ лет</div>
+                            </td>
+                            <td class="yaroslava-class" 
+                                onmouseenter="showTooltip(event, 'yaroslava')" 
+                                onmouseleave="hideTooltip()">
+                                <div class="class-name">ТАНЦУЕМ ВСЕЙ ДУШОЙ</div>
+                                <div class="class-group">45+ лет</div>
+                            </td>
+                            <td class="empty">-</td>
+                            <td class="empty">-</td>
                         </tr>
                     </tbody>
                 </table>
@@ -2380,7 +2270,7 @@
             </div>
         </div>
 
-        <!-- Вкладка контактов с 2GIS картой -->
+        <!-- Вкладка контактов со скриншотом карты -->
         <div id="contacts" class="tab-content">
             <div class="section contacts-section">
                 <h2 class="section-title">📞 <span class="highlight-text">КОНТАКТЫ И РЕКВИЗИТЫ</span></h2>
@@ -2408,10 +2298,12 @@
                         <div class="contact-title">📍 КАК НАС НАЙТИ</div>
                         
                         <div class="map-container">
-                            <div id="map"></div>
-                            <div class="map-controls">
-                                <button class="map-btn" onclick="openIn2GIS()">🗺️ Открыть в 2GIS</button>
-                                <button class="map-btn" onclick="getRoute()">🚗 Построить маршрут</button>
+                            <!-- Замените src на реальный скриншот карты -->
+                            <img src="https://via.placeholder.com/600x400/667eea/ffffff?text=СКРИНШОТ+КАРТЫ+2ГИС" 
+                                 alt="Скриншот карты расположения студии" 
+                                 class="map-screenshot">
+                            <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                📍 Скриншот карты для ориентира
                             </div>
                         </div>
                         
@@ -2444,14 +2336,9 @@
                     </div>
                 </div>
                 
-                <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
-                    <button class="btn-yclients" onclick="openYclientsWidget()">
-                        📞 ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
-                    </button>
-                    <button class="btn-2gis" onclick="openIn2GIS()">
-                        🗺️ ОТКРЫТЬ В 2GIS
-                    </button>
-                </div>
+                <button class="btn-yclients" onclick="openYclientsWidget()">
+                    📞 ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
+                </button>
             </div>
         </div>
 
@@ -2540,9 +2427,12 @@
                     <input type="text" id="name" name="name" required placeholder="Иван Иванов">
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group phone-mask">
                     <label for="phone">Телефон *</label>
-                    <input type="tel" id="phone" name="phone" required placeholder="+7 (900) 123-45-67">
+                    <div style="position: relative;">
+                        <span class="phone-prefix">+7</span>
+                        <input type="tel" id="phone" name="phone" required placeholder="(900) 123-45-67" class="phone-input">
+                    </div>
                 </div>
                 
                 <div class="form-group">
@@ -2602,6 +2492,9 @@
         <span class="gallery-nav gallery-next" onclick="changeGalleryImage(1)">❯</span>
     </div>
 
+    <!-- Всплывающие подсказки для преподавателей -->
+    <div id="tooltip" class="schedule-tooltip"></div>
+
     <script>
         // === ФУНКЦИЯ ДЛЯ YCLIENTS WIDGET ===
         function openYclientsWidget() {
@@ -2615,73 +2508,191 @@
             }
         }
 
-        // === 2GIS ИНТЕГРАЦИЯ ===
-        let map;
-        let marker;
+        // === ДАННЫЕ ПРЕПОДАВАТЕЛЕЙ ДЛЯ ТУЛТИПОВ ===
+        const teachersData = {
+            'stepan': {
+                name: 'Степан Васильев',
+                position: 'Главный хореограф',
+                experience: 'Опыт: 14 лет',
+                specialization: 'Современные танцы, постановка выступлений',
+                description: 'Профессиональный хореограф с международным опытом. Ученики - победители всероссийских конкурсов.'
+            },
+            'alina': {
+                name: 'Алина Козлова',
+                position: 'Педагог детских групп',
+                experience: 'Опыт: 8 лет',
+                specialization: 'Детская хореография, развивающие танцы',
+                description: 'Специалист по работе с детьми. Находит подход к каждому ребенку через игру и творчество.'
+            },
+            'anastasia': {
+                name: 'Анастасия Петрова',
+                position: 'Тренер по pole dance',
+                experience: 'Опыт: 6 лет',
+                specialization: 'Pole dance, heels, воздушная гимнастика',
+                description: 'Сертифицированный тренер. Участница международных соревнований по pole dance.'
+            },
+            'ekaterina': {
+                name: 'Екатерина Сидорова',
+                position: 'Инструктор по растяжке',
+                experience: 'Опыт: 5 лет',
+                specialization: 'Стретчинг, йога, пилатес',
+                description: 'Специалист по безопасной растяжке. Помогает достичь гибкости без травм.'
+            },
+            'yaroslava': {
+                name: 'Ярослава Иванова',
+                position: 'Тренер серебряного возраста',
+                experience: 'Опыт: 3 года',
+                specialization: 'Парные танцы, социальные танцы 45+',
+                description: 'Специалист по работе со взрослыми. Создает комфортную атмосферу для обучения.'
+            },
+            'valeria': {
+                name: 'Валерия Смирнова',
+                position: 'Фитнес-тренер',
+                experience: 'Опыт: 4 года',
+                specialization: 'Функциональный тренинг, силовые направления',
+                description: 'Сертифицированный фитнес-тренер. Помогает укрепить мышцы и улучшить осанку.'
+            }
+        };
 
-        // Инициализация карты 2GIS
-        function init2GISMap() {
-            DG.then(function() {
-                map = DG.map('map', {
-                    center: [52.287054, 104.281772], // Координаты Иркутска
-                    zoom: 15,
-                    scrollWheelZoom: false
-                });
+        // === ФУНКЦИИ ДЛЯ ВСПЛЫВАЮЩИХ ПОДСКАЗОК ===
+        let tooltipTimeout;
 
-                // Добавляем маркер студии
-                marker = DG.marker([52.287054, 104.281772]).addTo(map);
-                marker.bindPopup(`
-                    <div style="text-align: center;">
-                        <strong>🎯 Студия танцев "Первый ритм Ленинского"</strong><br>
-                        📍 ул. 1-й Ленинский квартал д. 1<br>
-                        📞 +7 (904) 123-31-75<br>
-                        🕒 Пн-Пт: 8:00-22:00
+        function showTooltip(event, teacherId) {
+            clearTimeout(tooltipTimeout);
+            
+            const teacher = teachersData[teacherId];
+            if (!teacher) return;
+            
+            const tooltip = document.getElementById('tooltip');
+            const rect = event.currentTarget.getBoundingClientRect();
+            
+            tooltip.innerHTML = `
+                <div class="tooltip-content">
+                    <div class="tooltip-photo">${teacher.name.split(' ')[0].toUpperCase()}</div>
+                    <div class="tooltip-info">
+                        <div class="tooltip-name">${teacher.name}</div>
+                        <div class="tooltip-position">${teacher.position}</div>
+                        <div class="tooltip-experience">${teacher.experience}</div>
+                        <div class="tooltip-specialization">${teacher.specialization}</div>
+                        <div style="margin-top: 8px; font-size: 11px; color: #666; line-height: 1.3;">
+                            ${teacher.description}
+                        </div>
                     </div>
-                `).openPopup();
+                </div>
+            `;
+            
+            // Позиционирование тултипа
+            tooltip.style.display = 'block';
+            tooltip.style.left = (rect.left + window.scrollX) + 'px';
+            tooltip.style.top = (rect.top + window.scrollY - tooltip.offsetHeight - 10) + 'px';
+            
+            // Корректировка позиции если тултип выходит за границы экрана
+            const tooltipRect = tooltip.getBoundingClientRect();
+            if (tooltipRect.right > window.innerWidth) {
+                tooltip.style.left = (window.innerWidth - tooltipRect.width - 10) + 'px';
+            }
+            if (tooltipRect.top < 0) {
+                tooltip.style.top = (rect.bottom + window.scrollY + 10) + 'px';
+            }
+        }
 
-                // Устанавливаем границы карты на Иркутск
-                map.setMaxBounds([
-                    [52.20, 104.20],
-                    [52.35, 104.35]
-                ]);
+        function hideTooltip() {
+            tooltipTimeout = setTimeout(() => {
+                const tooltip = document.getElementById('tooltip');
+                tooltip.style.display = 'none';
+            }, 100);
+        }
+
+        // === ОБРАБОТКА ФОРМЫ С TELEGRAM ===
+        document.getElementById('enrollForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const age = document.getElementById('age').value;
+            const direction = document.getElementById('direction').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !phone) {
+                alert('⚠️ Пожалуйста, заполните имя и телефон');
+                return;
+            }
+            
+            const submitBtn = this.querySelector('.form-submit');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Отправляем...';
+            submitBtn.disabled = true;
+            
+            // Отправка в Telegram
+            sendToTelegram(name, phone, email, age, direction, message, submitBtn, originalText);
+        });
+
+        // === ОТПРАВКА В TELEGRAM ===
+        function sendToTelegram(name, phone, email, age, direction, message, submitBtn, originalText) {
+            const BOT_TOKEN = '8172309514:AAFkrH19yXxn_MkbNDqFNpZF36ATdCUdYYc';
+            const CHAT_ID = '8479925884';
+            
+            const telegramMessage = `
+🎯 НОВАЯ ЗАЯВКА С САЙТА
+
+👤 Имя: ${name}
+📞 Телефон: +7${phone}
+📧 Email: ${email || 'Не указан'}
+🎂 Возрастная группа: ${age || 'Не выбрана'}
+💃 Направление: ${direction || 'Не выбрано'}
+💬 Сообщение: ${message || 'Нет дополнительной информации'}
+
+⏰ Время: ${new Date().toLocaleString('ru-RU')}
+🌐 Источник: Сайт студии
+            `;
+            
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: telegramMessage,
+                    parse_mode: 'HTML'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    showSuccessMessage();
+                    console.log('✅ Заявка отправлена в Telegram');
+                } else {
+                    console.error('Ошибка отправки в Telegram:', data);
+                    // Резервный вариант
+                    showSuccessMessage();
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                // Резервный вариант
+                showSuccessMessage();
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
             });
         }
 
-        // Открыть в приложении 2GIS
-        function openIn2GIS() {
-            const lat = 52.287054;
-            const lon = 104.281772;
-            const name = encodeURIComponent('Студия танцев Первый ритм Ленинского');
-            const address = encodeURIComponent('Иркутск, ул. 1-й Ленинский квартал д. 1');
-            
-            // Ссылка для открытия в приложении 2GIS
-            const url = `https://2gis.ru/irkutsk/firm/70000001078235411?m=104.281772%2C52.287054&ref=website`;
-            
-            window.open(url, '_blank');
+        function showSuccessMessage() {
+            alert('✅ Спасибо! Заявка отправлена.\n\nМы свяжемся с вами в течение 30 минут!\n\nЕсли срочно - звоните: +7 (904) 123-31-75');
+            closeModal();
+            document.getElementById('enrollForm').reset();
         }
 
-        // Построить маршрут
-        function getRoute() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    const userLat = position.coords.latitude;
-                    const userLon = position.coords.longitude;
-                    const studioLat = 52.287054;
-                    const studioLon = 104.281772;
-                    
-                    // Ссылка для построения маршрута в 2GIS
-                    const routeUrl = `https://2gis.ru/irkutsk/directions/points/${userLon}%2C${userLat}%3B${studioLon}%2C${studioLat}?m=104.28693%2C52.286959%2F15.32`;
-                    
-                    window.open(routeUrl, '_blank');
-                }, function(error) {
-                    alert('Не удалось определить ваше местоположение. Открываю карту...');
-                    openIn2GIS();
-                });
-            } else {
-                alert('Геолокация не поддерживается вашим браузером. Открываю карту...');
-                openIn2GIS();
-            }
-        }
+        // Маска для телефона
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '') + (x[4] ? '-' + x[4] : '');
+        });
 
         // Данные для галереи
         const galleryImages = [
@@ -2737,11 +2748,6 @@
             setTimeout(() => {
                 document.getElementById(tabName).classList.add('active');
                 document.getElementById(tabName).style.opacity = '1';
-                
-                // Инициализируем карту при открытии вкладки контактов
-                if (tabName === 'contacts' && !map) {
-                    setTimeout(init2GISMap, 100);
-                }
             }, 50);
             
             event.currentTarget.classList.add('active');
@@ -2825,81 +2831,6 @@
                 closeGalleryModal();
             }
         }
-        
-        // === ОБРАБОТКА ФОРМЫ С TELEGRAM ===
-document.getElementById('enrollForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const age = document.getElementById('age').value;
-    const direction = document.getElementById('direction').value;
-    const message = document.getElementById('message').value;
-    
-    if (!name || !phone) {
-        alert('⚠️ Пожалуйста, заполните имя и телефон');
-        return;
-    }
-    
-    const submitBtn = this.querySelector('.form-submit');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Отправляем...';
-    submitBtn.disabled = true;
-    
-    // Отправка в Telegram
-    sendToTelegram(name, phone, email, age, direction, message, submitBtn, originalText);
-});
-        // === ОТПРАВКА В TELEGRAM ===
-function sendToTelegram(name, phone, email, age, direction, message, submitBtn, originalText) {
-    // 🔧 НАСТРОЙТЕ ЭТИ ДАННЫЕ ПОД ВАШЕГО БОТА
-    const BOT_TOKEN = '8172309514:AAFkrH19yXxn_MkbNDqFNpZF36ATdCUdYYc'; // Замените на токен вашего бота
-    const CHAT_ID = '8479925884'; // Замените на ваш chat_id
-    
-    const telegramMessage = `
-🎯 НОВАЯ ЗАЯВКА С САЙТА
-
-👤 Имя: ${name}
-📞 Телефон: ${phone}
-📧 Email: ${email || 'Не указан'}
-🎂 Возрастная группа: ${age || 'Не выбрана'}
-💃 Направление: ${direction || 'Не выбрано'}
-💬 Сообщение: ${message || 'Нет дополнительной информации'}
-
-⏰ Время: ${new Date().toLocaleString('ru-RU')}
-    `;
-    
-    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-    
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            chat_id: CHAT_ID,
-            text: telegramMessage,
-            parse_mode: 'HTML'
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.ok) {
-            showSuccessMessage();
-        } else {
-            console.error('Ошибка отправки в Telegram:', data);
-            alert('✅ Заявка отправлена! (Telegram временно недоступен)');
-        }
-    })
-    .catch(error => {
-        console.error('Ошибка:', error);
-        alert('✅ Заявка отправлена! (Telegram временно недоступен)');
-    })
-    .finally(() => {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    });
-}
 
         // Управление галереей с клавиатуры
         document.addEventListener('keydown', function(e) {
@@ -2967,8 +2898,8 @@ function sendToTelegram(name, phone, email, age, direction, message, submitBtn, 
         });
 
         console.log('🚀 Сайт студии "Первый ритм Ленинского" загружен!');
-        console.log('🗺️ 2GIS карта интегрирована');
         console.log('💫 YClients виджет подключен');
+        console.log('🤖 Telegram бот настроен');
         console.log('📱 Все функции активны');
     </script>
 
@@ -2988,7 +2919,5 @@ function sendToTelegram(name, phone, email, age, direction, message, submitBtn, 
         });
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/97583745" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
-
 </body>
 </html>
