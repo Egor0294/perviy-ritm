@@ -35,6 +35,61 @@
             60% { transform: translateY(-5px); }
         }
 
+        /* Стили для выделения текста */
+        .highlight-text {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-decoration: underline;
+            text-decoration-color: #FF6B6B;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .highlight-text:hover {
+            transform: scale(1.05);
+            text-shadow: 0 2px 10px rgba(255,107,107,0.3);
+        }
+
+        .highlight-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            font-size: 1.2em;
+            border-bottom: 2px dashed #667eea;
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-number:hover {
+            transform: scale(1.1);
+            border-bottom-style: solid;
+        }
+
+        .highlight-sale {
+            background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            font-size: 1.15em;
+            text-decoration: underline wavy #4CAF50;
+            text-underline-offset: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-sale:hover {
+            transform: scale(1.08);
+            text-shadow: 0 2px 15px rgba(76,175,80,0.3);
+        }
+
         .tab-content {
             animation: fadeIn 0.5s ease-in-out;
         }
@@ -1242,8 +1297,9 @@
             <h1 class="main-title">ИНФОРМАЦИОННЫЙ СТЕНД СТУДИИ ТАНЦЕВ</h1>
             <p class="subtitle">От первых па до профессиональных вершин. Танцуют все!</p>
             
-            <button class="btn-enroll" onclick="openModal()">📝 ЗАПИСАТЬСЯ НА ПРОБНОЕ ЗАНЯТИЕ</button>
-            
+            <button class="btn-enroll" onclick="openModal()">
+                📝 ЗАПИСАТЬСЯ ЗА <span class="highlight-number">300₽</span>
+            </button>
         </div>
 
         <!-- Вкладки -->
@@ -1260,47 +1316,53 @@
         <!-- Вкладка направлений -->
         <div id="directions" class="tab-content">
             <div class="section directions-section">
-                <h2 class="section-title">🎯 НАПРАВЛЕНИЯ ОБУЧЕНИЯ</h2>
+                <h2 class="section-title">🎯 <span class="highlight-text">НАПРАВЛЕНИЯ ОБУЧЕНИЯ</span></h2>
                 
                 <div class="directions-grid">
                     <div>
                         <div class="direction-category">
-                            <div class="category-title">👶 ДЕТСКИЕ НАПРАВЛЕНИЯ (3-16 лет)</div>
+                            <div class="category-title">
+                                👶 <span class="highlight-text">ДЕТСКИЕ НАПРАВЛЕНИЯ</span> 
+                                <span class="highlight-number">(3-16 лет)</span>
+                            </div>
                             <ul class="direction-list">
-                                <li><strong>ТАНЕЦ-ИГРА</strong> (3-4 года) - развитие координации и чувства ритма через игру</li>
-                                <li><strong>ПЕРВЫЕ ПА</strong> (5-7 лет) - основы хореографии, развитие музыкальности</li>
-                                <li><strong>ЮНЫЙ ТАНЦОР</strong> (8-10 лет) - изучение базовых танцевальных стилей</li>
-                                <li><strong>ТАНЕЦ-ЭКСПРЕССИЯ</strong> (11-13 лет) - развитие артистизма и техники</li>
-                                <li><strong>ТАНЕЦ-ДРАЙВ</strong> (14-16 лет) - современные направления, подготовка к выступлениям</li>
+                                <li><strong>ТАНЕЦ-ИГРА</strong> <span class="highlight-number">(3-4 года)</span> - развитие координации и чувства ритма через игру</li>
+                                <li><strong>ПЕРВЫЕ ПА</strong> <span class="highlight-number">(5-7 лет)</span> - основы хореографии, развитие музыкальности</li>
+                                <li><strong>ЮНЫЙ ТАНЦОР</strong> <span class="highlight-number">(8-10 лет)</span> - изучение базовых танцевальных стилей</li>
+                                <li><strong>ТАНЕЦ-ЭКСПРЕССИЯ</strong> <span class="highlight-number">(11-13 лет)</span> - развитие артистизма и техники</li>
+                                <li><strong>ТАНЕЦ-ДРАЙВ</strong> <span class="highlight-number">(14-16 лет)</span> - современные направления, подготовка к выступлениям</li>
                             </ul>
                         </div>
                         
                         <div class="direction-category">
-                            <div class="category-title">👩‍🦱 ВЗРОСЛЫЕ НАПРАВЛЕНИЯ (17+, 25+ лет)</div>
+                            <div class="category-title">
+                                👩‍🦱 <span class="highlight-text">ВЗРОСЛЫЕ НАПРАВЛЕНИЯ</span> 
+                                <span class="highlight-number">(17+, 25+ лет)</span>
+                            </div>
                             <ul class="direction-list">
-                                <li><strong>ТАНЕЦ ДЛЯ ДУШИ</strong> (17+) - снятие стресса, улучшение настроения</li>
-                                <li><strong>ОСОЗНАННОЕ ТЕЛО</strong> (25+) - работа с осанкой, грацией, пластикой</li>
-                                <li><strong>HEELS</strong> (ХИЛС) (25+) - танец на каблуках, развитие женственности</li>
-                                <li><strong>POLE DANCE</strong> (ПУЛ ДЕНС) (25+) - силовой танец, развитие гибкости и выносливости</li>
+                                <li><strong>ТАНЕЦ ДЛЯ ДУШИ</strong> <span class="highlight-number">(17+)</span> - снятие стресса, улучшение настроения</li>
+                                <li><strong>ОСОЗНАННОЕ ТЕЛО</strong> <span class="highlight-number">(25+)</span> - работа с осанкой, грацией, пластикой</li>
+                                <li><strong>HEELS</strong> (ХИЛС) <span class="highlight-number">(25+)</span> - танец на каблуках, развитие женственности</li>
+                                <li><strong>POLE DANCE</strong> (ПУЛ ДЕНС) <span class="highlight-number">(25+)</span> - силовой танец, развитие гибкости и выносливости</li>
                             </ul>
                         </div>
                     </div>
                     
                     <div>
                         <div class="direction-category">
-                            <div class="category-title">🧘 РАСТЯЖКА И ГИБКОСТЬ</div>
+                            <div class="category-title">🧘 <span class="highlight-text">РАСТЯЖКА И ГИБКОСТЬ</span></div>
                             <ul class="direction-list">
-                                <li><strong>ГИБКОЕ ТЕЛО</strong> (5-10 лет) - безопасная растяжка для детей</li>
-                                <li><strong>ГИБКИЙ ПОДРОСТОК</strong> (11-16 лет) - развитие гибкости для танцев</li>
-                                <li><strong>СВОБОДА ДВИЖЕНИЙ</strong> (17+) - увеличение мобильности суставов</li>
-                                <li><strong>ГИБКОСТЬ И ГРАЦИЯ</strong> (25+ лет) - коррекция осанки, грациозность</li>
-                                <li><strong>ПЛАСТИКА</strong> (45+) - поддержание гибкости в зрелом возрасте</li>
+                                <li><strong>ГИБКОЕ ТЕЛО</strong> <span class="highlight-number">(5-10 лет)</span> - безопасная растяжка для детей</li>
+                                <li><strong>ГИБКИЙ ПОДРОСТОК</strong> <span class="highlight-number">(11-16 лет)</span> - развитие гибкости для танцев</li>
+                                <li><strong>СВОБОДА ДВИЖЕНИЙ</strong> <span class="highlight-number">(17+)</span> - увеличение мобильности суставов</li>
+                                <li><strong>ГИБКОСТЬ И ГРАЦИЯ</strong> <span class="highlight-number">(25+ лет)</span> - коррекция осанки, грациозность</li>
+                                <li><strong>ПЛАСТИКА</strong> <span class="highlight-number">(45+)</span> - поддержание гибкости в зрелом возрасте</li>
                                 <li><strong>СЕМЕЙНАЯ РАСТЯЖКА</strong> - совместные занятия для детей и родителей</li>
                             </ul>
                         </div>
                         
                         <div class="direction-category">
-                            <div class="category-title">💪 ФИТНЕС-НАПРАВЛЕНИЯ (17+, 25+, 45+ лет)</div>
+                            <div class="category-title">💪 <span class="highlight-text">ФИТНЕС-НАПРАВЛЕНИЯ</span> <span class="highlight-number">(17+, 25+, 45+ лет)</span></div>
                             <ul class="direction-list">
                                 <li><strong>ФУНКЦИОНАЛЬНЫЙ ТОНУС</strong> - укрепление мышц, улучшение рельефа</li>
                                 <li><strong>ГИБКОСТЬ ДЛЯ ВСЕХ</strong> - доступная растяжка для любого уровня</li>
@@ -1308,7 +1370,7 @@
                         </div>
                         
                         <div class="direction-category">
-                            <div class="category-title">👵 СЕРЕБРЯНЫЙ ВОЗРАСТ (45+)</div>
+                            <div class="category-title">👵 <span class="highlight-text">СЕРЕБРЯНЫЙ ВОЗРАСТ</span> <span class="highlight-number">(45+)</span></div>
                             <ul class="direction-list">
                                 <li><strong>ТАНЦУЕМ ВСЕЙ ДУШОЙ</strong> - парные танцы для общения и новых знакомств</li>
                                 <li><strong>РАСТЯЖКА ДЛЯ ДУШИ</strong> - поддержание здоровья суставов</li>
@@ -1320,7 +1382,8 @@
                 <button class="btn-enroll" onclick="openModal()">🎯 ВЫБРАТЬ НАПРАВЛЕНИЕ И ЗАПИСАТЬСЯ</button>
                 
                 <div class="highlight">
-                    💫 ВСЕ НАПРАВЛЕНИЯ ВЕДУТСЯ ПРОФЕССИОНАЛЬНЫМИ ПЕДАГОГАМИ С ОПЫТОМ РАБОТЫ ОТ 3 ЛЕТ
+                    💫 <span class="highlight-text">ПРОФЕССИОНАЛЬНЫЕ ПЕДАГОГИ</span> с опытом работы 
+                    <span class="highlight-number">от 3 лет</span>
                 </div>
             </div>
         </div>
@@ -1328,7 +1391,7 @@
         <!-- Вкладка расписания -->
         <div id="schedule" class="tab-content">
             <div class="section schedule-section">
-                <h2 class="section-title">📅 РАСПИСАНИЕ ЗАНЯТИЙ</h2>
+                <h2 class="section-title">📅 <span class="highlight-text">РАСПИСАНИЕ ЗАНЯТИЙ</span></h2>
                 
                <table class="schedule-table">
                     <thead> 
@@ -1785,51 +1848,51 @@
         <!-- Вкладка цен -->
         <div id="prices" class="tab-content">
             <div class="section prices-section">
-                <h2 class="section-title">💰 СТОИМОСТЬ ЗАНЯТИЙ</h2>
+                <h2 class="section-title">💰 <span class="highlight-text">СТОИМОСТЬ ЗАНЯТИЙ</span></h2>
                 
                 <div class="main-container">
                     <!-- Левый столбец -->
                     <div class="column">
                         <!-- Пробное занятие -->
                         <div class="price-section trial-section">
-                            <h2 class="section-title">🎁 ПРОБНОЕ ЗАНЯТИЕ</h2>
-                            <div class="trial-price">300 ₽</div>
+                            <h2 class="section-title">🎁 <span class="highlight-sale">ПРОБНОЕ ЗАНЯТИЕ</span></h2>
+                            <div class="trial-price"><span class="highlight-number">300 ₽</span></div>
                             <div class="description">Любое направление • Консультация преподавателя</div>
                         </div>
 
                         <!-- Детские направления -->
                         <div class="price-section kids-section">
-                            <h2 class="section-title">👶 ДЕТСКИЕ НАПРАВЛЕНИЯ</h2>
-                            <div class="description">(3-16 лет)</div>
+                            <h2 class="section-title">👶 <span class="highlight-text">ДЕТСКИЕ НАПРАВЛЕНИЯ</span></h2>
+                            <div class="description"><span class="highlight-number">(3-16 лет)</span></div>
                             
                             <div class="price-item">
                                 <div class="price-name">Разовое посещение</div>
-                                <div class="price-value">400 ₽</div>
+                                <div class="price-value"><span class="highlight-number">400 ₽</span></div>
                             </div>
                             
                             <div class="price-item">
-                                <div class="price-name">Абонемент на 8 занятий</div>
-                                <div class="price-value">2 800 ₽ <span class="best-price">ВЫГОДА</span></div>
+                                <div class="price-name">Абонемент на <span class="highlight-text">8 занятий</span></div>
+                                <div class="price-value"><span class="highlight-number">2 800 ₽</span> <span class="best-price">ВЫГОДА</span></div>
                             </div>
                         </div>
 
                         <!-- Растяжка -->
                         <div class="price-section stretching-section">
-                            <h2 class="section-title">🧘 РАСТЯЖКА</h2>
+                            <h2 class="section-title">🧘 <span class="highlight-text">РАСТЯЖКА</span></h2>
                             
                             <div class="price-item">
                                 <div class="price-name">Разовое посещение</div>
-                                <div class="price-value">400 ₽</div>
+                                <div class="price-value"><span class="highlight-number">400 ₽</span></div>
                             </div>
                             
                             <div class="price-item">
                                 <div class="price-name">Абонемент Воскресный на 4 занятия</div>
-                                <div class="price-value">1 400 ₽</div>
+                                <div class="price-value"><span class="highlight-number">1 400 ₽</span></div>
                             </div>
 
                             <div class="price-item">
                                 <div class="price-name">Утренняя растяжка (8 занятий)</div>
-                                <div class="price-value">4 000 ₽ <span class="best-price">ВЫГОДА</span></div>
+                                <div class="price-value"><span class="highlight-number">4 000 ₽</span> <span class="best-price">ВЫГОДА</span></div>
                             </div>
                         </div>
                     </div>
@@ -1838,47 +1901,47 @@
                     <div class="column">
                         <!-- Взрослые направления -->
                         <div class="price-section adults-section">
-                            <h2 class="section-title">👩‍🦱 ВЗРОСЛЫЕ НАПРАВЛЕНИЯ</h2>
-                            <div class="description">(17+ лет)</div>
+                            <h2 class="section-title">👩‍🦱 <span class="highlight-text">ВЗРОСЛЫЕ НАПРАВЛЕНИЯ</span></h2>
+                            <div class="description"><span class="highlight-number">(17+ лет)</span></div>
                             
                             <div class="price-item">
                                 <div class="price-name">Разовое посещение</div>
-                                <div class="price-value">500 ₽</div>
+                                <div class="price-value"><span class="highlight-number">500 ₽</span></div>
                             </div>
                             
                             <div class="price-item">
-                                <div class="price-name">Абонемент на 8 занятий</div>
-                                <div class="price-value">3 200 ₽ <span class="best-price">ВЫГОДА</span></div>
+                                <div class="price-name">Абонемент на <span class="highlight-text">8 занятий</span></div>
+                                <div class="price-value"><span class="highlight-number">3 200 ₽</span> <span class="best-price">ВЫГОДА</span></div>
                             </div>
                         </div>
 
                         <!-- Индивидуальные занятия -->
                         <div class="price-section individual-section">
-                            <h2 class="section-title">💫 ИНДИВИДУАЛЬНЫЕ ЗАНЯТИЯ</h2>
+                            <h2 class="section-title">💫 <span class="highlight-text">ИНДИВИДУАЛЬНЫЕ ЗАНЯТИЯ</span></h2>
                             
                             <div class="price-item">
                                 <div class="price-name">1 занятие (60 минут)</div>
-                                <div class="price-value">1 500 ₽</div>
+                                <div class="price-value"><span class="highlight-number">1 500 ₽</span></div>
                             </div>
                         </div>
 
                         <!-- Комплексные пакеты -->
                         <div class="price-section packages-section">
-                            <h2 class="section-title">🏆 КОМПЛЕКСНЫЕ ПАКЕТЫ</h2>
+                            <h2 class="section-title">🏆 <span class="highlight-text">КОМПЛЕКСНЫЕ ПАКЕТЫ</span></h2>
                             
                             <div class="price-item">
                                 <div class="price-name">«Детский +»<br><small>танцы 8 занятий + растяжка 4</small></div>
-                                <div class="price-value">3 900 ₽ <span class="best-price">-15%</span></div>
+                                <div class="price-value"><span class="highlight-number">3 900 ₽</span> <span class="best-price">-15%</span></div>
                             </div>
                             
                             <div class="price-item">
                                 <div class="price-name">«Взрослый +»<br><small>танцы 8 занятий + растяжка 4</small></div>
-                                <div class="price-value">4 500 ₽ <span class="best-price">-15%</span></div>
+                                <div class="price-value"><span class="highlight-number">4 500 ₽</span> <span class="best-price">-15%</span></div>
                             </div>
                             
                             <div class="price-item">
                                 <div class="price-name">«Семейная растяжка»<br><small>2 человека, 8 занятий</small></div>
-                                <div class="price-value">6 500 ₽ <span class="best-price">-20%</span></div>
+                                <div class="price-value"><span class="highlight-number">6 500 ₽</span> <span class="best-price">-20%</span></div>
                             </div>
                             
                             <div class="description">Экономия до 20% по сравнению с отдельными абонементами</div>
@@ -1889,7 +1952,7 @@
                 <button class="btn-enroll" onclick="openModal()">💰 ЗАБРОНИРОВАТЬ АБОНЕМЕНТ</button>
 
                 <div class="price-section conditions-section">
-                    <h2 class="section-title">📋 УСЛОВИЯ ОБСЛУЖИВАНИЯ</h2>
+                    <h2 class="section-title">📋 <span class="highlight-text">УСЛОВИЯ ОБСЛУЖИВАНИЯ</span></h2>
                     
                     <div class="condition-item">Абонементы действуют 30 календарных дней</div>
                     <div class="condition-item">Заморозка на 7 дней в месяц</div>
@@ -1900,7 +1963,9 @@
                 </div>
                 
                 <div class="highlight">
-                    💫 <strong>АКЦИЯ!</strong> При покупке абонемента в день пробного занятия - скидка 15%
+                    💫 <strong>АКЦИЯ!</strong> При покупке абонемента в день 
+                    <span class="highlight-sale">пробного занятия</span> - 
+                    <span class="highlight-number">скидка 15%</span>
                 </div>
             </div>
         </div>
@@ -1908,16 +1973,16 @@
         <!-- Вкладка команды -->
         <div id="staff" class="tab-content">
             <div class="section staff-section">
-                <h2 class="section-title">👥 НАША КОМАНДА</h2>
+                <h2 class="section-title">👥 <span class="highlight-text">НАША КОМАНДА</span></h2>
                 
                 <div class="staff-grid">
                     <div class="staff-card">
-                        <img src="images/staff/ekaterina.jpg" alt="Косова Екатерина" class="staff-photo; display: flex; align-items: center; justify-content: center;">
+                        <div class="staff-photo" style="background: #FFE6EE; display: flex; align-items: center; justify-content: center;">
                             Екатерина
                         </div>
                         <div class="staff-name">Косова Екатерина Сергеевна</div>
                         <div class="staff-position">Тренер по социальным танцам, растяжке 25+ и 45+</div>
-                        <div class="staff-contacts">📞 89142395489</div>
+                        <div class="staff-contacts">📞 <span class="highlight-number">89142395489</span></div>
                         <div class="staff-contacts">✉ kes062006@gmail.com</div>
                         <div class="staff-contacts">Занимаюсь спортивно-бальными танцами с 5 лет. Есть опыт работы с детьми и взрослыми</div>
                     </div>
@@ -1928,7 +1993,7 @@
                         </div>
                         <div class="staff-name">Баранова Алина Юрьевна</div>
                         <div class="staff-position">Детский хореограф (3-4 года; 5-7 лет)</div>
-                        <div class="staff-contacts">📞 89149194624</div>
+                        <div class="staff-contacts">📞 <span class="highlight-number">89149194624</span></div>
                         <div class="staff-contacts">✉ Alina.choreo@mail.ru</div>
                         <div class="staff-contacts">Алина, 25 лет. Занимаюсь танцами с 4 лет. Опыт работы в преподавании 8 лет. Люблю своё дело и танец.</div>
                     </div>
@@ -1939,7 +2004,7 @@
                         </div>
                         <div class="staff-name">Кобыльцова Анастасия Викторовна</div>
                         <div class="staff-position">Хореограф-постановщик (17+, 14-16, 25+)</div>
-                        <div class="staff-contacts">📞 +79516250598</div>
+                        <div class="staff-contacts">📞 <span class="highlight-number">+79516250598</span></div>
                         <div class="staff-contacts">✉ kobylcovaanastasia@gmail.com</div>
                         <div class="staff-contacts">Педагог дополнительного образования в области хореографии, опыт работы 4 года, хореографический 13 лет.</div>
                     </div>
@@ -1950,7 +2015,7 @@
                         </div>
                         <div class="staff-name">Рассохина Ярослава Дмитриевна</div>
                         <div class="staff-position">Специалист по современной хореографии (14-16, 17+, 25+)</div>
-                        <div class="staff-contacts">📞 89642755534</div>
+                        <div class="staff-contacts">📞 <span class="highlight-number">89642755534</span></div>
                         <div class="staff-contacts">✉ r.yroslava2004@gmail.com</div>
                         <div class="staff-contacts">В хореографии уже 14 лет. Владею различными направлениями современной хореографии.</div>
                     </div>
@@ -1961,7 +2026,7 @@
                         </div>
                         <div class="staff-name">Суворова Валерия Алексеевна</div>
                         <div class="staff-position">Хореограф-универсал (14-16 лет, 17+, 25+, 45+)</div>
-                        <div class="staff-contacts">📞 89960343973</div>
+                        <div class="staff-contacts">📞 <span class="highlight-number">89960343973</span></div>
                         <div class="staff-contacts">✉ suvorkaleriaaa@gmail.com</div>
                         <div class="staff-contacts">В хореографии уже более 14 лет. Стаж постановочной деятельности в области хореографии 4 года.</div>
                     </div>
@@ -1972,7 +2037,7 @@
                         </div>
                         <div class="staff-name">Лосев Степан Владимирович</div>
                         <div class="staff-position">Тренер по гибкости и детским группам (8-13, 13-18)</div>
-                        <div class="staff-contacts">📞 89087790425</div>
+                        <div class="staff-contacts">📞 <span class="highlight-number">89087790425</span></div>
                         <div class="staff-contacts">✉ Stepan_losev@vk.com</div>
                         <div class="staff-contacts">Лучший в своем деле</div>
                     </div>
@@ -1986,7 +2051,7 @@
                         </div>
                         <div class="staff-name">Сергеева Алиса Андреевна</div>
                         <div class="staff-position">Администратор</div>
-                        <div class="staff-contacts">📞 89528730792</div>
+                        <div class="staff-contacts">📞 <span class="highlight-number">89528730792</span></div>
                         <div class="staff-contacts">✉ k931411@yandex.ru</div>
                         <div class="staff-contacts">Ответственная, пунктуальная, готова вместе с командой идти к цели</div>
                     </div>
@@ -1997,7 +2062,7 @@
                         </div>
                         <div class="staff-name">Пришляк Евгения Денисовна</div>
                         <div class="staff-position">Администратор</div>
-                        <div class="staff-contacts">📞 89996836987</div>
+                        <div class="staff-contacts">📞 <span class="highlight-number">89996836987</span></div>
                         <div class="staff-contacts">✉ zheeenya.zheeenya@internet.ru</div>
                         <div class="staff-contacts">Честная, прямолинейная, с юмором</div>
                     </div>
@@ -2006,7 +2071,8 @@
                 <button class="btn-enroll" onclick="openModal()">👥 ЗАПИСАТЬСЯ К ТРЕНЕРУ</button>
                 
                 <div class="highlight">
-                    🏆 Профессиональные педагоги с опытом работы от 2 до 14 лет. Каждый преподаватель имеет профильное образование и регулярно повышает квалификацию.
+                    🏆 <span class="highlight-text">Профессиональные педагоги</span> с опытом работы 
+                    <span class="highlight-number">от 2 до 14 лет</span>. Каждый преподаватель имеет профильное образование и регулярно повышает квалификацию.
                 </div>
             </div>
         </div>
@@ -2014,11 +2080,11 @@
         <!-- Вкладка галереи -->
         <div id="gallery" class="tab-content">
             <div class="section gallery-section">
-                <h2 class="section-title">📸 ГАЛЕРЕЯ СТУДИИ</h2>
+                <h2 class="section-title">📸 <span class="highlight-text">ГАЛЕРЕЯ СТУДИИ</span></h2>
                 
                 <div class="gallery-grid">
                     <div class="gallery-item" onclick="openGalleryModal(0)">
-                         <img src="images/gallery/hall1.jpg" alt="Основной зал для групповых занятий"; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #333; font-weight: bold;>
+                        <div style="background: #FFE6EE; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #333; font-weight: bold;">
                             Зал для занятий 1
                         </div>
                         <div class="gallery-caption">Основной зал для групповых занятий</div>
@@ -2078,13 +2144,17 @@
         <!-- Вкладка контактов -->
         <div id="contacts" class="tab-content">
             <div class="section contacts-section">
-                <h2 class="section-title">📞 КОНТАКТЫ И РЕКВИЗИТЫ</h2>
+                <h2 class="section-title">📞 <span class="highlight-text">КОНТАКТЫ И РЕКВИЗИТЫ</span></h2>
                 
                 <div class="contacts-grid">
                     <div class="contact-card">
                         <div class="contact-title">📞 КОНТАКТНЫЕ ДАННЫЕ</div>
-                        <div class="contact-info"><strong>Основной телефон:</strong> +7 (904) 123-31-75</div>
-                        <div class="contact-info"><strong>Телефон администратора:</strong> +7 (952) 873-07-92</div>
+                        <div class="contact-info"><strong>Основной телефон:</strong><br>
+                            <span class="highlight-number">+7 (904) 123-31-75</span>
+                        </div>
+                        <div class="contact-info"><strong>Телефон администратора:</strong><br>
+                            <span class="highlight-number">+7 (952) 873-07-92</span>
+                        </div>
                         <div class="contact-info"><strong>Email:</strong> info@perviy-ritm.ru</div>
                         <div class="contact-info"><strong>Сайт:</strong> www.perviy-ritm.ru</div>
                         <div class="contact-info"><strong>Адрес:</strong> г. Иркутск, ул. 1-й Ленинский квартал д. 1</div>
@@ -2121,7 +2191,7 @@
         <!-- Вкладка правил -->
         <div id="rules" class="tab-content active">
             <div class="section directions-section">
-                <h2 class="section-title">📋 ПРАВИЛА ПОСЕЩЕНИЯ СТУДИИ</h2>
+                <h2 class="section-title">📋 <span class="highlight-text">ПРАВИЛА ПОСЕЩЕНИЯ СТУДИИ</span></h2>
                 
                 <div class="rules-grid">
                     <div>
@@ -2185,7 +2255,7 @@
         <!-- Футер -->
         <div class="footer">
             <p><strong>Студия танцев «Первый ритм Ленинского»</strong> • г. Иркутск, ул. 1-й Ленинский квартал д. 1</p>
-            <p>📞 Телефон: +7 (904) 123-31-75 • Все направления в одном месте!</p>
+            <p>📞 Телефон: <span class="highlight-number">+7 (904) 123-31-75</span> • Все направления в одном месте!</p>
         </div>
     </div>
 
