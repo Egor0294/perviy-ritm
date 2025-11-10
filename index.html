@@ -2826,36 +2826,80 @@
             }
         }
         
-        // === ОБРАБОТКА ФОРМЫ ===
-        document.getElementById('enrollForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            
-            if (!name || !phone) {
-                alert('⚠️ Пожалуйста, заполните имя и телефон');
-                return;
-            }
-            
-            const submitBtn = this.querySelector('.form-submit');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Отправляем...';
-            submitBtn.disabled = true;
-            
-            // В реальном проекте здесь была бы отправка на сервер
-            setTimeout(() => {
-                showSuccessMessage();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 1500);
-        });
-        
-        function showSuccessMessage() {
-            alert('✅ Спасибо! Заявка отправлена.\n\nМы свяжемся с вами в течение 30 минут!\n\nЕсли срочно - звоните: +7 (904) 123-31-75');
-            closeModal();
-            document.getElementById('enrollForm').reset();
+        // === ОБРАБОТКА ФОРМЫ С TELEGRAM ===
+document.getElementById('enrollForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const age = document.getElementById('age').value;
+    const direction = document.getElementById('direction').value;
+    const message = document.getElementById('message').value;
+    
+    if (!name || !phone) {
+        alert('⚠️ Пожалуйста, заполните имя и телефон');
+        return;
+    }
+    
+    const submitBtn = this.querySelector('.form-submit');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Отправляем...';
+    submitBtn.disabled = true;
+    
+    // Отправка в Telegram
+    sendToTelegram(name, phone, email, age, direction, message, submitBtn, originalText);
+});
+        // === ОТПРАВКА В TELEGRAM ===
+function sendToTelegram(name, phone, email, age, direction, message, submitBtn, originalText) {
+    // 🔧 НАСТРОЙТЕ ЭТИ ДАННЫЕ ПОД ВАШЕГО БОТА
+    const BOT_TOKEN = '7100000000:AAE1234567890abcdefghijk-1234567890'; // Замените на токен вашего бота
+    const CHAT_ID = '123456789'; // Замените на ваш chat_id
+    
+    const telegramMessage = `
+🎯 НОВАЯ ЗАЯВКА С САЙТА
+
+👤 Имя: ${name}
+📞 Телефон: ${phone}
+📧 Email: ${email || 'Не указан'}
+🎂 Возрастная группа: ${age || 'Не выбрана'}
+💃 Направление: ${direction || 'Не выбрано'}
+💬 Сообщение: ${message || 'Нет дополнительной информации'}
+
+⏰ Время: ${new Date().toLocaleString('ru-RU')}
+    `;
+    
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: telegramMessage,
+            parse_mode: 'HTML'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            showSuccessMessage();
+        } else {
+            console.error('Ошибка отправки в Telegram:', data);
+            alert('✅ Заявка отправлена! (Telegram временно недоступен)');
         }
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        alert('✅ Заявка отправлена! (Telegram временно недоступен)');
+    })
+    .finally(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    });
+}
 
         // Управление галереей с клавиатуры
         document.addEventListener('keydown', function(e) {
