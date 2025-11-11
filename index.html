@@ -1579,12 +1579,7 @@
             <div class="section schedule-section">
                 <h2 class="section-title">📅 <span class="highlight-text">РАСПИСАНИЕ ЗАНЯТИЙ</span></h2>
                 
-               <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Расписание занятий - Танцевальная студия</title>
+               
     <style>
         * {
             margin: 0;
@@ -2174,74 +2169,6 @@
     </div>
 
     <script>
-        // Информация о тренерах
-        const trainers = {
-            'stepan': {
-                name: 'Степан Петров',
-                specialization: 'Тренер по гибкости и функциональному тонусу',
-                experience: '8 лет опыта',
-                education: 'Мастер спорта по художественной гимнастике'
-            },
-            'white': {
-                name: 'Александр Белый',
-                specialization: 'Тренер по современным танцам',
-                experience: '6 лет опыта',
-                education: 'Выпускник Академии танца'
-            },
-            'valeria': {
-                name: 'Валерия Смирнова',
-                specialization: 'Тренер по детской хореографии',
-                experience: '5 лет опыта',
-                education: 'Педагог-хореограф'
-            },
-            'anastasia': {
-                name: 'Анастасия Ковалева',
-                specialization: 'Тренер по стретчингу',
-                experience: '7 лет опыта',
-                education: 'Сертифицированный инструктор по йоге'
-            },
-            'yaroslava': {
-                name: 'Ярослава Волкова',
-                specialization: 'Тренер по contemporary dance',
-                experience: '9 лет опыта',
-                education: 'Хореограф-постановщик'
-            },
-            'ekaterina': {
-                name: 'Екатерина Новикова',
-                specialization: 'Тренер для взрослых 45+',
-                experience: '10 лет опыта',
-                education: 'Специалист по оздоровительной гимнастике'
-            },
-            'alina': {
-                name: 'Алина Морозова',
-                specialization: 'Тренер по танцам для детей 3-7 лет',
-                experience: '4 года опыта',
-                education: 'Педагог раннего развития'
-            }
-        };
-
-        function showTrainerTooltip(event, trainerId) {
-            const trainer = trainers[trainerId];
-            if (!trainer) return;
-            
-            const tooltip = document.getElementById('trainerTooltip');
-            tooltip.innerHTML = `
-                <h3>${trainer.name}</h3>
-                <p class="specialization">${trainer.specialization}</p>
-                <p>Опыт: ${trainer.experience}</p>
-                <p>Образование: ${trainer.education}</p>
-            `;
-            
-            tooltip.style.display = 'block';
-            tooltip.style.left = (event.pageX + 15) + 'px';
-            tooltip.style.top = (event.pageY + 15) + 'px';
-        }
-
-        function hideTrainerTooltip() {
-            const tooltip = document.getElementById('trainerTooltip');
-            tooltip.style.display = 'none';
-        }
-    </script>
         // Данные преподавателей
         const teachers = {
             stepan: {
@@ -2326,8 +2253,8 @@
             });
         });
     </script>
-</body>
-</html>
+
+
                 
                 <button class="btn-yclients" onclick="openYclientsWidget()">
                     📅 ЗАПИСАТЬСЯ НА ЗАНЯТИЕ ОНЛАЙН
