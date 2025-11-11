@@ -1590,246 +1590,142 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             padding: 20px;
+            min-height: 100vh;
         }
-
-        .container {
+        
+        .schedule-container {
             max-width: 1400px;
             margin: 0 auto;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: 300;
-        }
-
-        .header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-
-        .schedule-container {
             padding: 20px;
-            overflow-x: auto;
         }
-
+        
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 14px;
-            min-width: 1200px;
         }
-
+        
         .schedule-table th {
-            background: #34495e;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
             color: white;
             padding: 15px 10px;
             text-align: center;
             font-weight: 600;
-            border: 1px solid #2c3e50;
+            border: 1px solid #ddd;
         }
-
+        
         .schedule-table td {
             padding: 12px 8px;
-            border: 1px solid #ecf0f1;
-            text-align: center;
+            border: 1px solid #e0e0e0;
             vertical-align: top;
             transition: all 0.3s ease;
         }
-
+        
         .time-slot {
-            background: #f8f9fa;
-            font-weight: 600;
-            color: #2c3e50;
-            width: 120px;
-        }
-
-        /* Цветовые стили для преподавателей */
-        .stepan-class {
-            background: #e8f5e8;
-            border-left: 4px solid #27ae60;
-            cursor: pointer;
-        }
-
-        .white-class {
-            background: #f0f8ff;
-            border-left: 4px solid #3498db;
-            cursor: pointer;
-        }
-
-        .alina-class {
-            background: #fff0f5;
-            border-left: 4px solid #e84393;
-            cursor: pointer;
-        }
-
-        .valeria-class {
-            background: #f0fff0;
-            border-left: 4px solid #00b894;
-            cursor: pointer;
-        }
-
-        .anastasia-class {
-            background: #fffaf0;
-            border-left: 4px solid #fdcb6e;
-            cursor: pointer;
-        }
-
-        .yaroslava-class {
-            background: #f5f0ff;
-            border-left: 4px solid #6c5ce7;
-            cursor: pointer;
-        }
-
-        .ekaterina-class {
-            background: #fff5f5;
-            border-left: 4px solid #e17055;
-            cursor: pointer;
-        }
-
-        .empty {
-            background: #f8f9fa;
-            color: #bdc3c7;
-            font-style: italic;
-        }
-
-        .break {
-            background: #fff3cd;
-            color: #856404;
+            background-color: #f8f9fa;
             font-weight: 600;
             text-align: center;
+            width: 100px;
         }
-
+        
+        .class-cell {
+            cursor: pointer;
+            position: relative;
+            height: 80px;
+        }
+        
+        .class-cell:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        
         .class-name {
             font-weight: 600;
-            color: #2c3e50;
             margin-bottom: 5px;
             font-size: 13px;
         }
-
+        
         .class-group {
-            color: #7f8c8d;
             font-size: 12px;
-            line-height: 1.3;
+            color: #666;
         }
-
-        /* Стили при наведении */
-        .stepan-class:hover { background: #d4edda; transform: scale(1.02); }
-        .white-class:hover { background: #e3f2fd; transform: scale(1.02); }
-        .alina-class:hover { background: #ffe4ec; transform: scale(1.02); }
-        .valeria-class:hover { background: #e8f5e8; transform: scale(1.02); }
-        .anastasia-class:hover { background: #fff3e0; transform: scale(1.02); }
-        .yaroslava-class:hover { background: #ede7f6; transform: scale(1.02); }
-        .ekaterina-class:hover { background: #ffebee; transform: scale(1.02); }
-
-        /* Тултип */
-        .tooltip {
+        
+        .empty {
+            background-color: #f9f9f9;
+            text-align: center;
+            color: #999;
+        }
+        
+        .break {
+            background-color: #fff3cd;
+            text-align: center;
+            font-style: italic;
+            color: #856404;
+        }
+        
+        /* Цвета для тренеров */
+        .stepan-class { background-color: #e3f2fd; }
+        .white-class { background-color: #f3e5f5; }
+        .valeria-class { background-color: #e8f5e9; }
+        .anastasia-class { background-color: #fff3e0; }
+        .yaroslava-class { background-color: #fce4ec; }
+        .ekaterina-class { background-color: #e0f2f1; }
+        .alina-class { background-color: #fff8e1; }
+        
+        .stepan-class:hover { background-color: #bbdefb; }
+        .white-class:hover { background-color: #e1bee7; }
+        .valeria-class:hover { background-color: #c8e6c9; }
+        .anastasia-class:hover { background-color: #ffcc80; }
+        .yaroslava-class:hover { background-color: #f8bbd0; }
+        .ekaterina-class:hover { background-color: #b2dfdb; }
+        .alina-class:hover { background-color: #ffecb3; }
+        
+        /* Стили для тултипа */
+        .trainer-tooltip {
             position: fixed;
-            background: rgba(44, 62, 80, 0.95);
-            color: white;
+            background: white;
+            border-radius: 10px;
             padding: 15px;
-            border-radius: 8px;
-            font-size: 14px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
             z-index: 1000;
             max-width: 300px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            border-left: 5px solid #6a11cb;
+            display: none;
         }
-
-        .tooltip.show {
-            opacity: 1;
-        }
-
-        .tooltip-title {
-            font-weight: 600;
+        
+        .trainer-tooltip h3 {
+            color: #6a11cb;
             margin-bottom: 8px;
-            color: #3498db;
+            font-size: 16px;
         }
-
-        .tooltip-detail {
-            margin-bottom: 4px;
-            line-height: 1.4;
+        
+        .trainer-tooltip p {
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: #555;
         }
-
-        /* Легенда */
-        .legend {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-top: 1px solid #ecf0f1;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-        }
-
-        .legend-color {
-            width: 16px;
-            height: 16px;
-            border-radius: 3px;
-        }
-
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .schedule-container {
-                padding: 10px;
-            }
-            
-            .schedule-table {
-                font-size: 12px;
-            }
-            
-            .legend {
-                flex-direction: column;
-                gap: 10px;
-            }
+        
+        .trainer-tooltip .specialization {
+            font-weight: 600;
+            color: #2575fc;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>РАСПИСАНИЕ ЗАНЯТИЙ</h1>
-            <p>Танцевальная студия "Гармония движения"</p>
-        </div>
-
-        <div class="schedule-container">
-            <table class="schedule-table">
-              <thead> 
+    <div class="schedule-container">
+        <table class="schedule-table">
+            <thead> 
                 <tr>
                     <th>ВРЕМЯ</th>
                     <th>ПОНЕДЕЛЬНИК</th>
@@ -2272,44 +2168,80 @@
                     <td class="empty">—</td>
                 </tr>
             </tbody>
-            </table>
-        </div>
+        </table>
 
-        <div class="legend">
-            <div class="legend-item">
-                <div class="legend-color" style="background: #e8f5e8; border-left: 4px solid #27ae60;"></div>
-                <span>Степан - Детские группы и растяжка</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #f0f8ff; border-left: 4px solid #3498db;"></div>
-                <span>Общие группы</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #fff0f5; border-left: 4px solid #e84393;"></div>
-                <span>Алина - Младшие группы</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #f0fff0; border-left: 4px solid #00b894;"></div>
-                <span>Валерия - Подростковые группы</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #fffaf0; border-left: 4px solid #fdcb6e;"></div>
-                <span>Анастасия - Специализированные направления</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #f5f0ff; border-left: 4px solid #6c5ce7;"></div>
-                <span>Ярослава - Взрослые группы</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #fff5f5; border-left: 4px solid #e17055;"></div>
-                <span>Екатерина - Группы 45+</span>
-            </div>
-        </div>
+        <div id="trainerTooltip" class="trainer-tooltip"></div>
     </div>
 
-    <div class="tooltip" id="tooltip"></div>
-
     <script>
+        // Информация о тренерах
+        const trainers = {
+            'stepan': {
+                name: 'Степан Петров',
+                specialization: 'Тренер по гибкости и функциональному тонусу',
+                experience: '8 лет опыта',
+                education: 'Мастер спорта по художественной гимнастике'
+            },
+            'white': {
+                name: 'Александр Белый',
+                specialization: 'Тренер по современным танцам',
+                experience: '6 лет опыта',
+                education: 'Выпускник Академии танца'
+            },
+            'valeria': {
+                name: 'Валерия Смирнова',
+                specialization: 'Тренер по детской хореографии',
+                experience: '5 лет опыта',
+                education: 'Педагог-хореограф'
+            },
+            'anastasia': {
+                name: 'Анастасия Ковалева',
+                specialization: 'Тренер по стретчингу',
+                experience: '7 лет опыта',
+                education: 'Сертифицированный инструктор по йоге'
+            },
+            'yaroslava': {
+                name: 'Ярослава Волкова',
+                specialization: 'Тренер по contemporary dance',
+                experience: '9 лет опыта',
+                education: 'Хореограф-постановщик'
+            },
+            'ekaterina': {
+                name: 'Екатерина Новикова',
+                specialization: 'Тренер для взрослых 45+',
+                experience: '10 лет опыта',
+                education: 'Специалист по оздоровительной гимнастике'
+            },
+            'alina': {
+                name: 'Алина Морозова',
+                specialization: 'Тренер по танцам для детей 3-7 лет',
+                experience: '4 года опыта',
+                education: 'Педагог раннего развития'
+            }
+        };
+
+        function showTrainerTooltip(event, trainerId) {
+            const trainer = trainers[trainerId];
+            if (!trainer) return;
+            
+            const tooltip = document.getElementById('trainerTooltip');
+            tooltip.innerHTML = `
+                <h3>${trainer.name}</h3>
+                <p class="specialization">${trainer.specialization}</p>
+                <p>Опыт: ${trainer.experience}</p>
+                <p>Образование: ${trainer.education}</p>
+            `;
+            
+            tooltip.style.display = 'block';
+            tooltip.style.left = (event.pageX + 15) + 'px';
+            tooltip.style.top = (event.pageY + 15) + 'px';
+        }
+
+        function hideTrainerTooltip() {
+            const tooltip = document.getElementById('trainerTooltip');
+            tooltip.style.display = 'none';
+        }
+    </script>
         // Данные преподавателей
         const teachers = {
             stepan: {
