@@ -572,6 +572,11 @@
             border-left: 3px solid #FFC107; 
         }
         
+        .white-class { 
+            background: #F5F5F5; 
+            border-left: 3px solid #9E9E9E; 
+        }
+        
         .empty {
             background: #f5f5f5;
             color: #999;
@@ -584,10 +589,10 @@
             font-style: italic;
         }
 
-        /* Стили для всплывающих подсказок */
+        /* Стили для всплывающих подсказок расписания */
         .schedule-tooltip {
             display: none;
-            position: absolute;
+            position: fixed;
             background: white;
             border: 2px solid #667eea;
             border-radius: 10px;
@@ -1579,682 +1584,454 @@
             <div class="section schedule-section">
                 <h2 class="section-title">📅 <span class="highlight-text">РАСПИСАНИЕ ЗАНЯТИЙ</span></h2>
                 
-               
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 20px;
-            min-height: 100vh;
-        }
-        
-        .schedule-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            padding: 20px;
-        }
-        
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
-        
-        .schedule-table th {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            padding: 15px 10px;
-            text-align: center;
-            font-weight: 600;
-            border: 1px solid #ddd;
-        }
-        
-        .schedule-table td {
-            padding: 12px 8px;
-            border: 1px solid #e0e0e0;
-            vertical-align: top;
-            transition: all 0.3s ease;
-        }
-        
-        .time-slot {
-            background-color: #f8f9fa;
-            font-weight: 600;
-            text-align: center;
-            width: 100px;
-        }
-        
-        .class-cell {
-            cursor: pointer;
-            position: relative;
-            height: 80px;
-        }
-        
-        .class-cell:hover {
-            transform: scale(1.02);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-        }
-        
-        .class-name {
-            font-weight: 600;
-            margin-bottom: 5px;
-            font-size: 13px;
-        }
-        
-        .class-group {
-            font-size: 12px;
-            color: #666;
-        }
-        
-        .empty {
-            background-color: #f9f9f9;
-            text-align: center;
-            color: #999;
-        }
-        
-        .break {
-            background-color: #fff3cd;
-            text-align: center;
-            font-style: italic;
-            color: #856404;
-        }
-        
-        /* Цвета для тренеров */
-        .stepan-class { background-color: #e3f2fd; }
-        .white-class { background-color: #f3e5f5; }
-        .valeria-class { background-color: #e8f5e9; }
-        .anastasia-class { background-color: #fff3e0; }
-        .yaroslava-class { background-color: #fce4ec; }
-        .ekaterina-class { background-color: #e0f2f1; }
-        .alina-class { background-color: #fff8e1; }
-        
-        .stepan-class:hover { background-color: #bbdefb; }
-        .white-class:hover { background-color: #e1bee7; }
-        .valeria-class:hover { background-color: #c8e6c9; }
-        .anastasia-class:hover { background-color: #ffcc80; }
-        .yaroslava-class:hover { background-color: #f8bbd0; }
-        .ekaterina-class:hover { background-color: #b2dfdb; }
-        .alina-class:hover { background-color: #ffecb3; }
-        
-        /* Стили для тултипа */
-        .trainer-tooltip {
-            position: fixed;
-            background: white;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-            z-index: 1000;
-            max-width: 300px;
-            border-left: 5px solid #6a11cb;
-            display: none;
-        }
-        
-        .trainer-tooltip h3 {
-            color: #6a11cb;
-            margin-bottom: 8px;
-            font-size: 16px;
-        }
-        
-        .trainer-tooltip p {
-            font-size: 13px;
-            margin-bottom: 5px;
-            color: #555;
-        }
-        
-        .trainer-tooltip .specialization {
-            font-weight: 600;
-            color: #2575fc;
-        }
-    </style>
-</head>
-<body>
-    <div class="schedule-container">
-        <table class="schedule-table">
-            <thead> 
-                <tr>
-                    <th>ВРЕМЯ</th>
-                    <th>ПОНЕДЕЛЬНИК</th>
-                    <th>ВТОРНИК</th>
-                    <th>СРЕДА</th>
-                    <th>ЧЕТВЕРГ</th>
-                    <th>ПЯТНИЦА</th>
-                    <th>СУББОТА</th>
-                    <th>ВОСКРЕСЕНЬЕ</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- 8:00-9:00 -->
-                <tr>
-                    <td class="time-slot">8:00-9:00</td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                        <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                        <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
-                    </td>
-                    <td class="white-class class-cell" onmouseenter="showTrainerTooltip(event, 'white')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                        <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                        <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                        <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
-                    </td>
-                    <td class="white-class class-cell" onmouseenter="showTrainerTooltip(event, 'white')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                        <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
-                    </td>
-                    <td class="empty">—</td>
-                </tr>
+                <table class="schedule-table">
+                    <thead> 
+                        <tr>
+                            <th>ВРЕМЯ</th>
+                            <th>ПОНЕДЕЛЬНИК</th>
+                            <th>ВТОРНИК</th>
+                            <th>СРЕДА</th>
+                            <th>ЧЕТВЕРГ</th>
+                            <th>ПЯТНИЦА</th>
+                            <th>СУББОТА</th>
+                            <th>ВОСКРЕСЕНЬЕ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 8:00-9:00 -->
+                        <tr>
+                            <td class="time-slot">8:00-9:00</td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
+                                <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
+                                <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
+                                <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
+                                <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
+                                <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
+                                <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="empty">—</td>
+                        </tr>
 
-                <!-- 9:00-10:00 -->
-                <tr>
-                    <td class="time-slot">9:00-10:00</td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                        <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                        <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
-                    </td>
-                    <td class="white-class class-cell" onmouseenter="showTrainerTooltip(event, 'white')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                        <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                        <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                        <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
-                    </td>
-                    <td class="white-class class-cell" onmouseenter="showTrainerTooltip(event, 'white')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                        <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
-                    </td>
-                    <td class="empty">—</td>
-                </tr>
+                        <!-- 9:00-10:00 -->
+                        <tr>
+                            <td class="time-slot">9:00-10:00</td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
+                                <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
+                                <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
+                                <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
+                                <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
+                                <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
+                                <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="empty">—</td>
+                        </tr>
 
-                <!-- 10:00-11:00 -->
-                <tr>
-                    <td class="time-slot">10:00-11:00</td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                        <div class="class-group">Группа 1 • 8-10 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                        <div class="class-group">Группа 2 • 8-10 лет</div>
-                    </td>
-                    <td class="white-class class-cell" onmouseenter="showTrainerTooltip(event, 'white')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                        <div class="class-group">Группа 3 • 8-10 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                        <div class="class-group">Группа 1 • 8-10 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                        <div class="class-group">Группа 2 • 8-10 лет</div>
-                    </td>
-                    <td class="white-class class-cell" onmouseenter="showTrainerTooltip(event, 'white')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                        <div class="class-group">Группа 3 • 8-10 лет</div>
-                    </td>
-                    <td class="valeria-class class-cell" onmouseenter="showTrainerTooltip(event, 'valeria')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ГИБКОЕ ТЕЛО"</div>
-                        <div class="class-group">Группа 1 • 5+ лет</div>
-                    </td>
-                </tr>
+                        <!-- 10:00-11:00 -->
+                        <tr>
+                            <td class="time-slot">10:00-11:00</td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 1 • 8-10 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 2 • 8-10 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 3 • 8-10 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 1 • 8-10 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 2 • 8-10 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 3 • 8-10 лет</div>
+                            </td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ГИБКОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 1 • 5+ лет</div>
+                            </td>
+                        </tr>
 
-                <!-- 11:00-12:00 -->
-                <tr>
-                    <td class="time-slot">11:00-12:00</td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                        <div class="class-group">Группа 1 • 14-16 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                        <div class="class-group">Группа 2 • 14-16 лет</div>
-                    </td>
-                    <td class="white-class class-cell" onmouseenter="showTrainerTooltip(event, 'white')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                        <div class="class-group">Группа 3 • 14-16 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                        <div class="class-group">Группа 1 • 14-16 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                        <div class="class-group">Группа 2 • 14-16 лет</div>
-                    </td>
-                    <td class="white-class class-cell" onmouseenter="showTrainerTooltip(event, 'white')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                        <div class="class-group">Группа 3 • 14-16 лет</div>
-                    </td>
-                    <td class="valeria-class class-cell" onmouseenter="showTrainerTooltip(event, 'valeria')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ГИБКОЕ ТЕЛО"</div>
-                        <div class="class-group">Группа 2 • 5+ лет</div>
-                    </td>
-                </tr>
+                        <!-- 11:00-12:00 -->
+                        <tr>
+                            <td class="time-slot">11:00-12:00</td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 1 • 14-16 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 2 • 14-16 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 3 • 14-16 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 1 • 14-16 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 2 • 14-16 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 3 • 14-16 лет</div>
+                            </td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ГИБКОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 2 • 5+ лет</div>
+                            </td>
+                        </tr>
 
-                <!-- 12:00-13:00 -->
-                <tr>
-                    <td class="time-slot">12:00-13:00</td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                        <div class="class-group">Группа 1 • 11-13 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                        <div class="class-group">Группа 2 • 11-13 лет</div>
-                    </td>
-                    <td class="white-class class-cell" onmouseenter="showTrainerTooltip(event, 'white')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                        <div class="class-group">Группа 3 • 11-13 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                        <div class="class-group">Группа 1 • 11-13 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                        <div class="class-group">Группа 2 • 11-13 лет</div>
-                    </td>
-                    <td class="white-class class-cell" onmouseenter="showTrainerTooltip(event, 'white')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                        <div class="class-group">Группа 3 • 11-13 лет</div>
-                    </td>
-                    <td class="valeria-class class-cell" onmouseenter="showTrainerTooltip(event, 'valeria')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"СЕМЕЙНАЯ РАСТЯЖКА"</div>
-                        <div class="class-group">Родители + дети 5+</div>
-                    </td>
-                </tr>
+                        <!-- 12:00-13:00 -->
+                        <tr>
+                            <td class="time-slot">12:00-13:00</td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 1 • 11-13 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 2 • 11-13 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 3 • 11-13 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 1 • 11-13 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 2 • 11-13 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 3 • 11-13 лет</div>
+                            </td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"СЕМЕЙНАЯ РАСТЯЖКА"</div>
+                                <div class="class-group">Родители + дети 5+</div>
+                            </td>
+                        </tr>
 
-                <!-- 13:00-14:00 -->
-                <tr>
-                    <td class="time-slot">13:00-14:00</td>
-                    <td class="break" colspan="6">Обеденный перерыв/резервный час для индивидуальных занятий</td>
-                    <td class="anastasia-class class-cell" onmouseenter="showTrainerTooltip(event, 'anastasia')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ГИБКИЙ ПОДРОСТОК"</div>
-                        <div class="class-group">Группа 1 • 11+ лет</div>
-                    </td>
-                </tr>
+                        <!-- 13:00-14:00 -->
+                        <tr>
+                            <td class="time-slot">13:00-14:00</td>
+                            <td class="break" colspan="6">Обеденный перерыв/резервный час для индивидуальных занятий</td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ГИБКИЙ ПОДРОСТОК"</div>
+                                <div class="class-group">Группа 1 • 11+ лет</div>
+                            </td>
+                        </tr>
 
-                <!-- 14:00-15:00 -->
-                <tr>
-                    <td class="time-slot">14:00-15:00</td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                        <div class="class-group">Группа 1 • 8-10 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                        <div class="class-group">Группа 2 • 8-10 лет</div>
-                    </td>
-                    <td class="white-class class-cell" onmouseenter="showTrainerTooltip(event, 'white')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                        <div class="class-group">Группа 3 • 8-10 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                        <div class="class-group">Группа 1 • 8-10 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                        <div class="class-group">Группа 2 • 8-10 лет</div>
-                    </td>
-                    <td class="white-class class-cell" onmouseenter="showTrainerTooltip(event, 'white')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                        <div class="class-group">Группа 3 • 8-10 лет</div>
-                    </td>
-                    <td class="anastasia-class class-cell" onmouseenter="showTrainerTooltip(event, 'anastasia')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ГИБКИЙ ПОДРОСТОК"</div>
-                        <div class="class-group">Группа 2 • 11+ лет</div>
-                    </td>
-                </tr>
+                        <!-- 14:00-15:00 -->
+                        <tr>
+                            <td class="time-slot">14:00-15:00</td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 1 • 8-10 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 2 • 8-10 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 3 • 8-10 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 1 • 8-10 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 2 • 8-10 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 3 • 8-10 лет</div>
+                            </td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ГИБКИЙ ПОДРОСТОК"</div>
+                                <div class="class-group">Группа 2 • 11+ лет</div>
+                            </td>
+                        </tr>
 
-                <!-- 15:00-16:00 -->
-                <tr>
-                    <td class="time-slot">15:00-16:00</td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                        <div class="class-group">Группа 1 • 11-13 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                        <div class="class-group">Группа 2 • 11-13 лет</div>
-                    </td>
-                    <td class="white-class class-cell" onmouseenter="showTrainerTooltip(event, 'white')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                        <div class="class-group">Группа 3 • 11-13 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                        <div class="class-group">Группа 1 • 11-13 лет</div>
-                    </td>
-                    <td class="stepan-class class-cell" onmouseenter="showTrainerTooltip(event, 'stepan')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                        <div class="class-group">Группа 2 • 11-13 лет</div>
-                    </td>
-                    <td class="white-class class-cell" onmouseenter="showTrainerTooltip(event, 'white')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                        <div class="class-group">Группа 3 • 11-13 лет</div>
-                    </td>
-                    <td class="yaroslava-class class-cell" onmouseenter="showTrainerTooltip(event, 'yaroslava')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«СВОБОДА ДВИЖЕНИЙ»</div>
-                        <div class="class-group">Группа 1 • 17+ лет</div>
-                    </td>
-                </tr>
+                        <!-- 15:00-16:00 -->
+                        <tr>
+                            <td class="time-slot">15:00-16:00</td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 1 • 11-13 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 2 • 11-13 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 3 • 11-13 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 1 • 11-13 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 2 • 11-13 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 3 • 11-13 лет</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«СВОБОДА ДВИЖЕНИЙ»</div>
+                                <div class="class-group">Группа 1 • 17+ лет</div>
+                            </td>
+                        </tr>
 
-                <!-- 16:00-17:00 -->
-                <tr>
-                    <td class="time-slot">16:00-17:00</td>
-                    <td class="alina-class class-cell" onmouseenter="showTrainerTooltip(event, 'alina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                        <div class="class-group">Группа 1 • 3-4 года</div>
-                    </td>
-                    <td class="alina-class class-cell" onmouseenter="showTrainerTooltip(event, 'alina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                        <div class="class-group">Группа 2 • 3-4 года</div>
-                    </td>
-                    <td class="alina-class class-cell" onmouseenter="showTrainerTooltip(event, 'alina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                        <div class="class-group">Группа 3 • 3-4 года</div>
-                    </td>
-                    <td class="alina-class class-cell" onmouseenter="showTrainerTooltip(event, 'alina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                        <div class="class-group">Группа 1 • 3-4 года</div>
-                    </td>
-                    <td class="alina-class class-cell" onmouseenter="showTrainerTooltip(event, 'alina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                        <div class="class-group">Группа 2 • 3-4 года</div>
-                    </td>
-                    <td class="alina-class class-cell" onmouseenter="showTrainerTooltip(event, 'alina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                        <div class="class-group">Группа 3 • 3-4 года</div>
-                    </td>
-                    <td class="yaroslava-class class-cell" onmouseenter="showTrainerTooltip(event, 'yaroslava')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«СВОБОДА ДВИЖЕНИЙ»</div>
-                        <div class="class-group">Группа 2 • 17+ лет</div>
-                    </td>
-                </tr>
+                        <!-- 16:00-17:00 -->
+                        <tr>
+                            <td class="time-slot">16:00-17:00</td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
+                                <div class="class-group">Группа 1 • 3-4 года</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
+                                <div class="class-group">Группа 2 • 3-4 года</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
+                                <div class="class-group">Группа 3 • 3-4 года</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
+                                <div class="class-group">Группа 1 • 3-4 года</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
+                                <div class="class-group">Группа 2 • 3-4 года</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
+                                <div class="class-group">Группа 3 • 3-4 года</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«СВОБОДА ДВИЖЕНИЙ»</div>
+                                <div class="class-group">Группа 2 • 17+ лет</div>
+                            </td>
+                        </tr>
 
-                <!-- 17:00-18:00 -->
-                <tr>
-                    <td class="time-slot">17:00-18:00</td>
-                    <td class="alina-class class-cell" onmouseenter="showTrainerTooltip(event, 'alina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                        <div class="class-group">Группа 1 • 5-7 лет</div>
-                    </td>
-                    <td class="alina-class class-cell" onmouseenter="showTrainerTooltip(event, 'alina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                        <div class="class-group">Группа 2 • 5-7 лет</div>
-                    </td>
-                    <td class="alina-class class-cell" onmouseenter="showTrainerTooltip(event, 'alina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                        <div class="class-group">Группа 3 • 5-7 лет</div>
-                    </td>
-                    <td class="alina-class class-cell" onmouseenter="showTrainerTooltip(event, 'alina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                        <div class="class-group">Группа 1 • 5-7 лет</div>
-                    </td>
-                    <td class="alina-class class-cell" onmouseenter="showTrainerTooltip(event, 'alina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                        <div class="class-group">Группа 2 • 5-7 лет</div>
-                    </td>
-                    <td class="alina-class class-cell" onmouseenter="showTrainerTooltip(event, 'alina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                        <div class="class-group">Группа 3 • 5-7 лет</div>
-                    </td>
-                    <td class="ekaterina-class class-cell" onmouseenter="showTrainerTooltip(event, 'ekaterina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ГИБКОСТЬ И ГРАЦИЯ»</div>
-                        <div class="class-group">Группа 1 • 25+ лет</div>
-                    </td>
-                </tr>
+                        <!-- 17:00-18:00 -->
+                        <tr>
+                            <td class="time-slot">17:00-18:00</td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
+                                <div class="class-group">Группа 1 • 5-7 лет</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
+                                <div class="class-group">Группа 2 • 5-7 лет</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
+                                <div class="class-group">Группа 3 • 5-7 лет</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
+                                <div class="class-group">Группа 1 • 5-7 лет</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
+                                <div class="class-group">Группа 2 • 5-7 лет</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
+                                <div class="class-group">Группа 3 • 5-7 лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ И ГРАЦИЯ»</div>
+                                <div class="class-group">Группа 1 • 25+ лет</div>
+                            </td>
+                        </tr>
 
-                <!-- 18:00-19:00 -->
-                <tr>
-                    <td class="time-slot">18:00-19:00</td>
-                    <td class="valeria-class class-cell" onmouseenter="showTrainerTooltip(event, 'valeria')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                        <div class="class-group">Группа 1 • 14-16 лет</div>
-                    </td>
-                    <td class="anastasia-class class-cell" onmouseenter="showTrainerTooltip(event, 'anastasia')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                        <div class="class-group">Группа 2 • 14-16 лет</div>
-                    </td>
-                    <td class="valeria-class class-cell" onmouseenter="showTrainerTooltip(event, 'valeria')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                        <div class="class-group">Группа 1 • 14-16 лет</div>
-                    </td>
-                    <td class="yaroslava-class class-cell" onmouseenter="showTrainerTooltip(event, 'yaroslava')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                        <div class="class-group">Группа 3 • 14-16 лет</div>
-                    </td>
-                    <td class="anastasia-class class-cell" onmouseenter="showTrainerTooltip(event, 'anastasia')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                        <div class="class-group">Группа 2 • 14-16 лет</div>
-                    </td>
-                    <td class="yaroslava-class class-cell" onmouseenter="showTrainerTooltip(event, 'yaroslava')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                        <div class="class-group">Группа 3 • 14-16 лет</div>
-                    </td>
-                    <td class="ekaterina-class class-cell" onmouseenter="showTrainerTooltip(event, 'ekaterina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ГИБКОСТЬ И ГРАЦИЯ»</div>
-                        <div class="class-group">Группа 2 • 25+ лет</div>
-                    </td>
-                </tr>
+                        <!-- 18:00-19:00 -->
+                        <tr>
+                            <td class="time-slot">18:00-19:00</td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 1 • 14-16 лет</div>
+                            </td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 2 • 14-16 лет</div>
+                            </td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 1 • 14-16 лет</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 3 • 14-16 лет</div>
+                            </td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 2 • 14-16 лет</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 3 • 14-16 лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ И ГРАЦИЯ»</div>
+                                <div class="class-group">Группа 2 • 25+ лет</div>
+                            </td>
+                        </tr>
 
-                <!-- 19:00-20:00 -->
-                <tr>
-                    <td class="time-slot">19:00-20:00</td>
-                    <td class="valeria-class class-cell" onmouseenter="showTrainerTooltip(event, 'valeria')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                        <div class="class-group">Группа 1 • 17+ лет</div>
-                    </td>
-                    <td class="anastasia-class class-cell" onmouseenter="showTrainerTooltip(event, 'anastasia')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                        <div class="class-group">Группа 2 • 17+ лет</div>
-                    </td>
-                    <td class="valeria-class class-cell" onmouseenter="showTrainerTooltip(event, 'valeria')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                        <div class="class-group">Группа 1 • 17+ лет</div>
-                    </td>
-                    <td class="yaroslava-class class-cell" onmouseenter="showTrainerTooltip(event, 'yaroslava')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                        <div class="class-group">Группа 3 • 17+ лет</div>
-                    </td>
-                    <td class="anastasia-class class-cell" onmouseenter="showTrainerTooltip(event, 'anastasia')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                        <div class="class-group">Группа 2 • 17+ лет</div>
-                    </td>
-                    <td class="yaroslava-class class-cell" onmouseenter="showTrainerTooltip(event, 'yaroslava')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                        <div class="class-group">Группа 3 • 17+ лет</div>
-                    </td>
-                    <td class="ekaterina-class class-cell" onmouseenter="showTrainerTooltip(event, 'ekaterina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ПЛАСТИКА 45+»</div>
-                        <div class="class-group">Группа 1 • 45+ лет</div>
-                    </td>
-                </tr>
+                        <!-- 19:00-20:00 -->
+                        <tr>
+                            <td class="time-slot">19:00-20:00</td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
+                                <div class="class-group">Группа 1 • 17+ лет</div>
+                            </td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
+                                <div class="class-group">Группа 2 • 17+ лет</div>
+                            </td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
+                                <div class="class-group">Группа 1 • 17+ лет</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
+                                <div class="class-group">Группа 3 • 17+ лет</div>
+                            </td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
+                                <div class="class-group">Группа 2 • 17+ лет</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
+                                <div class="class-group">Группа 3 • 17+ лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ПЛАСТИКА 45+»</div>
+                                <div class="class-group">Группа 1 • 45+ лет</div>
+                            </td>
+                        </tr>
 
-                <!-- 20:00-21:00 -->
-                <tr>
-                    <td class="time-slot">20:00-21:00</td>
-                    <td class="valeria-class class-cell" onmouseenter="showTrainerTooltip(event, 'valeria')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                        <div class="class-group">Группа 1 • 25+ лет</div>
-                    </td>
-                    <td class="anastasia-class class-cell" onmouseenter="showTrainerTooltip(event, 'anastasia')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                        <div class="class-group">Группа 2 • 25+ лет</div>
-                    </td>
-                    <td class="valeria-class class-cell" onmouseenter="showTrainerTooltip(event, 'valeria')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                        <div class="class-group">Группа 1 • 25+ лет</div>
-                    </td>
-                    <td class="yaroslava-class class-cell" onmouseenter="showTrainerTooltip(event, 'yaroslava')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                        <div class="class-group">Группа 3 • 25+ лет</div>
-                    </td>
-                    <td class="anastasia-class class-cell" onmouseenter="showTrainerTooltip(event, 'anastasia')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                        <div class="class-group">Группа 2 • 25+ лет</div>
-                    </td>
-                    <td class="yaroslava-class class-cell" onmouseenter="showTrainerTooltip(event, 'yaroslava')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                        <div class="class-group">Группа 3 • 25+ лет</div>
-                    </td>
-                    <td class="ekaterina-class class-cell" onmouseenter="showTrainerTooltip(event, 'ekaterina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">«ПЛАСТИКА 45+»</div>
-                        <div class="class-group">Группа 2 • 45+ лет</div>
-                    </td>
-                </tr>
+                        <!-- 20:00-21:00 -->
+                        <tr>
+                            <td class="time-slot">20:00-21:00</td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 1 • 25+ лет</div>
+                            </td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 2 • 25+ лет</div>
+                            </td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 1 • 25+ лет</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 3 • 25+ лет</div>
+                            </td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 2 • 25+ лет</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 3 • 25+ лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ПЛАСТИКА 45+»</div>
+                                <div class="class-group">Группа 2 • 45+ лет</div>
+                            </td>
+                        </tr>
 
-                <!-- 21:00-22:00 -->
-                <tr>
-                    <td class="time-slot">21:00-22:00</td>
-                    <td class="ekaterina-class class-cell" onmouseenter="showTrainerTooltip(event, 'ekaterina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
-                        <div class="class-group">Группа 1 • 45+ лет</div>
-                    </td>
-                    <td class="ekaterina-class class-cell" onmouseenter="showTrainerTooltip(event, 'ekaterina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
-                        <div class="class-group">Группа 2 • 45+ лет</div>
-                    </td>
-                    <td class="ekaterina-class class-cell" onmouseenter="showTrainerTooltip(event, 'ekaterina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"РАСТЯЖКА ДЛЯ ДУШИ"</div>
-                        <div class="class-group">45+ лет</div>
-                    </td>
-                    <td class="ekaterina-class class-cell" onmouseenter="showTrainerTooltip(event, 'ekaterina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
-                        <div class="class-group">Группа 1 • 45+ лет</div>
-                    </td>
-                    <td class="ekaterina-class class-cell" onmouseenter="showTrainerTooltip(event, 'ekaterina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
-                        <div class="class-group">Группа 2 • 45+ лет</div>
-                    </td>
-                    <td class="ekaterina-class class-cell" onmouseenter="showTrainerTooltip(event, 'ekaterina')" onmouseleave="hideTrainerTooltip()">
-                        <div class="class-name">"РАСТЯЖКА ДЛЯ ДУШИ"</div>
-                        <div class="class-group">45+ лет</div>
-                    </td>
-                    <td class="empty">—</td>
-                </tr>
-            </tbody>
-        </table>
+                        <!-- 21:00-22:00 -->
+                        <tr>
+                            <td class="time-slot">21:00-22:00</td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
+                                <div class="class-group">Группа 1 • 45+ лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
+                                <div class="class-group">Группа 2 • 45+ лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"РАСТЯЖКА ДЛЯ ДУШИ"</div>
+                                <div class="class-group">45+ лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
+                                <div class="class-group">Группа 1 • 45+ лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
+                                <div class="class-group">Группа 2 • 45+ лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"РАСТЯЖКА ДЛЯ ДУШИ"</div>
+                                <div class="class-group">45+ лет</div>
+                            </td>
+                            <td class="empty">—</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        <div id="trainerTooltip" class="trainer-tooltip"></div>
-    </div>
-
-    <script>
-        // Данные преподавателей
-        const teachers = {
-            stepan: {
-                name: "Степан Петров",
-                specialty: "Детские группы, растяжка, функциональный тренинг",
-                experience: "8 лет опыта",
-                education: "Высшее хореографическое образование"
-            },
-            white: {
-                name: "Общая группа",
-                specialty: "Различные направления для всех возрастов",
-                experience: "Профессиональные преподаватели",
-                education: "Сертифицированные специалисты"
-            },
-            alina: {
-                name: "Алина Смирнова",
-                specialty: "Младшие группы (3-7 лет), игровые методики",
-                experience: "6 лет опыта",
-                education: "Педагог-хореограф"
-            },
-            valeria: {
-                name: "Валерия Козлова", 
-                specialty: "Подростковые группы, современные направления",
-                experience: "7 лет опыта",
-                education: "Современная хореография"
-            },
-            anastasia: {
-                name: "Анастасия Иванова",
-                specialty: "Специализированные направления, растяжка",
-                experience: "9 лет опыта", 
-                education: "Мастер спорта по художественной гимнастике"
-            },
-            yaroslava: {
-                name: "Ярослава Сидорова",
-                specialty: "Взрослые группы, осознанное движение",
-                experience: "10 лет опыта",
-                education: "Психолог-хореограф"
-            },
-            ekaterina: {
-                name: "Екатерина Николаева",
-                specialty: "Группы 45+, оздоровительные практики",
-                experience: "12 лет опыта",
-                education: "Реабилитолог, инструктор ЛФК"
-            }
-        };
-
-        function showTooltip(event, teacherKey, className, group, description) {
-            const teacher = teachers[teacherKey];
-            const tooltip = document.getElementById('tooltip');
-            
-            let tooltipContent = `
-                <div class="tooltip-title">${className}</div>
-                <div class="tooltip-detail"><strong>Преподаватель:</strong> ${teacher.name}</div>
-                <div class="tooltip-detail"><strong>Группа:</strong> ${group}</div>
-                <div class="tooltip-detail"><strong>Специализация:</strong> ${teacher.specialty}</div>
-                <div class="tooltip-detail"><strong>Опыт:</strong> ${teacher.experience}</div>
-                <div class="tooltip-detail"><strong>Образование:</strong> ${teacher.education}</div>
-                <div class="tooltip-detail"><strong>Описание:</strong> ${description}</div>
-            `;
-            
-            tooltip.innerHTML = tooltipContent;
-            tooltip.classList.add('show');
-            
-            // Позиционирование тултипа
-            const x = event.clientX + 15;
-            const y = event.clientY + 15;
-            
-            tooltip.style.left = x + 'px';
-            tooltip.style.top = y + 'px';
-        }
-
-        function hideTooltip() {
-            const tooltip = document.getElementById('tooltip');
-            tooltip.classList.remove('show');
-        }
-
-        // Добавляем обработчики для всех ячеек с занятиями
-        document.addEventListener('DOMContentLoaded', function() {
-            const classCells = document.querySelectorAll('[class$="-class"]');
-            classCells.forEach(cell => {
-                cell.addEventListener('mouseleave', hideTooltip);
-            });
-        });
-    </script>
-
-
+                <!-- Всплывающие подсказки для преподавателей -->
+                <div id="scheduleTooltip" class="schedule-tooltip"></div>
                 
                 <button class="btn-yclients" onclick="openYclientsWidget()">
                     📅 ЗАПИСАТЬСЯ НА ЗАНЯТИЕ ОНЛАЙН
@@ -2824,9 +2601,6 @@
         <span class="gallery-nav gallery-next" onclick="changeGalleryImage(1)">❯</span>
     </div>
 
-    <!-- Всплывающие подсказки для преподавателей -->
-    <div id="tooltip" class="schedule-tooltip"></div>
-
     <script>
         // === ФУНКЦИЯ ДЛЯ YCLIENTS WIDGET ===
         function openYclientsWidget() {
@@ -2840,14 +2614,21 @@
             }
         }
 
-        // === ДАННЫЕ ПРЕПОДАВАТЕЛЕЙ ДЛЯ ТУЛТИПОВ ===
-        const teachersData = {
+        // === ДАННЫЕ ПРЕПОДАВАТЕЛЕЙ ДЛЯ РАСПИСАНИЯ ===
+        const scheduleTeachers = {
             'stepan': {
                 name: 'Степан Васильев',
                 position: 'Главный хореограф',
                 experience: 'Опыт: 14 лет',
                 specialization: 'Современные танцы, постановка выступлений',
                 description: 'Профессиональный хореограф с международным опытом. Ученики - победители всероссийских конкурсов.'
+            },
+            'white': {
+                name: 'Общая группа',
+                position: 'Разные преподаватели',
+                experience: 'Профессиональные педагоги',
+                specialization: 'Различные направления',
+                description: 'Занятия проводят сертифицированные преподаватели по соответствующим направлениям.'
             },
             'alina': {
                 name: 'Алина Козлова',
@@ -2856,19 +2637,19 @@
                 specialization: 'Детская хореография, развивающие танцы',
                 description: 'Специалист по работе с детьми. Находит подход к каждому ребенку через игру и творчество.'
             },
+            'valeria': {
+                name: 'Валерия Смирнова',
+                position: 'Фитнес-тренер',
+                experience: 'Опыт: 4 года',
+                specialization: 'Функциональный тренинг, силовые направления',
+                description: 'Сертифицированный фитнес-тренер. Помогает укрепить мышцы и улучшить осанку.'
+            },
             'anastasia': {
                 name: 'Анастасия Петрова',
                 position: 'Тренер по pole dance',
                 experience: 'Опыт: 6 лет',
                 specialization: 'Pole dance, heels, воздушная гимнастика',
                 description: 'Сертифицированный тренер. Участница международных соревнований по pole dance.'
-            },
-            'ekaterina': {
-                name: 'Екатерина Сидорова',
-                position: 'Инструктор по растяжке',
-                experience: 'Опыт: 5 лет',
-                specialization: 'Стретчинг, йога, пилатес',
-                description: 'Специалист по безопасной растяжке. Помогает достичь гибкости без травм.'
             },
             'yaroslava': {
                 name: 'Ярослава Иванова',
@@ -2877,25 +2658,25 @@
                 specialization: 'Парные танцы, социальные танцы 45+',
                 description: 'Специалист по работе со взрослыми. Создает комфортную атмосферу для обучения.'
             },
-            'valeria': {
-                name: 'Валерия Смирнова',
-                position: 'Фитнес-тренер',
-                experience: 'Опыт: 4 года',
-                specialization: 'Функциональный тренинг, силовые направления',
-                description: 'Сертифицированный фитнес-тренер. Помогает укрепить мышцы и улучшить осанку.'
+            'ekaterina': {
+                name: 'Екатерина Сидорова',
+                position: 'Инструктор по растяжке',
+                experience: 'Опыт: 5 лет',
+                specialization: 'Стретчинг, йога, пилатес',
+                description: 'Специалист по безопасной растяжке. Помогает достичь гибкости без травм.'
             }
         };
 
-        // === ФУНКЦИИ ДЛЯ ВСПЛЫВАЮЩИХ ПОДСКАЗОК ===
-        let tooltipTimeout;
+        // === ФУНКЦИИ ДЛЯ ВСПЛЫВАЮЩИХ ПОДСКАЗОК РАСПИСАНИЯ ===
+        let scheduleTooltipTimeout;
 
-        function showTooltip(event, teacherId) {
-            clearTimeout(tooltipTimeout);
+        function showScheduleTooltip(event, teacherId) {
+            clearTimeout(scheduleTooltipTimeout);
             
-            const teacher = teachersData[teacherId];
+            const teacher = scheduleTeachers[teacherId];
             if (!teacher) return;
             
-            const tooltip = document.getElementById('tooltip');
+            const tooltip = document.getElementById('scheduleTooltip');
             const rect = event.currentTarget.getBoundingClientRect();
             
             tooltip.innerHTML = `
@@ -2915,27 +2696,32 @@
             
             // Позиционирование тултипа
             tooltip.style.display = 'block';
-            tooltip.style.left = (rect.left + window.scrollX) + 'px';
-            tooltip.style.top = (rect.top + window.scrollY - tooltip.offsetHeight - 10) + 'px';
+            
+            // Позиционируем относительно курсора
+            const x = event.clientX + 15;
+            const y = event.clientY + 15;
+            
+            tooltip.style.left = x + 'px';
+            tooltip.style.top = y + 'px';
             
             // Корректировка позиции если тултип выходит за границы экрана
             const tooltipRect = tooltip.getBoundingClientRect();
             if (tooltipRect.right > window.innerWidth) {
-                tooltip.style.left = (window.innerWidth - tooltipRect.width - 10) + 'px';
+                tooltip.style.left = (event.clientX - tooltipRect.width - 15) + 'px';
             }
-            if (tooltipRect.top < 0) {
-                tooltip.style.top = (rect.bottom + window.scrollY + 10) + 'px';
+            if (tooltipRect.bottom > window.innerHeight) {
+                tooltip.style.top = (event.clientY - tooltipRect.height - 15) + 'px';
             }
         }
 
-        function hideTooltip() {
-            tooltipTimeout = setTimeout(() => {
-                const tooltip = document.getElementById('tooltip');
+        function hideScheduleTooltip() {
+            scheduleTooltipTimeout = setTimeout(() => {
+                const tooltip = document.getElementById('scheduleTooltip');
                 tooltip.style.display = 'none';
             }, 100);
         }
 
-        // === ОБРАБОТКА ФОРМЫ С TELEGRAM ===
+        // === ОБРАБОТКА ФОРМЫ ===
         document.getElementById('enrollForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -2956,64 +2742,13 @@
             submitBtn.textContent = 'Отправляем...';
             submitBtn.disabled = true;
             
-            // Отправка в Telegram
-            sendToTelegram(name, phone, email, age, direction, message, submitBtn, originalText);
-        });
-
-        // === ОТПРАВКА В TELEGRAM ===
-        function sendToTelegram(name, phone, email, age, direction, message, submitBtn, originalText) {
-            // 🔧 НАСТРОЙТЕ ЭТИ ДАННЫЕ ПОД ВАШЕГО БОТА
-            const BOT_TOKEN = '7100000000:AAE1234567890abcdefghijk-1234567890'; // Замените на токен вашего бота
-            const CHAT_ID = '123456789'; // Замените на ваш chat_id
-            
-            const telegramMessage = `
-🎯 НОВАЯ ЗАЯВКА С САЙТА
-
-👤 Имя: ${name}
-📞 Телефон: ${phone}
-📧 Email: ${email || 'Не указан'}
-🎂 Возрастная группа: ${age || 'Не выбрана'}
-💃 Направление: ${direction || 'Не выбрано'}
-💬 Сообщение: ${message || 'Нет дополнительной информации'}
-
-⏰ Время: ${new Date().toLocaleString('ru-RU')}
-🌐 Источник: Сайт студии
-            `;
-            
-            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-            
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: telegramMessage,
-                    parse_mode: 'HTML'
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.ok) {
-                    showSuccessMessage();
-                    console.log('✅ Заявка отправлена в Telegram');
-                } else {
-                    console.error('Ошибка отправки в Telegram:', data);
-                    // Резервный вариант
-                    showSuccessMessage();
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-                // Резервный вариант
+            // Имитация отправки
+            setTimeout(() => {
                 showSuccessMessage();
-            })
-            .finally(() => {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            });
-        }
+            }, 1500);
+        });
 
         function showSuccessMessage() {
             alert('✅ Спасибо! Заявка отправлена.\n\nМы свяжемся с вами в течение 30 минут!\n\nЕсли срочно - звоните: +7 (904) 123-31-75');
@@ -3228,22 +2963,5 @@
         console.log('💫 YClients виджет подключен');
         console.log('📱 Все функции активны');
     </script>
-
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript" >
-        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-     
-        ym(97583745, "init", {
-             clickmap:true,
-             trackLinks:true,
-             accurateTrackBounce:true,
-             webvisor:true
-        });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/97583745" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </body>
 </html>
