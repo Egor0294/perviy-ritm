@@ -2661,75 +2661,174 @@ const scheduleTeachers = {
         }
 
         // === ОБРАБОТКА ФОРМЫ ===
-        document.getElementById('enrollForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const age = document.getElementById('age').value;
-            const direction = document.getElementById('direction').value;
-            const message = document.getElementById('message').value;
-            
-            if (!name || !phone) {
-                alert('⚠️ Пожалуйста, заполните имя и телефон');
-                return;
-            }
-            
-            const submitBtn = this.querySelector('.form-submit');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Отправляем...';
-            submitBtn.disabled = true;
-            
-            // Имитация отправки
-            setTimeout(() => {
-                showSuccessMessage();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 1500);
-        });
+        // === ОБРАБОТКА ФОРМЫ С ОТПРАВКОЙ В TELEGRAM ===
+document.getElementById('enrollForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const age = document.getElementById('age').value;
+    const direction = document.getElementById('direction').value;
+    const message = document.getElementById('message').value;
+    
+    if (!name || !phone) {
+        alert('⚠️ Пожалуйста, заполните имя и телефон');
+        return;
+    }
+    
+    const submitBtn = this.querySelector('.form-submit');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Отправляем...';
+    submitBtn.disabled = true;
+    
+    // Формируем сообщение для Telegram
+    const telegramMessage = `
+🎯 *НОВАЯ ЗАЯВКА С САЙТА*
 
-        function showSuccessMessage() {
-            alert('✅ Спасибо! Заявка отправлена.\n\nМы свяжемся с вами в течение 30 минут!\n\nЕсли срочно - звоните: +7 (904) 123-31-75');
-            closeModal();
-            document.getElementById('enrollForm').reset();
+👤 *Имя:* ${name}
+📞 *Телефон:* ${phone}
+📧 *Email:* ${email || 'Не указан'}
+🎭 *Возрастная группа:* ${age || 'Не указана'}
+💃 *Направление:* ${direction || 'Не указано'}
+📝 *Сообщение:* ${message || 'Нет дополнительной информации'}
+
+🌐 *Источник:* Сайт студии
+⏰ *Время:* ${new Date().toLocaleString('ru-RU')}
+    `;
+    
+    // Настройки бота (ЗАМЕНИТЕ НА СВОИ)
+    const botToken = '8172309514:AAFkrH19yXxn_MkbNDqFNpZF36ATdCUdYYc'; // Замените на токен вашего бота
+    const chatId = '8479925884'; // Замените на ID чата для заявок
+    
+    // Отправка через Telegram Bot API
+    fetch(`https://api.telegram.org/bot${8172309514:AAFkrH19yXxn_MkbNDqFNpZF36ATdCUdYYc}/sendMessage`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            chat_id: chatId,
+            text: telegramMessage,
+            parse_mode: 'Markdown'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            showSuccessMessage();
+        } else {
+            throw new Error('Ошибка отправки в Telegram');
         }
+    })
+    .catch(error => {
+        console.error('Ошибка отправки в Telegram:', error);
+        
+        // Fallback: открываем Telegram с предзаполненным сообщением
+        const encodedMessage = encodeURIComponent(telegramMessage);
+        const botUsername = 'perviy_ritm_bot'; // Замените на username вашего бота
+        
+        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            window.location.href = `tg://resolve?domain=${botUsername}&text=${encodedMessage}`;
+            setTimeout(() => {
+                window.location.href = `https://t.me/${botUsername}?text=${encodedMessage}`;
+            }, 1000);
+        } else {
+            window.open(`https://t.me/${botUsername}?text=${encodedMessage}`, '_blank');
+        }
+        
+        showSuccessMessage();
+    })
+    .finally(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        document.getElementById('enrollForm').reset();
+    });
+});
 
-        // Данные для галереи
-        const galleryImages = [
-            {
-                src: 'images/gallery/hall1.jpg',
-                caption: 'Основной зал для групповых занятий - просторное помещение с зеркалами и профессиональным покрытием'
-            },
-            {
-                src: 'images/gallery/hall2.jpg',
-                caption: 'Зал для индивидуальных занятий - уютное пространство для персональных тренировок'
-            },
-            {
-                src: 'images/gallery/kids-group.jpg',
-                caption: 'Занятие "Танцы-игра" для детей 3-4 лет - развиваем координацию через веселые игры'
-            },
-            {
-                src: 'images/gallery/adults-group.jpg',
-                caption: 'Занятие "Танцы для души" для взрослых - снимаем стресс и улучшаем настроение'
-            },
-            {
-                src: 'images/gallery/stretching.jpg',
-                caption: 'Группа по растяжке для всех возрастов - улучшаем гибкость и мобильность суставов'
-            },
-            {
-                src: 'images/gallery/performance.jpg',
-                caption: 'Наши ученики на конкурсе - демонстрируют достижения и получают награды'
-            },
-            {
-                src: 'images/gallery/reception.jpg',
-                caption: 'Ресепшен и зона ожидания - комфортное пространство для родителей и гостей'
-            },
-            {
-                src: 'images/gallery/changing-rooms.jpg',
-                caption: 'Комфортные раздевалки для учеников - все необходимое для подготовки к занятиям'
-            }
-        ];
+function showSuccessMessage() {
+    alert('✅ Спасибо! Заявка отправлена.\n\nМы свяжемся с вами в течение 30 минут!\n\nЕсли срочно - звоните: +7 (904) 123-31-75 или +79399090786');
+    closeModal();
+}
+
+// Альтернативный способ через форму с action
+function submitToTelegramAlternative(formData) {
+    // Этот метод работает без JavaScript, но требует настройки сервера
+    const telegramBotUrl = `https://api.telegram.org/bot${8172309514:AAFkrH19yXxn_MkbNDqFNpZF36ATdCUdYYc}/sendMessage`;
+    
+    // Создаем скрытую форму для отправки
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = telegramBotUrl;
+    form.style.display = 'none';
+    
+    const fields = {
+        chat_id: chatId,
+        text: `Новая заявка: ${formData.name}, ${formData.phone}`,
+        parse_mode: 'HTML'
+    };
+    
+    for (const key in fields) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = fields[key];
+        form.appendChild(input);
+    }
+    
+    document.body.appendChild(form);
+    form.submit();
+}
+
+// Функция для быстрой записи через Telegram
+function quickTelegramBooking(serviceType) {
+    const services = {
+        'trial': '🎁 Пробное занятие (от 300 ₽)',
+        'kids': '👶 Детские группы 3-16 лет',
+        'adults': '👩‍🦱 Взрослые группы 17+',
+        'stretching': '🧘 Растяжка',
+        'individual': '💫 Индивидуальные занятия'
+    };
+    
+    const serviceName = services[serviceType] || 'Занятие в студии';
+    
+    const message = `Хочу записаться на: ${serviceName}`;
+    const encodedMessage = encodeURIComponent(message);
+    const botUsername = 'perviy_ritm_bot'; // Замените на username вашего бота
+    
+    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        window.location.href = `tg://resolve?domain=${botUsername}&start=${encodedMessage}`;
+        setTimeout(() => {
+            window.location.href = `https://t.me/${botUsername}?start=${encodedMessage}`;
+        }, 1000);
+    } else {
+        window.open(`https://t.me/${botUsername}?start=${encodedMessage}`, '_blank');
+    }
+}
+
+// Добавляем быстрые кнопки в модальное окно
+document.addEventListener('DOMContentLoaded', function() {
+    // Добавляем быстрые кнопки после формы
+    const form = document.getElementById('enrollForm');
+    const quickButtons = `
+        <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 10px; text-align: center;">
+            <div style="font-weight: bold; margin-bottom: 10px; color: #667eea;">🚀 Быстрая запись через Telegram:</div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <button type="button" onclick="quickTelegramBooking('trial')" style="padding: 10px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    🎁 Пробное занятие - от 300₽
+                </button>
+                <button type="button" onclick="quickTelegramBooking('kids')" style="padding: 10px; background: #17a2b8; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    👶 Детские группы
+                </button>
+                <button type="button" onclick="quickTelegramBooking('adults')" style="padding: 10px; background: #6f42c1; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    👩‍🦱 Взрослые группы
+                </button>
+            </div>
+        </div>
+    `;
+    
+    form.insertAdjacentHTML('beforeend', quickButtons);
+});
 
         let currentGalleryIndex = 0;
 
