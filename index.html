@@ -10,6 +10,29 @@
     <script type="text/javascript" src="https://w1729530.yclients.com/widgetJS" charset="UTF-8"></script>
     
     <style>
+        /* Сброс стилей и базовые настройки */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: white;
+            color: #333;
+            line-height: 1.6;
+            padding: 15px;
+            width: 100%;
+            max-width: 420mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            font-size: 14px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f9fa"/><path d="M0 50 Q 25 30, 50 50 T 100 50" stroke="%23e9ecef" fill="none" stroke-width="2"/><path d="M0 30 Q 25 10, 50 30 T 100 30" stroke="%23e9ecef" fill="none" stroke-width="1"/><path d="M0 70 Q 25 90, 50 70 T 100 70" stroke="%23e9ecef" fill="none" stroke-width="1"/></svg>');
+            background-size: 200px 200px;
+            background-attachment: fixed;
+        }
+        
         /* Анимации */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -87,75 +110,14 @@
             text-shadow: 0 2px 15px rgba(76,175,80,0.3);
         }
 
-        .tab-content {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        
-        .section {
-            animation: slideIn 0.6s ease-out;
-        }
-        
-        .staff-card, .price-item, .gallery-item {
-            animation: scaleIn 0.4s ease-out;
-        }
-        
-        .btn-enroll:hover {
-            animation: pulse 0.6s ease-in-out;
-        }
-
-        /* Основные стили */
-        @media print {
-            @page {
-                margin: 1cm;
-                size: A4 landscape;
-            }
-            body {
-                margin: 0;
-                padding: 0;
-                transform: scale(1);
-                transform-origin: top left;
-                width: 100%;
-            }
-            .no-print, .tabs {
-                display: none;
-            }
-            .tab-content {
-                display: block !important;
-                page-break-after: always;
-            }
-            .tab-content:last-child {
-                page-break-after: avoid;
-            }
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Arial', sans-serif;
-            background: white;
-            color: #333;
-            line-height: 1.4;
-            padding: 15px;
-            width: 100%;
-            max-width: 420mm;
-            min-height: 297mm;
-            margin: 0 auto;
-            font-size: 14px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f9fa"/><path d="M0 50 Q 25 30, 50 50 T 100 50" stroke="%23e9ecef" fill="none" stroke-width="2"/><path d="M0 30 Q 25 10, 50 30 T 100 30" stroke="%23e9ecef" fill="none" stroke-width="1"/><path d="M0 70 Q 25 90, 50 70 T 100 70" stroke="%23e9ecef" fill="none" stroke-width="1"/></svg>');
-            background-size: 200px 200px;
-            background-attachment: fixed;
-        }
-        
+        /* Основная структура */
         .dashboard-container {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
         
+        /* Шапка */
         .header {
             border-radius: 15px;
             padding: 25px;
@@ -209,30 +171,7 @@
             opacity: 0.9;
         }
         
-        .controls {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-        }
-        
-        .btn {
-            padding: 8px 15px;
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        
-        .btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-        }
-        
+        /* Кнопки */
         .btn-enroll {
             background: #FF6B6B;
             color: white;
@@ -252,9 +191,9 @@
             background: #FF5252;
             box-shadow: 0 6px 20px rgba(255,107,107,0.4);
             transform: translateY(-2px);
+            animation: pulse 0.6s ease-in-out;
         }
 
-        /* Стили для кнопки YClients */
         .btn-yclients {
             background: #32CD32;
             color: white;
@@ -276,7 +215,7 @@
             transform: translateY(-2px);
         }
 
-        /* Стили для вкладок */
+        /* Вкладки */
         .tabs {
             display: flex;
             justify-content: center;
@@ -312,6 +251,7 @@
             display: none;
             opacity: 0;
             transition: opacity 0.5s ease;
+            animation: fadeIn 0.5s ease-in-out;
         }
         
         .tab-content.active {
@@ -319,18 +259,14 @@
             opacity: 1;
         }
         
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
+        /* Секции */
         .section {
             border-radius: 12px;
             padding: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: relative;
             transition: transform 0.3s ease;
+            animation: slideIn 0.6s ease-out;
         }
         
         .section:hover {
@@ -399,55 +335,32 @@
             padding-bottom: 8px;
         }
         
-        /* Стили для скриншота карты */
-        .map-screenshot {
-            width: 100%;
-            border-radius: 8px;
-            margin-top: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border: 2px solid #667eea;
-        }
-        
-        .map-container {
-            position: relative;
-            margin-top: 15px;
-            text-align: center;
-        }
-        
-        .location-info {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .location-features {
+        /* Сетки */
+        .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            margin-top: 10px;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
         
-        .location-feature {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-        }
-        
-        .location-feature i {
-            color: #4CAF50;
-            font-size: 14px;
-        }
-
-        /* Стили для направлений */
         .directions-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
         
+        .rules-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        /* Направления */
         .direction-category {
             margin-bottom: 15px;
             position: relative;
@@ -492,7 +405,7 @@
             top: -1px;
         }
         
-        /* Стили для расписания */
+        /* Расписание */
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
@@ -543,6 +456,7 @@
             font-style: italic;
         }
         
+        /* Цвета для классов преподавателей */
         .stepan-class { 
             background: #FFEBEE; 
             border-left: 3px solid #F44336; 
@@ -590,7 +504,7 @@
             font-style: italic;
         }
 
-        /* Стили для всплывающих подсказок расписания */
+        /* Всплывающие подсказки расписания */
         .schedule-tooltip {
             display: none;
             position: fixed;
@@ -654,505 +568,7 @@
             font-style: italic;
         }
 
-        /* Адаптивность для тултипов */
-        @media (max-width: 768px) {
-            .schedule-tooltip {
-                width: 280px;
-                left: 50% !important;
-                transform: translateX(-50%);
-            }
-            
-            .tooltip-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .tooltip-photo {
-                align-self: center;
-            }
-        }
-        
-        /* Стили для цен */
-        .price-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-        
-        .price-category {
-            margin-bottom: 15px;
-            position: relative;
-        }
-        
-        .price-category-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 8px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            background: rgba(255,255,255,0.7);
-            position: relative;
-            z-index: 2;
-        }
-        
-        .price-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 6px;
-            padding: 5px 8px;
-            background: rgba(255,255,255,0.9);
-            border-radius: 5px;
-            border-left: 3px solid #764ba2;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .price-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-        
-        .price-name {
-            font-size: 13px;
-            font-weight: 500;
-        }
-        
-        .price-value {
-            font-size: 13px;
-            font-weight: bold;
-            color: #764ba2;
-            margin-left: 5px;
-            white-space: nowrap;
-        }
-        
-        .best-price {
-            background: #4CAF50;
-            color: white;
-            padding: 1px 4px;
-            border-radius: 3px;
-            font-size: 10px;
-            font-weight: bold;
-            margin-left: 5px;
-        }
-        
-        /* Стили для сотрудников */
-        .staff-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-        
-        .staff-card {
-            background: rgba(255,255,255,0.9);
-            border-radius: 8px;
-            padding: 12px;
-            text-align: center;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .staff-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .staff-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #667eea;
-            margin: 0 auto 10px;
-            background: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 12px;
-        }
-        
-        .staff-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0.1;
-            z-index: 1;
-        }
-        
-        .staff-card > * {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .staff-name {
-            font-weight: bold;
-            color: #2C3E50;
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
-        
-        .staff-position {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 8px;
-        }
-        
-        .staff-contacts {
-            font-size: 11px;
-            color: #888;
-        }
-        
-        .admin-row {
-            grid-column: 1 / -1;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-        
-        .admin-card {
-            background: rgba(255,255,255,0.9);
-            border-radius: 8px;
-            padding: 12px;
-            text-align: center;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-            width: 250px;
-            border: 2px solid #667eea;
-            transition: all 0.3s ease;
-        }
-        
-        .admin-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .admin-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(102, 126, 234, 0.1);
-            z-index: 1;
-        }
-        
-        .admin-card > * {
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Стили для контактов */
-        .contacts-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .contact-card {
-            background: rgba(255,255,255,0.9);
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0.1;
-            z-index: 1;
-        }
-        
-        .contact-card > * {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .contact-title {
-            font-weight: bold;
-            color: #2C3E50;
-            margin-bottom: 10px;
-            font-size: 16px;
-            text-align: center;
-        }
-        
-        .contact-info {
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-        
-        .social-link {
-            padding: 8px 15px;
-            background: #667eea;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background: #5a6fd8;
-            transform: translateY(-2px);
-        }
-        
-        /* Стили для галереи */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .gallery-item {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            aspect-ratio: 1;
-            background: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            cursor: pointer;
-        }
-        
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-size: 12px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
-        }
-        
-        /* Модальное окно галереи */
-        .gallery-modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .gallery-modal-content {
-            position: relative;
-            margin: auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 800px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .gallery-modal-img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        
-        .gallery-modal-caption {
-            color: white;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 16px;
-        }
-        
-        .gallery-close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: white;
-            font-size: 40px;
-            cursor: pointer;
-            background: rgba(0,0,0,0.5);
-            padding: 10px 15px;
-            border-radius: 50%;
-            user-select: none;
-        }
-        
-        .gallery-prev {
-            left: 15px;
-        }
-        
-        .gallery-next {
-            right: 15px;
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            font-size: 14px;
-            color: #666;
-            border: 1px solid #ddd;
-            position: relative;
-        }
-        
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" viewBox="0 0 100 40"><path d="M0,20 Q25,10 50,20 T100,20" stroke="%23666" stroke-width="1" fill="none" opacity="0.1"/><path d="M0,25 Q25,15 50,25 T100,25" stroke="%23666" stroke-width="1" fill="none" opacity="0.1"/><path d="M0,30 Q25,20 50,30 T100,30" stroke="%23666" stroke-width="1" fill="none" opacity="0.1"/></svg>');
-            background-size: 200px 40px;
-            opacity: 0.3;
-        }
-        
-        .footer > * {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .highlight {
-            background: #FFF9C4;
-            padding: 10px;
-            border-radius: 6px;
-            text-align: center;
-            margin: 10px 0;
-            border: 2px dashed #764ba2;
-            font-weight: bold;
-            font-size: 14px;
-            position: relative;
-            animation: pulse 2s infinite;
-        }
-        
-        .highlight::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><polygon points="30,5 40,25 60,25 45,35 50,55 30,45 10,55 15,35 0,25 20,25" fill="%23764ba2" opacity="0.1"/></svg>');
-            background-size: 40px 40px;
-            opacity: 0.3;
-        }
-        
-        .highlight > * {
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Стили для страницы с правилами */
-        .rules-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .rules-category {
-            margin-bottom: 20px;
-        }
-        
-        .rules-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            background: rgba(255,255,255,0.7);
-        }
-        
-        .rules-list {
-            list-style: none;
-            padding-left: 10px;
-        }
-        
-        .rules-list li {
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-            font-size: 14px;
-            transition: transform 0.2s ease;
-        }
-        
-        .rules-list li:hover {
-            transform: translateX(5px);
-        }
-        
-        .rules-list li:before {
-            content: "✓";
-            color: #4CAF50;
-            font-size: 14px;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-        
-        .warning-list li:before {
-            content: "⚠";
-            color: #FF9800;
-        }
-
-        /* Стили для страницы цен */
+        /* Цены */
         .main-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1207,11 +623,6 @@
             border: 3px solid #CCCCCC;
         }
         
-        .contacts-mini-section {
-            background: linear-gradient(135deg, #E6F3FF 0%, #AED6F1 100%);
-            border: 3px solid #AED6F1;
-        }
-        
         .trial-price {
             font-size: 28px;
             font-weight: bold;
@@ -1226,6 +637,50 @@
             margin-top: 8px;
             font-style: italic;
             text-align: center;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            padding: 5px 8px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 5px;
+            border-left: 3px solid #764ba2;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: scaleIn 0.4s ease-out;
+        }
+        
+        .price-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .price-name {
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .price-value {
+            font-size: 13px;
+            font-weight: bold;
+            color: #764ba2;
+            margin-left: 5px;
+            white-space: nowrap;
+        }
+        
+        .best-price {
+            background: #4CAF50;
+            color: white;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-left: 5px;
         }
         
         .condition-item {
@@ -1246,13 +701,278 @@
             font-size: 14px;
         }
         
-        .contacts {
+        /* Команда */
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .staff-card {
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: scaleIn 0.4s ease-out;
+        }
+        
+        .staff-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .staff-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #667eea;
+            margin: 0 auto 10px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .staff-name {
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 5px;
             font-size: 14px;
-            margin: 8px 0;
+        }
+        
+        .staff-position {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .staff-contacts {
+            font-size: 11px;
+            color: #888;
+        }
+        
+        .admin-row {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .admin-card {
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            width: 250px;
+            border: 2px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Галерея */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            aspect-ratio: 1;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            cursor: pointer;
+            animation: scaleIn 0.4s ease-out;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Контакты */
+        .contact-card {
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-title {
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 10px;
+            font-size: 16px;
             text-align: center;
         }
-
-        /* Стили для онлайн-записи */
+        
+        .contact-info {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .social-link {
+            padding: 8px 15px;
+            background: #667eea;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+        
+        .map-screenshot {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 2px solid #667eea;
+        }
+        
+        .map-container {
+            position: relative;
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .location-info {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .location-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .location-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+        
+        .location-feature i {
+            color: #4CAF50;
+            font-size: 14px;
+        }
+        
+        /* Правила */
+        .rules-category {
+            margin-bottom: 20px;
+        }
+        
+        .rules-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.7);
+        }
+        
+        .rules-list {
+            list-style: none;
+            padding-left: 10px;
+        }
+        
+        .rules-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 14px;
+            transition: transform 0.2s ease;
+        }
+        
+        .rules-list li:hover {
+            transform: translateX(5px);
+        }
+        
+        .rules-list li:before {
+            content: "✓";
+            color: #4CAF50;
+            font-size: 14px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .warning-list li:before {
+            content: "⚠";
+            color: #FF9800;
+        }
+        
+        /* Онлайн-запись */
         .booking-container {
             text-align: center;
             padding: 30px;
@@ -1299,103 +1019,69 @@
             font-size: 13px;
             color: #666;
         }
-
-        /* Адаптивность */
-        @media (max-width: 1200px) {
-            body {
-                width: 100%;
-                padding: 10px;
-            }
-            
-            .content-grid,
-            .directions-grid,
-            .rules-grid,
-            .contacts-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .staff-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .booking-features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .location-features {
-                grid-template-columns: 1fr;
-            }
+        
+        /* Выделенные блоки */
+        .highlight {
+            background: #FFF9C4;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            margin: 10px 0;
+            border: 2px dashed #764ba2;
+            font-weight: bold;
+            font-size: 14px;
+            position: relative;
+            animation: pulse 2s infinite;
         }
         
-        @media (max-width: 768px) {
-            .logo {
-                font-size: 36px;
-            }
-            
-            .main-title {
-                font-size: 22px;
-            }
-            
-            .subtitle {
-                font-size: 18px;
-            }
-            
-            .tabs {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tab-btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .staff-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .admin-row {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .admin-card {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .booking-features {
-                grid-template-columns: 1fr;
-            }
+        .highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><polygon points="30,5 40,25 60,25 45,35 50,55 30,45 10,55 15,35 0,25 20,25" fill="%23764ba2" opacity="0.1"/></svg>');
+            background-size: 40px 40px;
+            opacity: 0.3;
         }
         
-        @media (max-width: 480px) {
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header {
-                padding: 15px;
-            }
-            
-            .logo {
-                font-size: 28px;
-            }
+        .highlight > * {
+            position: relative;
+            z-index: 1;
         }
-
-        /* Модальное окно записи */
+        
+        /* Футер */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #666;
+            border: 1px solid #ddd;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" viewBox="0 0 100 40"><path d="M0,20 Q25,10 50,20 T100,20" stroke="%23666" stroke-width="1" fill="none" opacity="0.1"/><path d="M0,25 Q25,15 50,25 T100,25" stroke="%23666" stroke-width="1" fill="none" opacity="0.1"/><path d="M0,30 Q25,20 50,30 T100,30" stroke="%23666" stroke-width="1" fill="none" opacity="0.1"/></svg>');
+            background-size: 200px 40px;
+            opacity: 0.3;
+        }
+        
+        .footer > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Модальные окна */
         .modal {
             display: none;
             position: fixed;
@@ -1475,6 +1161,207 @@
         .form-submit:hover {
             background: #5a6fd8;
             transform: translateY(-2px);
+        }
+        
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .gallery-modal-content {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .gallery-modal-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .gallery-modal-caption {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        
+        .gallery-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            padding: 10px 15px;
+            border-radius: 50%;
+            user-select: none;
+        }
+        
+        .gallery-prev {
+            left: 15px;
+        }
+        
+        .gallery-next {
+            right: 15px;
+        }
+        
+        /* Печать */
+        @media print {
+            @page {
+                margin: 1cm;
+                size: A4 landscape;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+                transform: scale(1);
+                transform-origin: top left;
+                width: 100%;
+            }
+            .no-print, .tabs {
+                display: none;
+            }
+            .tab-content {
+                display: block !important;
+                page-break-after: always;
+            }
+            .tab-content:last-child {
+                page-break-after: avoid;
+            }
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            body {
+                width: 100%;
+                padding: 10px;
+            }
+            
+            .content-grid,
+            .directions-grid,
+            .rules-grid,
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .staff-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .booking-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .location-features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 36px;
+            }
+            
+            .main-title {
+                font-size: 22px;
+            }
+            
+            .subtitle {
+                font-size: 18px;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .staff-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .admin-card {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .schedule-tooltip {
+                width: 280px;
+                left: 50% !important;
+                transform: translateX(-50%);
+            }
+            
+            .tooltip-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .tooltip-photo {
+                align-self: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 15px;
+            }
+            
+            .logo {
+                font-size: 28px;
+            }
         }
     </style>
 </head>
@@ -1585,453 +1472,451 @@
             <div class="section schedule-section">
                 <h2 class="section-title">📅 <span class="highlight-text">РАСПИСАНИЕ ЗАНЯТИЙ</span></h2>
                 
-                <div class="schedule-container">
-                    <table class="schedule-table">
-                        <thead> 
-                            <tr>
-                                <th>ВРЕМЯ</th>
-                                <th>ПОНЕДЕЛЬНИК</th>
-                                <th>ВТОРНИК</th>
-                                <th>СРЕДА</th>
-                                <th>ЧЕТВЕРГ</th>
-                                <th>ПЯТНИЦА</th>
-                                <th>СУББОТА</th>
-                                <th>ВОСКРЕСЕНЬЕ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- 8:00-9:00 -->
-                            <tr>
-                                <td class="time-slot">8:00-9:00</td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                                    <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                                    <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
-                                </td>
-                                <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                                    <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                                    <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                                    <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
-                                </td>
-                                <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
-                                    <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
-                                </td>
-                                <td class="empty">—</td>
-                            </tr>
+                <table class="schedule-table">
+                    <thead> 
+                        <tr>
+                            <th>ВРЕМЯ</th>
+                            <th>ПОНЕДЕЛЬНИК</th>
+                            <th>ВТОРНИК</th>
+                            <th>СРЕДА</th>
+                            <th>ЧЕТВЕРГ</th>
+                            <th>ПЯТНИЦА</th>
+                            <th>СУББОТА</th>
+                            <th>ВОСКРЕСЕНЬЕ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 8:00-9:00 -->
+                        <tr>
+                            <td class="time-slot">8:00-9:00</td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
+                                <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
+                                <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
+                                <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
+                                <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
+                                <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ ДЛЯ ВСЕХ»</div>
+                                <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="empty">—</td>
+                        </tr>
 
-                            <!-- 9:00-10:00 -->
-                            <tr>
-                                <td class="time-slot">9:00-10:00</td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                                    <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                                    <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
-                                </td>
-                                <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                                    <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                                    <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                                    <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
-                                </td>
-                                <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
-                                    <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
-                                </td>
-                                <td class="empty">—</td>
-                            </tr>
+                        <!-- 9:00-10:00 -->
+                        <tr>
+                            <td class="time-slot">9:00-10:00</td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
+                                <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
+                                <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
+                                <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
+                                <div class="class-group">Группа 1 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
+                                <div class="class-group">Группа 2 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ФУНКЦИОНАЛЬНЫЙ ТОНУС»</div>
+                                <div class="class-group">Группа 3 • 17+, 25+, 45+ лет</div>
+                            </td>
+                            <td class="empty">—</td>
+                        </tr>
 
-                            <!-- 10:00-11:00 -->
-                            <tr>
-                                <td class="time-slot">10:00-11:00</td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                    <div class="class-group">Группа 1 • 8-10 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                    <div class="class-group">Группа 2 • 8-10 лет</div>
-                                </td>
-                                <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                    <div class="class-group">Группа 3 • 8-10 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                    <div class="class-group">Группа 1 • 8-10 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                    <div class="class-group">Группа 2 • 8-10 лет</div>
-                                </td>
-                                <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                    <div class="class-group">Группа 3 • 8-10 лет</div>
-                                </td>
-                                <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ГИБКОЕ ТЕЛО"</div>
-                                    <div class="class-group">Группа 1 • 5+ лет</div>
-                                </td>
-                            </tr>
+                        <!-- 10:00-11:00 -->
+                        <tr>
+                            <td class="time-slot">10:00-11:00</td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 1 • 8-10 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 2 • 8-10 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 3 • 8-10 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 1 • 8-10 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 2 • 8-10 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 3 • 8-10 лет</div>
+                            </td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ГИБКОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 1 • 5+ лет</div>
+                            </td>
+                        </tr>
 
-                            <!-- 11:00-12:00 -->
-                            <tr>
-                                <td class="time-slot">11:00-12:00</td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                    <div class="class-group">Группа 1 • 14-16 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                    <div class="class-group">Группа 2 • 14-16 лет</div>
-                                </td>
-                                <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                    <div class="class-group">Группа 3 • 14-16 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                    <div class="class-group">Группа 1 • 14-16 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                    <div class="class-group">Группа 2 • 14-16 лет</div>
-                                </td>
-                                <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                    <div class="class-group">Группа 3 • 14-16 лет</div>
-                                </td>
-                                <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ГИБКОЕ ТЕЛО"</div>
-                                    <div class="class-group">Группа 2 • 5+ лет</div>
-                                </td>
-                            </tr>
+                        <!-- 11:00-12:00 -->
+                        <tr>
+                            <td class="time-slot">11:00-12:00</td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 1 • 14-16 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 2 • 14-16 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 3 • 14-16 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 1 • 14-16 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 2 • 14-16 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 3 • 14-16 лет</div>
+                            </td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ГИБКОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 2 • 5+ лет</div>
+                            </td>
+                        </tr>
 
-                            <!-- 12:00-13:00 -->
-                            <tr>
-                                <td class="time-slot">12:00-13:00</td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                    <div class="class-group">Группа 1 • 11-13 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                    <div class="class-group">Группа 2 • 11-13 лет</div>
-                                </td>
-                                <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                    <div class="class-group">Группа 3 • 11-13 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                    <div class="class-group">Группа 1 • 11-13 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                    <div class="class-group">Группа 2 • 11-13 лет</div>
-                                </td>
-                                <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                    <div class="class-group">Группа 3 • 11-13 лет</div>
-                                </td>
-                                <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"СЕМЕЙНАЯ РАСТЯЖКА"</div>
-                                    <div class="class-group">Родители + дети 5+</div>
-                                </td>
-                            </tr>
+                        <!-- 12:00-13:00 -->
+                        <tr>
+                            <td class="time-slot">12:00-13:00</td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 1 • 11-13 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 2 • 11-13 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 3 • 11-13 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 1 • 11-13 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 2 • 11-13 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 3 • 11-13 лет</div>
+                            </td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"СЕМЕЙНАЯ РАСТЯЖКА"</div>
+                                <div class="class-group">Родители + дети 5+</div>
+                            </td>
+                        </tr>
 
-                            <!-- 13:00-14:00 -->
-                            <tr>
-                                <td class="time-slot">13:00-14:00</td>
-                                <td class="break" colspan="6">Обеденный перерыв/резервный час для индивидуальных занятий</td>
-                                <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ГИБКИЙ ПОДРОСТОК"</div>
-                                    <div class="class-group">Группа 1 • 11+ лет</div>
-                                </td>
-                            </tr>
+                        <!-- 13:00-14:00 -->
+                        <tr>
+                            <td class="time-slot">13:00-14:00</td>
+                            <td class="break" colspan="6">Обеденный перерыв/резервный час для индивидуальных занятий</td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ГИБКИЙ ПОДРОСТОК"</div>
+                                <div class="class-group">Группа 1 • 11+ лет</div>
+                            </td>
+                        </tr>
 
-                            <!-- 14:00-15:00 -->
-                            <tr>
-                                <td class="time-slot">14:00-15:00</td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                    <div class="class-group">Группа 1 • 8-10 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                    <div class="class-group">Группа 2 • 8-10 лет</div>
-                                </td>
-                                <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                    <div class="class-group">Группа 3 • 8-10 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                    <div class="class-group">Группа 1 • 8-10 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                    <div class="class-group">Группа 2 • 8-10 лет</div>
-                                </td>
-                                <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
-                                    <div class="class-group">Группа 3 • 8-10 лет</div>
-                                </td>
-                                <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ГИБКИЙ ПОДРОСТОК"</div>
-                                    <div class="class-group">Группа 2 • 11+ лет</div>
-                                </td>
-                            </tr>
+                        <!-- 14:00-15:00 -->
+                        <tr>
+                            <td class="time-slot">14:00-15:00</td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 1 • 8-10 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 2 • 8-10 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 3 • 8-10 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 1 • 8-10 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 2 • 8-10 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ЮНЫЙ ТАНЦОР"</div>
+                                <div class="class-group">Группа 3 • 8-10 лет</div>
+                            </td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ГИБКИЙ ПОДРОСТОК"</div>
+                                <div class="class-group">Группа 2 • 11+ лет</div>
+                            </td>
+                        </tr>
 
-                            <!-- 15:00-16:00 -->
-                            <tr>
-                                <td class="time-slot">15:00-16:00</td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                    <div class="class-group">Группа 1 • 11-13 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                    <div class="class-group">Группа 2 • 11-13 лет</div>
-                                </td>
-                                <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                    <div class="class-group">Группа 3 • 11-13 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                    <div class="class-group">Группа 1 • 11-13 лет</div>
-                                </td>
-                                <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                    <div class="class-group">Группа 2 • 11-13 лет</div>
-                                </td>
-                                <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
-                                    <div class="class-group">Группа 3 • 11-13 лет</div>
-                                </td>
-                                <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«СВОБОДА ДВИЖЕНИЙ»</div>
-                                    <div class="class-group">Группа 1 • 17+ лет</div>
-                                </td>
-                            </tr>
+                        <!-- 15:00-16:00 -->
+                        <tr>
+                            <td class="time-slot">15:00-16:00</td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 1 • 11-13 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 2 • 11-13 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 3 • 11-13 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 1 • 11-13 лет</div>
+                            </td>
+                            <td class="stepan-class class-cell" onmouseenter="showScheduleTooltip(event, 'stepan')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 2 • 11-13 лет</div>
+                            </td>
+                            <td class="white-class class-cell" onmouseenter="showScheduleTooltip(event, 'white')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ЭКСПРЕССИЯ"</div>
+                                <div class="class-group">Группа 3 • 11-13 лет</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«СВОБОДА ДВИЖЕНИЙ»</div>
+                                <div class="class-group">Группа 1 • 17+ лет</div>
+                            </td>
+                        </tr>
 
-                            <!-- 16:00-17:00 -->
-                            <tr>
-                                <td class="time-slot">16:00-17:00</td>
-                                <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                                    <div class="class-group">Группа 1 • 3-4 года</div>
-                                </td>
-                                <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                                    <div class="class-group">Группа 2 • 3-4 года</div>
-                                </td>
-                                <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                                    <div class="class-group">Группа 3 • 3-4 года</div>
-                                </td>
-                                <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                                    <div class="class-group">Группа 1 • 3-4 года</div>
-                                </td>
-                                <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                                    <div class="class-group">Группа 2 • 3-4 года</div>
-                                </td>
-                                <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ИГРА"</div>
-                                    <div class="class-group">Группа 3 • 3-4 года</div>
-                                </td>
-                                <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«СВОБОДА ДВИЖЕНИЙ»</div>
-                                    <div class="class-group">Группа 2 • 17+ лет</div>
-                                </td>
-                            </tr>
+                        <!-- 16:00-17:00 -->
+                        <tr>
+                            <td class="time-slot">16:00-17:00</td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
+                                <div class="class-group">Группа 1 • 3-4 года</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
+                                <div class="class-group">Группа 2 • 3-4 года</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
+                                <div class="class-group">Группа 3 • 3-4 года</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
+                                <div class="class-group">Группа 1 • 3-4 года</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
+                                <div class="class-group">Группа 2 • 3-4 года</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ИГРА"</div>
+                                <div class="class-group">Группа 3 • 3-4 года</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«СВОБОДА ДВИЖЕНИЙ»</div>
+                                <div class="class-group">Группа 2 • 17+ лет</div>
+                            </td>
+                        </tr>
 
-                            <!-- 17:00-18:00 -->
-                            <tr>
-                                <td class="time-slot">17:00-18:00</td>
-                                <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                                    <div class="class-group">Группа 1 • 5-7 лет</div>
-                                </td>
-                                <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                                    <div class="class-group">Группа 2 • 5-7 лет</div>
-                                </td>
-                                <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                                    <div class="class-group">Группа 3 • 5-7 лет</div>
-                                </td>
-                                <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                                    <div class="class-group">Группа 1 • 5-7 лет</div>
-                                </td>
-                                <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                                    <div class="class-group">Группа 2 • 5-7 лет</div>
-                                </td>
-                                <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ПЕРВЫЕ ПА"</div>
-                                    <div class="class-group">Группа 3 • 5-7 лет</div>
-                                </td>
-                                <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ГИБКОСТЬ И ГРАЦИЯ»</div>
-                                    <div class="class-group">Группа 1 • 25+ лет</div>
-                                </td>
-                            </tr>
+                        <!-- 17:00-18:00 -->
+                        <tr>
+                            <td class="time-slot">17:00-18:00</td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
+                                <div class="class-group">Группа 1 • 5-7 лет</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
+                                <div class="class-group">Группа 2 • 5-7 лет</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
+                                <div class="class-group">Группа 3 • 5-7 лет</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
+                                <div class="class-group">Группа 1 • 5-7 лет</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
+                                <div class="class-group">Группа 2 • 5-7 лет</div>
+                            </td>
+                            <td class="alina-class class-cell" onmouseenter="showScheduleTooltip(event, 'alina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ПЕРВЫЕ ПА"</div>
+                                <div class="class-group">Группа 3 • 5-7 лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ И ГРАЦИЯ»</div>
+                                <div class="class-group">Группа 1 • 25+ лет</div>
+                            </td>
+                        </tr>
 
-                            <!-- 18:00-19:00 -->
-                            <tr>
-                                <td class="time-slot">18:00-19:00</td>
-                                <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                    <div class="class-group">Группа 1 • 14-16 лет</div>
-                                </td>
-                                <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                    <div class="class-group">Группа 2 • 14-16 лет</div>
-                                </td>
-                                <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                    <div class="class-group">Группа 1 • 14-16 лет</div>
-                                </td>
-                                <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                    <div class="class-group">Группа 3 • 14-16 лет</div>
-                                </td>
-                                <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                    <div class="class-group">Группа 2 • 14-16 лет</div>
-                                </td>
-                                <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
-                                    <div class="class-group">Группа 3 • 14-16 лет</div>
-                                </td>
-                                <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ГИБКОСТЬ И ГРАЦИЯ»</div>
-                                    <div class="class-group">Группа 2 • 25+ лет</div>
-                                </td>
-                            </tr>
+                        <!-- 18:00-19:00 -->
+                        <tr>
+                            <td class="time-slot">18:00-19:00</td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 1 • 14-16 лет</div>
+                            </td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 2 • 14-16 лет</div>
+                            </td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 1 • 14-16 лет</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 3 • 14-16 лет</div>
+                            </td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 2 • 14-16 лет</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ-ДРАЙВ"</div>
+                                <div class="class-group">Группа 3 • 14-16 лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ГИБКОСТЬ И ГРАЦИЯ»</div>
+                                <div class="class-group">Группа 2 • 25+ лет</div>
+                            </td>
+                        </tr>
 
-                            <!-- 19:00-20:00 -->
-                            <tr>
-                                <td class="time-slot">19:00-20:00</td>
-                                <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                                    <div class="class-group">Группа 1 • 17+ лет</div>
-                                </td>
-                                <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                                    <div class="class-group">Группа 2 • 17+ лет</div>
-                                </td>
-                                <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                                    <div class="class-group">Группа 1 • 17+ лет</div>
-                                </td>
-                                <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                                    <div class="class-group">Группа 3 • 17+ лет</div>
-                                </td>
-                                <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                                    <div class="class-group">Группа 2 • 17+ лет</div>
-                                </td>
-                                <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
-                                    <div class="class-group">Группа 3 • 17+ лет</div>
-                                </td>
-                                <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ПЛАСТИКА 45+»</div>
-                                    <div class="class-group">Группа 1 • 45+ лет</div>
-                                </td>
-                            </tr>
+                        <!-- 19:00-20:00 -->
+                        <tr>
+                            <td class="time-slot">19:00-20:00</td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
+                                <div class="class-group">Группа 1 • 17+ лет</div>
+                            </td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
+                                <div class="class-group">Группа 2 • 17+ лет</div>
+                            </td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
+                                <div class="class-group">Группа 1 • 17+ лет</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
+                                <div class="class-group">Группа 3 • 17+ лет</div>
+                            </td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
+                                <div class="class-group">Группа 2 • 17+ лет</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЕЦ ДЛЯ ДУШИ"</div>
+                                <div class="class-group">Группа 3 • 17+ лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ПЛАСТИКА 45+»</div>
+                                <div class="class-group">Группа 1 • 45+ лет</div>
+                            </td>
+                        </tr>
 
-                            <!-- 20:00-21:00 -->
-                            <tr>
-                                <td class="time-slot">20:00-21:00</td>
-                                <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                                    <div class="class-group">Группа 1 • 25+ лет</div>
-                                </td>
-                                <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                                    <div class="class-group">Группа 2 • 25+ лет</div>
-                                </td>
-                                <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                                    <div class="class-group">Группа 1 • 25+ лет</div>
-                                </td>
-                                <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                                    <div class="class-group">Группа 3 • 25+ лет</div>
-                                </td>
-                                <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                                    <div class="class-group">Группа 2 • 25+ лет</div>
-                                </td>
-                                <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
-                                    <div class="class-group">Группа 3 • 25+ лет</div>
-                                </td>
-                                <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">«ПЛАСТИКА 45+»</div>
-                                    <div class="class-group">Группа 2 • 45+ лет</div>
-                                </td>
-                            </tr>
+                        <!-- 20:00-21:00 -->
+                        <tr>
+                            <td class="time-slot">20:00-21:00</td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 1 • 25+ лет</div>
+                            </td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 2 • 25+ лет</div>
+                            </td>
+                            <td class="valeria-class class-cell" onmouseenter="showScheduleTooltip(event, 'valeria')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 1 • 25+ лет</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 3 • 25+ лет</div>
+                            </td>
+                            <td class="anastasia-class class-cell" onmouseenter="showScheduleTooltip(event, 'anastasia')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 2 • 25+ лет</div>
+                            </td>
+                            <td class="yaroslava-class class-cell" onmouseenter="showScheduleTooltip(event, 'yaroslava')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ОСОЗНАННОЕ ТЕЛО"</div>
+                                <div class="class-group">Группа 3 • 25+ лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">«ПЛАСТИКА 45+»</div>
+                                <div class="class-group">Группа 2 • 45+ лет</div>
+                            </td>
+                        </tr>
 
-                            <!-- 21:00-22:00 -->
-                            <tr>
-                                <td class="time-slot">21:00-22:00</td>
-                                <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
-                                    <div class="class-group">Группа 1 • 45+ лет</div>
-                                </td>
-                                <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
-                                    <div class="class-group">Группа 2 • 45+ лет</div>
-                                </td>
-                                <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"РАСТЯЖКА ДЛЯ ДУШИ"</div>
-                                    <div class="class-group">45+ лет</div>
-                                </td>
-                                <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
-                                    <div class="class-group">Группа 1 • 45+ лет</div>
-                                </td>
-                                <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
-                                    <div class="class-group">Группа 2 • 45+ лет</div>
-                                </td>
-                                <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
-                                    <div class="class-name">"РАСТЯЖКА ДЛЯ ДУШИ"</div>
-                                    <div class="class-group">45+ лет</div>
-                                </td>
-                                <td class="empty">—</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                        <!-- 21:00-22:00 -->
+                        <tr>
+                            <td class="time-slot">21:00-22:00</td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
+                                <div class="class-group">Группа 1 • 45+ лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
+                                <div class="class-group">Группа 2 • 45+ лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"РАСТЯЖКА ДЛЯ ДУШИ"</div>
+                                <div class="class-group">45+ лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
+                                <div class="class-group">Группа 1 • 45+ лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"ТАНЦУЕМ ВСЕЙ ДУШОЙ"</div>
+                                <div class="class-group">Группа 2 • 45+ лет</div>
+                            </td>
+                            <td class="ekaterina-class class-cell" onmouseenter="showScheduleTooltip(event, 'ekaterina')" onmouseleave="hideScheduleTooltip()">
+                                <div class="class-name">"РАСТЯЖКА ДЛЯ ДУШИ"</div>
+                                <div class="class-group">45+ лет</div>
+                            </td>
+                            <td class="empty">—</td>
+                        </tr>
+                    </tbody>
+                </table>
 
                 <!-- Всплывающие подсказки для преподавателей -->
                 <div id="scheduleTooltip" class="schedule-tooltip"></div>
@@ -2053,129 +1938,127 @@
                 
                 <div class="main-container">
                     <!-- Левый столбец -->
-                     <div class="columns-container">
-            <!-- Левый столбец -->
-            <div class="column">
-                <!-- Пробное занятие -->
-                <div class="price-section trial-section">
-                    <h2 class="section-title">🎁 <span class="highlight-sale">ПРОБНОЕ ЗАНЯТИЕ ОТ</span></h2>
-                    <div class="trial-price"><span class="highlight-number">300 ₽</span></div>
-                    <div class="description">Любое направление • Консультация преподавателя</div>
-                </div>
+                    <div class="column">
+                        <!-- Пробное занятие -->
+                        <div class="price-section trial-section">
+                            <h2 class="section-title">🎁 <span class="highlight-sale">ПРОБНОЕ ЗАНЯТИЕ ОТ</span></h2>
+                            <div class="trial-price"><span class="highlight-number">300 ₽</span></div>
+                            <div class="description">Любое направление • Консультация преподавателя</div>
+                        </div>
 
-                <!-- Детские направления -->
-                <div class="price-section kids-section">
-                    <h2 class="section-title">👶 <span class="highlight-text">ДЕТСКИЕ НАПРАВЛЕНИЯ</span></h2>
-                    <div class="description"><span class="highlight-number">(3-16 лет)</span></div>
-                    
-                    <div class="price-item">
-                        <div class="price-name">Пробное занятие</div>
-                        <div class="price-value"><span class="highlight-number">350 ₽</span></div>
+                        <!-- Детские направления -->
+                        <div class="price-section kids-section">
+                            <h2 class="section-title">👶 <span class="highlight-text">ДЕТСКИЕ НАПРАВЛЕНИЯ</span></h2>
+                            <div class="description"><span class="highlight-number">(3-16 лет)</span></div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Пробное занятие</div>
+                                <div class="price-value"><span class="highlight-number">350 ₽</span></div>
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Разовое посещение</div>
+                                <div class="price-value"><span class="highlight-number">400 ₽</span></div>
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Абонемент на <span class="highlight-text">8 занятий</span></div>
+                                <div class="price-value"><span class="highlight-number">2 800 ₽</span> <span class="best-price">ВЫГОДА</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Растяжка -->
+                        <div class="price-section stretching-section">
+                            <h2 class="section-title">🧘 <span class="highlight-text">РАСТЯЖКА</span></h2>
+                           
+                            <div class="price-item">
+                                <div class="price-name">Пробное утреннее занятие</div>
+                                <div class="price-value"><span class="highlight-number">320 ₽</span></div>
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Разовое посещение утреннее</div>
+                                <div class="price-value"><span class="highlight-number">375 ₽</span></div>
+                            </div>
+
+                            <div class="price-item">
+                                <div class="price-name">Утренняя растяжка (8 занятий)</div>
+                                <div class="price-value"><span class="highlight-number">2800 ₽</span> <span class="best-price">ВЫГОДА</span></div>
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Пробное посещение Воскресного занятия</div>
+                                <div class="price-value"><span class="highlight-number">500 ₽</span></div>
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Разовое посещение Воскресного занятия</div>
+                                <div class="price-value"><span class="highlight-number">600 ₽</span></div>
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Абонемент Воскресный на 4 занятия</div>
+                                <div class="price-value"><span class="highlight-number">2200 ₽</span> <span class="best-price">ВЫГОДА</span></div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="price-item">
-                        <div class="price-name">Разовое посещение</div>
-                        <div class="price-value"><span class="highlight-number">400 ₽</span></div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-name">Абонемент на <span class="highlight-text">8 занятий</span></div>
-                        <div class="price-value"><span class="highlight-number">2 800 ₽</span> <span class="best-price">ВЫГОДА</span></div>
+
+                    <!-- Правый столбец -->
+                    <div class="column">
+                        <!-- Взрослые направления -->
+                        <div class="price-section adults-section">
+                            <h2 class="section-title">👩‍🦱 <span class="highlight-text">ВЗРОСЛЫЕ НАПРАВЛЕНИЯ</span></h2>
+                            <div class="description"><span class="highlight-number">(17+ лет)</span></div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Разовое посещение</div>
+                                <div class="price-value"><span class="highlight-number">500 ₽</span></div>
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">Абонемент на <span class="highlight-text">8 занятий</span></div>
+                                <div class="price-value"><span class="highlight-number">3 200 ₽</span> <span class="best-price">ВЫГОДА</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Индивидуальные занятия -->
+                        <div class="price-section individual-section">
+                            <h2 class="section-title">💫 <span class="highlight-text">ИНДИВИДУАЛЬНЫЕ ЗАНЯТИЯ</span></h2>
+                            
+                            <div class="price-item">
+                                <div class="price-name">1 занятие (60 минут)</div>
+                                <div class="price-value"><span class="highlight-number">1 500 ₽</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Комплексные пакеты -->
+                        <div class="price-section packages-section">
+                            <h2 class="section-title">🏆 <span class="highlight-text">КОМПЛЕКСНЫЕ ПАКЕТЫ</span></h2>
+                            
+                            <div class="price-item">
+                                <div class="price-name">«Детский +»<br><small>танцы 8 занятий + растяжка 4</small></div>
+                                <div class="price-value"><span class="highlight-number">4250 ₽</span> <span class="best-price">-15%</span></div> 
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">«Взрослый +»<br><small>танцы 8 занятий + растяжка 4</small></div>
+                                <div class="price-value"><span class="highlight-number">4860 ₽</span> <span class="best-price">-10%</span></div> 
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">«Семейная растяжка»<br><small>2 человека, 8 занятий</small></div>
+                                <div class="price-value"><span class="highlight-number">2040 ₽</span> <span class="best-price">-15%</span></div> 
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-name">«Полный»<br><small>3 абонимента в одном 17+</small></div>
+                                <div class="price-value"><span class="highlight-number">6560 ₽</span> <span class="best-price">-30%</span></div> 
+                            </div>
+                            
+                            <div class="description">Экономия до 30% по сравнению с отдельными абонементами</div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Растяжка -->
-                <div class="price-section stretching-section">
-                    <h2 class="section-title">🧘 <span class="highlight-text">РАСТЯЖКА</span></h2>
-                   
-                    <div class="price-item">
-                        <div class="price-name">Пробное утреннее занятие</div>
-                        <div class="price-value"><span class="highlight-number">320 ₽</span></div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-name">Разовое посещение утреннее</div>
-                        <div class="price-value"><span class="highlight-number">375 ₽</span></div>
-                    </div>
-
-                    <div class="price-item">
-                        <div class="price-name">Утренняя растяжка (8 занятий)</div>
-                        <div class="price-value"><span class="highlight-number">2800 ₽</span> <span class="best-price">ВЫГОДА</span></div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-name">Пробное посещение Воскресного занятия</div>
-                        <div class="price-value"><span class="highlight-number">500 ₽</span></div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-name">Разовое посещение Воскресного занятия</div>
-                        <div class="price-value"><span class="highlight-number">600 ₽</span></div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-name">Абонемент Воскресный на 4 занятия</div>
-                        <div class="price-value"><span class="highlight-number">2200 ₽</span> <span class="best-price">ВЫГОДА</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Правый столбец -->
-            <div class="column">
-                <!-- Взрослые направления -->
-                <div class="price-section adults-section">
-                    <h2 class="section-title">👩‍🦱 <span class="highlight-text">ВЗРОСЛЫЕ НАПРАВЛЕНИЯ</span></h2>
-                    <div class="description"><span class="highlight-number">(17+ лет)</span></div>
-                    
-                    <div class="price-item">
-                        <div class="price-name">Разовое посещение</div>
-                        <div class="price-value"><span class="highlight-number">500 ₽</span></div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-name">Абонемент на <span class="highlight-text">8 занятий</span></div>
-                        <div class="price-value"><span class="highlight-number">3 200 ₽</span> <span class="best-price">ВЫГОДА</span></div>
-                    </div>
-                </div>
-
-                <!-- Индивидуальные занятия -->
-                <div class="price-section individual-section">
-                    <h2 class="section-title">💫 <span class="highlight-text">ИНДИВИДУАЛЬНЫЕ ЗАНЯТИЯ</span></h2>
-                    
-                    <div class="price-item">
-                        <div class="price-name">1 занятие (60 минут)</div>
-                        <div class="price-value"><span class="highlight-number">1 500 ₽</span></div>
-                    </div>
-                </div>
-
-                <!-- Комплексные пакеты -->
-                <div class="price-section packages-section">
-                    <h2 class="section-title">🏆 <span class="highlight-text">КОМПЛЕКСНЫЕ ПАКЕТЫ</span></h2>
-                    
-                    <div class="price-item">
-                        <div class="price-name">«Детский +»<br><small>танцы 8 занятий + растяжка 4</small></div>
-                        <div class="price-value"><span class="highlight-number">4250 ₽</span> <span class="discount">-15%</span></div> 
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-name">«Взрослый +»<br><small>танцы 8 занятий + растяжка 4</small></div>
-                        <div class="price-value"><span class="highlight-number">4860 ₽</span> <span class="discount">-10%</span></div> 
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-name">«Семейная растяжка»<br><small>2 человека, 8 занятий</small></div>
-                        <div class="price-value"><span class="highlight-number">2040 ₽</span> <span class="discount">-15%</span></div> 
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-name">«Полный»<br><small>3 абонимента в одном 17+</small></div>
-                        <div class="price-value"><span class="highlight-number">6560 ₽</span> <span class="discount">-30%</span></div> 
-                    </div>
-                    
-                    <div class="description">Экономия до 30% по сравнению с отдельными абонементами</div>
-                </div>
-            </div>
-        </div>
                 
                 <button class="btn-yclients" onclick="openYclientsWidget()">
                     💰 ЗАБРОНИРОВАТЬ АБОНЕМЕНТ ОНЛАЙН
