@@ -215,6 +215,29 @@
             transform: translateY(-2px);
         }
 
+        .btn-telegram {
+            background: #0088cc;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,136,204,0.3);
+            margin: 10px auto;
+            display: block;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .btn-telegram:hover {
+            background: #0077b3;
+            box-shadow: 0 6px 20px rgba(0,136,204,0.4);
+            transform: translateY(-2px);
+        }
+
         /* Вкладки */
         .tabs {
             display: flex;
@@ -1459,6 +1482,10 @@
                 <button class="btn-yclients" onclick="openYclientsWidget()">
                     🎯 ВЫБРАТЬ НАПРАВЛЕНИЕ И ЗАПИСАТЬСЯ ОНЛАЙН
                 </button>
+
+                <button class="btn-telegram" onclick="openTelegramBot()">
+                    🤖 ЗАПИСАТЬСЯ ЧЕРЕЗ TELEGRAM БОТА
+                </button>
                 
                 <div class="highlight">
                     💫 <span class="highlight-text">ПРОФЕССИОНАЛЬНЫЕ ПЕДАГОГИ</span> с опытом работы 
@@ -1924,6 +1951,10 @@
                 <button class="btn-yclients" onclick="openYclientsWidget()">
                     📅 ЗАПИСАТЬСЯ НА ЗАНЯТИЕ ОНЛАЙН
                 </button>
+
+                <button class="btn-telegram" onclick="openTelegramBot()">
+                    🤖 ЗАПИСАТЬСЯ ЧЕРЕЗ TELEGRAM БОТА
+                </button>
                 
                 <div class="highlight">
                     📍 Полное расписание с учетом индивидуальных занятий и мастер-классов доступно у администратора
@@ -2064,6 +2095,10 @@
                     💰 ЗАБРОНИРОВАТЬ АБОНЕМЕНТ ОНЛАЙН
                 </button>
 
+                <button class="btn-telegram" onclick="openTelegramBot()">
+                    🤖 ЗАПИСАТЬСЯ ЧЕРЕЗ TELEGRAM БОТА
+                </button>
+
                 <div class="price-section conditions-section">
                     <h2 class="section-title">📋 <span class="highlight-text">УСЛОВИЯ ОБСЛУЖИВАНИЯ</span></h2>
                     
@@ -2124,6 +2159,10 @@
                         🎯 ПЕРЕЙТИ К ОНЛАЙН-ЗАПИСИ
                     </button>
 
+                    <button class="btn-telegram" onclick="openTelegramBot()">
+                        🤖 ЗАПИСАТЬСЯ ЧЕРЕЗ TELEGRAM БОТА
+                    </button>
+
                     <div class="highlight">
                         💫 Запись через систему YClients - надежный и проверенный сервис для бронирования занятий
                     </div>
@@ -2139,104 +2178,107 @@
         </div>
 
         <!-- Вкладка команды -->
-       <div id="staff" class="tab-content">
-    <div class="section staff-section">
-        <h2 class="section-title">👥 <span class="highlight-text">НАША КОМАНДА</span></h2>
-        
-        <div class="staff-grid">
-            <!-- Степан -->
-            <div class="staff-card">
-                <div class="staff-photo">СТЕПАН</div>
-                <div class="staff-name">Лосев Степан Владимирович</div>
-                <div class="staff-position">Тренер групп 8-13, 13-18 лет</div>
-                <div class="staff-contacts">📞 89087790425</div>
-                <div class="staff-contacts">✉️ Stepan_losev@vk.com</div>
-                <div class="staff-contacts">Опыт: Лучший в своем деле</div>
-            </div>
-            
-            <!-- Алина -->
-            <div class="staff-card">
-                <div class="staff-photo">АЛИНА</div>
-                <div class="staff-name">Баранова Алина Юрьевна</div>
-                <div class="staff-position">Тренер групп 3-4 года, 5-7 лет</div>
-                <div class="staff-contacts">📞 89149194624</div>
-                <div class="staff-contacts">✉️ Alina.choreo@mail.ru</div>
-                <div class="staff-contacts">Опыт: 8 лет преподавания, танцы с 4 лет</div>
-            </div>
-            
-            <!-- Анастасия -->
-            <div class="staff-card">
-                <div class="staff-photo">АНАСТАСИЯ</div>
-                <div class="staff-name">Кобыльцова Анастасия Викторовна</div>
-                <div class="staff-position">Тренер групп «17+», «14-16», «25+»</div>
-                <div class="staff-contacts">📞 +79516250598</div>
-                <div class="staff-contacts">✉️ kobylcovaanastasia@gmail.com</div>
-                <div class="staff-contacts">Опыт: 4 года, хореографический стаж 13 лет</div>
-            </div>
-            
-            <!-- Екатерина -->
-            <div class="staff-card">
-                <div class="staff-photo">ЕКАТЕРИНА</div>
-                <div class="staff-name">Косова Екатерина Сергеевна</div>
-                <div class="staff-position">Тренер социальные танцы 45+, растяжка 25+ 45+</div>
-                <div class="staff-contacts">📞 89142395489</div>
-                <div class="staff-contacts">✉️ kes062006@gmail.com</div>
-                <div class="staff-contacts">Опыт: спортивно-бальные танцы с 5 лет</div>
-            </div>
-            
-            <!-- Ярослава -->
-            <div class="staff-card">
-                <div class="staff-photo">ЯРОСЛАВА</div>
-                <div class="staff-name">Рассохина Ярослава Дмитриевна</div>
-                <div class="staff-position">Тренер групп 14-16, 17+, 25+</div>
-                <div class="staff-contacts">📞 89642755534</div>
-                <div class="staff-contacts">✉️ r.yroslava2004@gmail.com</div>
-                <div class="staff-contacts">Опыт: 14 лет в хореографии, педагогический стаж 3 года</div>
-            </div>
-            
-            <!-- Валерия -->
-            <div class="staff-card">
-                <div class="staff-photo">ВАЛЕРИЯ</div>
-                <div class="staff-name">Суворова Валерия Алексеевна</div>
-                <div class="staff-position">Тренер групп 14-16 лет, 17+, 25+, 45+</div>
-                <div class="staff-contacts">📞 89960343973</div>
-                <div class="staff-contacts">✉️ suvorkaleriaaa@gmail.com</div>
-                <div class="staff-contacts">Опыт: 14+ лет в хореографии, 4 года постановочной деятельности</div>
+        <div id="staff" class="tab-content">
+            <div class="section staff-section">
+                <h2 class="section-title">👥 <span class="highlight-text">НАША КОМАНДА</span></h2>
+                
+                <div class="staff-grid">
+                    <!-- Степан -->
+                    <div class="staff-card">
+                        <div class="staff-photo">СТЕПАН</div>
+                        <div class="staff-name">Лосев Степан Владимирович</div>
+                        <div class="staff-position">Тренер групп 8-13, 13-18 лет</div>
+                        <div class="staff-contacts">📞 89087790425</div>
+                        <div class="staff-contacts">✉️ Stepan_losev@vk.com</div>
+                        <div class="staff-contacts">Опыт: Лучший в своем деле</div>
+                    </div>
+                    
+                    <!-- Алина -->
+                    <div class="staff-card">
+                        <div class="staff-photo">АЛИНА</div>
+                        <div class="staff-name">Баранова Алина Юрьевна</div>
+                        <div class="staff-position">Тренер групп 3-4 года, 5-7 лет</div>
+                        <div class="staff-contacts">📞 89149194624</div>
+                        <div class="staff-contacts">✉️ Alina.choreo@mail.ru</div>
+                        <div class="staff-contacts">Опыт: 8 лет преподавания, танцы с 4 лет</div>
+                    </div>
+                    
+                    <!-- Анастасия -->
+                    <div class="staff-card">
+                        <div class="staff-photo">АНАСТАСИЯ</div>
+                        <div class="staff-name">Кобыльцова Анастасия Викторовна</div>
+                        <div class="staff-position">Тренер групп «17+», «14-16», «25+»</div>
+                        <div class="staff-contacts">📞 +79516250598</div>
+                        <div class="staff-contacts">✉️ kobylcovaanastasia@gmail.com</div>
+                        <div class="staff-contacts">Опыт: 4 года, хореографический стаж 13 лет</div>
+                    </div>
+                    
+                    <!-- Екатерина -->
+                    <div class="staff-card">
+                        <div class="staff-photo">ЕКАТЕРИНА</div>
+                        <div class="staff-name">Косова Екатерина Сергеевна</div>
+                        <div class="staff-position">Тренер социальные танцы 45+, растяжка 25+ 45+</div>
+                        <div class="staff-contacts">📞 89142395489</div>
+                        <div class="staff-contacts">✉️ kes062006@gmail.com</div>
+                        <div class="staff-contacts">Опыт: спортивно-бальные танцы с 5 лет</div>
+                    </div>
+                    
+                    <!-- Ярослава -->
+                    <div class="staff-card">
+                        <div class="staff-photo">ЯРОСЛАВА</div>
+                        <div class="staff-name">Рассохина Ярослава Дмитриевна</div>
+                        <div class="staff-position">Тренер групп 14-16, 17+, 25+</div>
+                        <div class="staff-contacts">📞 89642755534</div>
+                        <div class="staff-contacts">✉️ r.yroslava2004@gmail.com</div>
+                        <div class="staff-contacts">Опыт: 14 лет в хореографии, педагогический стаж 3 года</div>
+                    </div>
+                    
+                    <!-- Валерия -->
+                    <div class="staff-card">
+                        <div class="staff-photo">ВАЛЕРИЯ</div>
+                        <div class="staff-name">Суворова Валерия Алексеевна</div>
+                        <div class="staff-position">Тренер групп 14-16 лет, 17+, 25+, 45+</div>
+                        <div class="staff-contacts">📞 89960343973</div>
+                        <div class="staff-contacts">✉️ suvorkaleriaaa@gmail.com</div>
+                        <div class="staff-contacts">Опыт: 14+ лет в хореографии, 4 года постановочной деятельности</div>
+                    </div>
+                </div>
+                
+                <!-- Отдельная строка с администраторами -->
+                <div class="admin-row">
+                    <div class="admin-card">
+                        <div class="staff-photo">АЛИСА</div>
+                        <div class="staff-name">Сергеева Алиса Андреевна</div>
+                        <div class="staff-position">Администратор</div>
+                        <div class="staff-contacts">📞 89528730792</div>
+                        <div class="staff-contacts">✉️ k931411@yandex.ru</div>
+                        <div class="staff-contacts">Ответственная, пунктуальная, готова вместе с командой идти к цели</div>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <div class="staff-photo">ЕВГЕНИЯ</div>
+                        <div class="staff-name">Пришляк Евгения Денисовна</div>
+                        <div class="staff-position">Администратор</div>
+                        <div class="staff-contacts">📞 89996836987</div>
+                        <div class="staff-contacts">✉️ zheeenya.zheeenya@internet.ru</div>
+                        <div class="staff-contacts">Честная, прямолинейная, с юмором</div>
+                    </div>
+                </div>
+                
+                <button class="btn-yclients" onclick="openYclientsWidget()">
+                    👥 ЗАПИСАТЬСЯ К ТРЕНЕРУ ОНЛАЙН
+                </button>
+
+                <button class="btn-telegram" onclick="openTelegramBot()">
+                    🤖 ЗАПИСАТЬСЯ ЧЕРЕЗ TELEGRAM БОТА
+                </button>
+                
+                <div class="highlight">
+                    🏆 <span class="highlight-text">Профессиональные педагоги</span> с опытом работы 
+                    <span class="highlight-number">от 3 до 14 лет</span>. Каждый преподаватель имеет профильное образование и регулярно повышает квалификацию.
+                </div>
             </div>
         </div>
-        
-        <!-- Отдельная строка с администраторами -->
-        <div class="admin-row">
-            <div class="admin-card">
-                <div class="staff-photo">АЛИСА</div>
-                <div class="staff-name">Сергеева Алиса Андреевна</div>
-                <div class="staff-position">Администратор</div>
-                <div class="staff-contacts">📞 89528730792</div>
-                <div class="staff-contacts">✉️ k931411@yandex.ru</div>
-                <div class="staff-contacts">Ответственная, пунктуальная, готова вместе с командой идти к цели</div>
-            </div>
-            
-            <div class="admin-card">
-                <div class="staff-photo">ЕВГЕНИЯ</div>
-                <div class="staff-name">Пришляк Евгения Денисовна</div>
-                <div class="staff-position">Администратор</div>
-                <div class="staff-contacts">📞 89996836987</div>
-                <div class="staff-contacts">✉️ zheeenya.zheeenya@internet.ru</div>
-                <div class="staff-contacts">Честная, прямолинейная, с юмором</div>
-            </div>
-        </div>
-        
-        <button class="btn-yclients" onclick="openYclientsWidget()">
-            👥 ЗАПИСАТЬСЯ К ТРЕНЕРУ ОНЛАЙН
-        </button>
-        
-        <div class="highlight">
-            🏆 <span class="highlight-text">Профессиональные педагоги</span> с опытом работы 
-            <span class="highlight-number">от 3 до 14 лет</span>. Каждый преподаватель имеет профильное образование и регулярно повышает квалификацию.
-        </div>
-    </div>
-</div>
-               
 
         <!-- Вкладка галереи -->
         <div id="gallery" class="tab-content">
@@ -2296,6 +2338,10 @@
                 
                 <button class="btn-yclients" onclick="openYclientsWidget()">
                     📸 ЗАПИСАТЬСЯ НА ЭКСКУРСИЮ
+                </button>
+
+                <button class="btn-telegram" onclick="openTelegramBot()">
+                    🤖 ЗАПИСАТЬСЯ ЧЕРЕЗ TELEGRAM БОТА
                 </button>
                 
                 <div class="highlight">
@@ -2371,6 +2417,10 @@
                 
                 <button class="btn-yclients" onclick="openYclientsWidget()">
                     📞 ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
+                </button>
+
+                <button class="btn-telegram" onclick="openTelegramBot()">
+                    🤖 НАПИСАТЬ В TELEGRAM
                 </button>
             </div>
         </div>
@@ -2452,6 +2502,10 @@
                         </div>
                     </div>
                 </div>
+                
+                <button class="btn-telegram" onclick="openTelegramBot()">
+                    🤖 ЗАДАТЬ ВОПРОС В TELEGRAM
+                </button>
                 
                 <div class="highlight">
                     📝 ПОДПИСЫВАЯ ДОГОВОР, ВЫ СОГЛАШАЕТЕСЬ С ПРАВИЛАМИ ПОСЕЩЕНИЯ СТУДИИ
@@ -2553,58 +2607,74 @@
             }
         }
 
-       // === ДАННЫЕ ПРЕПОДАВАТЕЛЕЙ ДЛЯ РАСПИСАНИЯ ===
-const scheduleTeachers = {
-    'stepan': {
-        name: 'Лосев Степан Владимирович',
-        position: 'Тренер групп 8-13, 13-18 лет',
-        experience: 'Опыт: Лучший в своем деле',
-        specialization: 'Современные танцы, молодежные направления',
-        description: 'Профессиональный тренер с индивидуальным подходом к каждому ученику'
-    },
-    'white': {
-        name: 'Общая группа',
-        position: 'Разные преподаватели',
-        experience: 'Профессиональные педагоги',
-        specialization: 'Различные направления',
-        description: 'Занятия проводят сертифицированные преподаватели по соответствующим направлениям.'
-    },
-    'alina': {
-        name: 'Баранова Алина Юрьевна',
-        position: 'Тренер групп 3-4 года, 5-7 лет',
-        experience: 'Опыт: 8 лет преподавания',
-        specialization: 'Детская хореография, развивающие танцы',
-        description: 'Танцами занимается с 4 лет. Опыт работы с детьми - 8 лет. Люблю своё дело и танец.'
-    },
-    'valeria': {
-        name: 'Суворова Валерия Алексеевна',
-        position: 'Тренер групп 14-16 лет, 17+, 25+, 45+',
-        experience: 'Опыт: 14+ лет в хореографии',
-        specialization: 'Современные направления, постановочная деятельность',
-        description: 'В хореографии более 14 лет. Стаж постановочной деятельности - 4 года. Владею разными направлениями современного танца.'
-    },
-    'anastasia': {
-        name: 'Кобыльцова Анастасия Викторовна',
-        position: 'Тренер групп «17+», «14-16», «25+»',
-        experience: 'Опыт: 4 года преподавания',
-        specialization: 'Хореография, создание постановок',
-        description: 'Педагог дополнительного образования в области хореографии. Хореографический стаж 13 лет. Создаю и продаю хореографические постановки под заказ.'
-    },
-    'yaroslava': {
-        name: 'Рассохина Ярослава Дмитриевна',
-        position: 'Тренер групп 14-16, 17+, 25+',
-        experience: 'Опыт: 14 лет в хореографии',
-        specialization: 'Современная хореография, различные стили',
-        description: 'Педагогический стаж 3 года. Владею различными направлениями современной хореографии. Стремлюсь к развитию и познанию нового в танцевальном мире.'
-    },
-    'ekaterina': {
-        name: 'Косова Екатерина Сергеевна',
-        position: 'Тренер социальные танцы 45+, растяжка 25+ 45+',
-        experience: 'Опыт: спортивно-бальные танцы с 5 лет',
-        specialization: 'Социальные танцы, растяжка',
-        description: 'Занимаюсь спортивно-бальными танцами с 5 лет. Есть опыт работы с детьми и взрослыми.'
-    }
-};
+        // === TELEGRAM BOT ФУНКЦИИ ===
+        function openTelegramBot() {
+            const botUsername = 'perviy_ritm_bot';
+            const startParam = 'from_website';
+            
+            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                window.location.href = `tg://resolve?domain=${botUsername}&start=${startParam}`;
+                
+                setTimeout(() => {
+                    window.location.href = `https://t.me/${botUsername}?start=${startParam}`;
+                }, 1000);
+            } else {
+                window.open(`https://t.me/${botUsername}?start=${startParam}`, '_blank');
+            }
+        }
+
+        // === ДАННЫЕ ПРЕПОДАВАТЕЛЕЙ ДЛЯ РАСПИСАНИЯ ===
+        const scheduleTeachers = {
+            'stepan': {
+                name: 'Лосев Степан Владимирович',
+                position: 'Тренер групп 8-13, 13-18 лет',
+                experience: 'Опыт: Лучший в своем деле',
+                specialization: 'Современные танцы, молодежные направления',
+                description: 'Профессиональный тренер с индивидуальным подходом к каждому ученику'
+            },
+            'white': {
+                name: 'Общая группа',
+                position: 'Разные преподаватели',
+                experience: 'Профессиональные педагоги',
+                specialization: 'Различные направления',
+                description: 'Занятия проводят сертифицированные преподаватели по соответствующим направлениям.'
+            },
+            'alina': {
+                name: 'Баранова Алина Юрьевна',
+                position: 'Тренер групп 3-4 года, 5-7 лет',
+                experience: 'Опыт: 8 лет преподавания',
+                specialization: 'Детская хореография, развивающие танцы',
+                description: 'Танцами занимается с 4 лет. Опыт работы с детьми - 8 лет. Люблю своё дело и танец.'
+            },
+            'valeria': {
+                name: 'Суворова Валерия Алексеевна',
+                position: 'Тренер групп 14-16 лет, 17+, 25+, 45+',
+                experience: 'Опыт: 14+ лет в хореографии',
+                specialization: 'Современные направления, постановочная деятельность',
+                description: 'В хореографии более 14 лет. Стаж постановочной деятельности - 4 года. Владею разными направлениями современного танца.'
+            },
+            'anastasia': {
+                name: 'Кобыльцова Анастасия Викторовна',
+                position: 'Тренер групп «17+», «14-16», «25+»',
+                experience: 'Опыт: 4 года преподавания',
+                specialization: 'Хореография, создание постановок',
+                description: 'Педагог дополнительного образования в области хореографии. Хореографический стаж 13 лет. Создаю и продаю хореографические постановки под заказ.'
+            },
+            'yaroslava': {
+                name: 'Рассохина Ярослава Дмитриевна',
+                position: 'Тренер групп 14-16, 17+, 25+',
+                experience: 'Опыт: 14 лет в хореографии',
+                specialization: 'Современная хореография, различные стили',
+                description: 'Педагогический стаж 3 года. Владею различными направлениями современной хореографии. Стремлюсь к развитию и познанию нового в танцевальном мире.'
+            },
+            'ekaterina': {
+                name: 'Косова Екатерина Сергеевна',
+                position: 'Тренер социальные танцы 45+, растяжка 25+ 45+',
+                experience: 'Опыт: спортивно-бальные танцы с 5 лет',
+                specialization: 'Социальные танцы, растяжка',
+                description: 'Занимаюсь спортивно-бальными танцами с 5 лет. Есть опыт работы с детьми и взрослыми.'
+            }
+        };
 
         // === ФУНКЦИИ ДЛЯ ВСПЛЫВАЮЩИХ ПОДСКАЗОК РАСПИСАНИЯ ===
         let scheduleTooltipTimeout;
@@ -2633,17 +2703,14 @@ const scheduleTeachers = {
                 </div>
             `;
             
-            // Позиционирование тултипа
             tooltip.style.display = 'block';
             
-            // Позиционируем относительно курсора
             const x = event.clientX + 15;
             const y = event.clientY + 15;
             
             tooltip.style.left = x + 'px';
             tooltip.style.top = y + 'px';
             
-            // Корректировка позиции если тултип выходит за границы экрана
             const tooltipRect = tooltip.getBoundingClientRect();
             if (tooltipRect.right > window.innerWidth) {
                 tooltip.style.left = (event.clientX - tooltipRect.width - 15) + 'px';
@@ -2660,30 +2727,28 @@ const scheduleTeachers = {
             }, 100);
         }
 
-        // === ОБРАБОТКА ФОРМЫ ===
         // === ОБРАБОТКА ФОРМЫ С ОТПРАВКОЙ В TELEGRAM ===
-document.getElementById('enrollForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const age = document.getElementById('age').value;
-    const direction = document.getElementById('direction').value;
-    const message = document.getElementById('message').value;
-    
-    if (!name || !phone) {
-        alert('⚠️ Пожалуйста, заполните имя и телефон');
-        return;
-    }
-    
-    const submitBtn = this.querySelector('.form-submit');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Отправляем...';
-    submitBtn.disabled = true;
-    
-    // Формируем сообщение для Telegram
-    const telegramMessage = `
+        document.getElementById('enrollForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const age = document.getElementById('age').value;
+            const direction = document.getElementById('direction').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !phone) {
+                alert('⚠️ Пожалуйста, заполните имя и телефон');
+                return;
+            }
+            
+            const submitBtn = this.querySelector('.form-submit');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Отправляем...';
+            submitBtn.disabled = true;
+            
+            const telegramMessage = `
 🎯 *НОВАЯ ЗАЯВКА С САЙТА*
 
 👤 *Имя:* ${name}
@@ -2697,138 +2762,140 @@ document.getElementById('enrollForm').addEventListener('submit', function(e) {
 ⏰ *Время:* ${new Date().toLocaleString('ru-RU')}
     `;
     
-    // Настройки бота (ЗАМЕНИТЕ НА СВОИ)
-    const botToken = '8172309514:AAFkrH19yXxn_MkbNDqFNpZF36ATdCUdYYc'; // Замените на токен вашего бота
-    const chatId = '8479925884'; // Замените на ID чата для заявок
-    
-    // Отправка через Telegram Bot API
-    fetch(`https://api.telegram.org/bot${8172309514:AAFkrH19yXxn_MkbNDqFNpZF36ATdCUdYYc}/sendMessage`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            chat_id: chatId,
-            text: telegramMessage,
-            parse_mode: 'Markdown'
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.ok) {
-            showSuccessMessage();
-        } else {
-            throw new Error('Ошибка отправки в Telegram');
+            const botToken = '8172309514:AAFkrH19yXxn_MkbNDqFNpZF36ATdCUdYYc';
+            const chatId = '8479925884';
+            
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: telegramMessage,
+                    parse_mode: 'Markdown'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    showSuccessMessage();
+                } else {
+                    throw new Error('Ошибка отправки в Telegram');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка отправки в Telegram:', error);
+                
+                const encodedMessage = encodeURIComponent(telegramMessage);
+                const botUsername = 'perviy_ritm_bot';
+                
+                if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                    window.location.href = `tg://resolve?domain=${botUsername}&text=${encodedMessage}`;
+                    setTimeout(() => {
+                        window.location.href = `https://t.me/${botUsername}?text=${encodedMessage}`;
+                    }, 1000);
+                } else {
+                    window.open(`https://t.me/${botUsername}?text=${encodedMessage}`, '_blank');
+                }
+                
+                showSuccessMessage();
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                document.getElementById('enrollForm').reset();
+            });
+        });
+
+        function showSuccessMessage() {
+            alert('✅ Спасибо! Заявка отправлена.\n\nМы свяжемся с вами в течение 30 минут!\n\nЕсли срочно - звоните: +7 (904) 123-31-75 или +79399090786');
+            closeModal();
         }
-    })
-    .catch(error => {
-        console.error('Ошибка отправки в Telegram:', error);
-        
-        // Fallback: открываем Telegram с предзаполненным сообщением
-        const encodedMessage = encodeURIComponent(telegramMessage);
-        const botUsername = 'perviy_ritm_bot'; // Замените на username вашего бота
-        
-        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            window.location.href = `tg://resolve?domain=${botUsername}&text=${encodedMessage}`;
-            setTimeout(() => {
-                window.location.href = `https://t.me/${botUsername}?text=${encodedMessage}`;
-            }, 1000);
-        } else {
-            window.open(`https://t.me/${botUsername}?text=${encodedMessage}`, '_blank');
+
+        // Функция для быстрой записи через Telegram
+        function quickTelegramBooking(serviceType) {
+            const services = {
+                'trial': '🎁 Пробное занятие (от 300 ₽)',
+                'kids': '👶 Детские группы 3-16 лет',
+                'adults': '👩‍🦱 Взрослые группы 17+',
+                'stretching': '🧘 Растяжка',
+                'individual': '💫 Индивидуальные занятия'
+            };
+            
+            const serviceName = services[serviceType] || 'Занятие в студии';
+            const message = `Хочу записаться на: ${serviceName}`;
+            const encodedMessage = encodeURIComponent(message);
+            const botUsername = 'perviy_ritm_bot';
+            
+            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                window.location.href = `tg://resolve?domain=${botUsername}&start=${encodedMessage}`;
+                setTimeout(() => {
+                    window.location.href = `https://t.me/${botUsername}?start=${encodedMessage}`;
+                }, 1000);
+            } else {
+                window.open(`https://t.me/${botUsername}?start=${encodedMessage}`, '_blank');
+            }
         }
-        
-        showSuccessMessage();
-    })
-    .finally(() => {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-        document.getElementById('enrollForm').reset();
-    });
-});
 
-function showSuccessMessage() {
-    alert('✅ Спасибо! Заявка отправлена.\n\nМы свяжемся с вами в течение 30 минут!\n\nЕсли срочно - звоните: +7 (904) 123-31-75 или +79399090786');
-    closeModal();
-}
+        // Добавляем быстрые кнопки в модальное окно
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('enrollForm');
+            const quickButtons = `
+                <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 10px; text-align: center;">
+                    <div style="font-weight: bold; margin-bottom: 10px; color: #667eea;">🚀 Быстрая запись через Telegram:</div>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <button type="button" onclick="quickTelegramBooking('trial')" style="padding: 10px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                            🎁 Пробное занятие - от 300₽
+                        </button>
+                        <button type="button" onclick="quickTelegramBooking('kids')" style="padding: 10px; background: #17a2b8; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                            👶 Детские группы
+                        </button>
+                        <button type="button" onclick="quickTelegramBooking('adults')" style="padding: 10px; background: #6f42c1; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                            👩‍🦱 Взрослые группы
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            form.insertAdjacentHTML('beforeend', quickButtons);
+        });
 
-// Альтернативный способ через форму с action
-function submitToTelegramAlternative(formData) {
-    // Этот метод работает без JavaScript, но требует настройки сервера
-    const telegramBotUrl = `https://api.telegram.org/bot${8172309514:AAFkrH19yXxn_MkbNDqFNpZF36ATdCUdYYc}/sendMessage`;
-    
-    // Создаем скрытую форму для отправки
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = telegramBotUrl;
-    form.style.display = 'none';
-    
-    const fields = {
-        chat_id: chatId,
-        text: `Новая заявка: ${formData.name}, ${formData.phone}`,
-        parse_mode: 'HTML'
-    };
-    
-    for (const key in fields) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = fields[key];
-        form.appendChild(input);
-    }
-    
-    document.body.appendChild(form);
-    form.submit();
-}
-
-// Функция для быстрой записи через Telegram
-function quickTelegramBooking(serviceType) {
-    const services = {
-        'trial': '🎁 Пробное занятие (от 300 ₽)',
-        'kids': '👶 Детские группы 3-16 лет',
-        'adults': '👩‍🦱 Взрослые группы 17+',
-        'stretching': '🧘 Растяжка',
-        'individual': '💫 Индивидуальные занятия'
-    };
-    
-    const serviceName = services[serviceType] || 'Занятие в студии';
-    
-    const message = `Хочу записаться на: ${serviceName}`;
-    const encodedMessage = encodeURIComponent(message);
-    const botUsername = 'perviy_ritm_bot'; // Замените на username вашего бота
-    
-    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        window.location.href = `tg://resolve?domain=${botUsername}&start=${encodedMessage}`;
-        setTimeout(() => {
-            window.location.href = `https://t.me/${botUsername}?start=${encodedMessage}`;
-        }, 1000);
-    } else {
-        window.open(`https://t.me/${botUsername}?start=${encodedMessage}`, '_blank');
-    }
-}
-
-// Добавляем быстрые кнопки в модальное окно
-document.addEventListener('DOMContentLoaded', function() {
-    // Добавляем быстрые кнопки после формы
-    const form = document.getElementById('enrollForm');
-    const quickButtons = `
-        <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 10px; text-align: center;">
-            <div style="font-weight: bold; margin-bottom: 10px; color: #667eea;">🚀 Быстрая запись через Telegram:</div>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-                <button type="button" onclick="quickTelegramBooking('trial')" style="padding: 10px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                    🎁 Пробное занятие - от 300₽
-                </button>
-                <button type="button" onclick="quickTelegramBooking('kids')" style="padding: 10px; background: #17a2b8; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                    👶 Детские группы
-                </button>
-                <button type="button" onclick="quickTelegramBooking('adults')" style="padding: 10px; background: #6f42c1; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                    👩‍🦱 Взрослые группы
-                </button>
-            </div>
-        </div>
-    `;
-    
-    form.insertAdjacentHTML('beforeend', quickButtons);
-});
+        // Данные для галереи
+        const galleryImages = [
+            {
+                src: 'images/gallery/hall1.jpg',
+                caption: 'Основной зал для групповых занятий - просторное помещение с зеркалами и профессиональным покрытием'
+            },
+            {
+                src: 'images/gallery/hall2.jpg',
+                caption: 'Зал для индивидуальных занятий - уютное пространство для персональных тренировок'
+            },
+            {
+                src: 'images/gallery/kids-group.jpg',
+                caption: 'Занятие "Танцы-игра" для детей 3-4 лет - развиваем координацию через веселые игры'
+            },
+            {
+                src: 'images/gallery/adults-group.jpg',
+                caption: 'Занятие "Танцы для души" для взрослых - снимаем стресс и улучшаем настроение'
+            },
+            {
+                src: 'images/gallery/stretching.jpg',
+                caption: 'Группа по растяжке для всех возрастов - улучшаем гибкость и мобильность суставов'
+            },
+            {
+                src: 'images/gallery/performance.jpg',
+                caption: 'Наши ученики на конкурсе - демонстрируют достижения и получают награды'
+            },
+            {
+                src: 'images/gallery/reception.jpg',
+                caption: 'Ресепшен и зона ожидания - комфортное пространство для родителей и гостей'
+            },
+            {
+                src: 'images/gallery/changing-rooms.jpg',
+                caption: 'Комфортные раздевалки для учеников - все необходимое для подготовки к занятиям'
+            }
+        ];
 
         let currentGalleryIndex = 0;
 
@@ -2999,6 +3066,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log('🚀 Сайт студии "Первый ритм Ленинского" загружен!');
         console.log('💫 YClients виджет подключен');
+        console.log('🤖 Telegram бот подключен');
         console.log('📱 Все функции активны');
     </script>
 </body>
