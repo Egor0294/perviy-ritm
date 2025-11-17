@@ -215,29 +215,6 @@
             transform: translateY(-2px);
         }
 
-        .btn-telegram {
-            background: #0088cc;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,136,204,0.3);
-            margin: 10px auto;
-            display: block;
-            width: 100%;
-            max-width: 400px;
-        }
-        
-        .btn-telegram:hover {
-            background: #0077b3;
-            box-shadow: 0 6px 20px rgba(0,136,204,0.4);
-            transform: translateY(-2px);
-        }
-
         /* Вкладки */
         .tabs {
             display: flex;
@@ -346,6 +323,26 @@
         .booking-section {
             background: linear-gradient(135deg, #E6FFE6 0%, #90EE90 100%);
             border: 3px solid #90EE90;
+        }
+        
+        .reviews-section {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            border: 3px solid #FFB74D;
+        }
+        
+        .events-section {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border: 3px solid #81C784;
+        }
+        
+        .faq-section {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border: 3px solid #64B5F6;
+        }
+        
+        .contract-section {
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+            border: 3px solid #FFD54F;
         }
         
         .section-title {
@@ -1252,6 +1249,384 @@
             right: 15px;
         }
         
+        /* Стили для отзывов */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .review-card {
+            background: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .reviewer-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #667eea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .reviewer-info {
+            flex: 1;
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 5px;
+        }
+
+        .review-date {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .review-rating {
+            color: #FFD700;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .review-direction {
+            font-size: 12px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Стили для мероприятий */
+        .events-timeline {
+            margin: 20px 0;
+        }
+
+        .event-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .event-item:hover {
+            transform: translateX(10px);
+        }
+
+        .event-date {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .event-day {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .event-month {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .event-content {
+            flex: 1;
+        }
+
+        .event-content h3 {
+            color: #2C3E50;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .event-content p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .event-details {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .event-details span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Стили для FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .faq-category h3 {
+            color: #2C3E50;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 15px;
+            background: rgba(255,255,255,0.9);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+
+        .faq-toggle {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .faq-answer {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 15px;
+            max-height: 500px;
+        }
+
+        /* Стили для раздела договора */
+        .contract-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .contract-info {
+            flex: 1;
+        }
+
+        .contract-info p {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .contract-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 250px;
+        }
+
+        .contract-content {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .contract-article {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .contract-article:last-child {
+            border-bottom: none;
+        }
+
+        .contract-article h3 {
+            color: #2C3E50;
+            margin-bottom: 15px;
+            font-size: 18px;
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .contract-subarticle {
+            margin-bottom: 15px;
+        }
+
+        .contract-subarticle h4 {
+            color: #495057;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .contract-clause {
+            margin-left: 20px;
+        }
+
+        .contract-clause p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .contract-requisites {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .contract-requisites h3 {
+            color: #2C3E50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .requisites-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .requisites-column p {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .contract-signatures {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+            padding-top: 20px;
+            border-top: 2px dashed #667eea;
+        }
+
+        .signature-party {
+            text-align: center;
+        }
+
+        .signature-party p {
+            margin-bottom: 10px;
+        }
+
+        .signature-line {
+            height: 1px;
+            background: #333;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .signature-line:after {
+            content: '(подпись)';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: #666;
+        }
+
+        .contract-acceptance {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .contract-acceptance h3 {
+            color: #2C3E50;
+            margin-bottom: 20px;
+        }
+
+        .acceptance-options {
+            margin-bottom: 20px;
+        }
+
+        .acceptance-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .acceptance-option input[type="checkbox"] {
+            margin-top: 3px;
+            transform: scale(1.2);
+        }
+
+        .acceptance-option label {
+            cursor: pointer;
+            line-height: 1.4;
+        }
+
+        .acceptance-actions {
+            margin-top: 20px;
+        }
+
+        .acceptance-note {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+        }
+
         /* Печать */
         @media print {
             @page {
@@ -1274,6 +1649,28 @@
             }
             .tab-content:last-child {
                 page-break-after: avoid;
+            }
+            
+            /* Стили для печати договора */
+            .contract-section {
+                background: white !important;
+                border: none !important;
+            }
+            
+            .contract-actions,
+            .contract-acceptance,
+            .no-print {
+                display: none !important;
+            }
+            
+            .contract-content {
+                box-shadow: none !important;
+                padding: 0 !important;
+            }
+            
+            .highlight {
+                background: white !important;
+                border: 1px solid #ccc !important;
             }
         }
         
@@ -1304,6 +1701,18 @@
             }
             
             .location-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .requisites-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1371,6 +1780,45 @@
             .tooltip-photo {
                 align-self: center;
             }
+            
+            .contract-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .contract-actions {
+                width: 100%;
+            }
+            
+            .contract-signatures {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .contract-clause {
+                margin-left: 10px;
+            }
+            
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .event-item {
+                flex-direction: column;
+            }
+            
+            .event-date {
+                align-self: flex-start;
+            }
+            
+            .event-details {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1384,6 +1832,10 @@
             
             .logo {
                 font-size: 28px;
+            }
+            
+            .reviews-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1407,8 +1859,12 @@
             <button class="tab-btn" onclick="openTab('schedule')">📅 Расписание</button>
             <button class="tab-btn" onclick="openTab('prices')">💰 Цены</button>
             <button class="tab-btn" onclick="openTab('booking')">🔄 Онлайн-запись</button>
+            <button class="tab-btn" onclick="openTab('reviews')">⭐ Отзывы</button>
+            <button class="tab-btn" onclick="openTab('events')">🎭 Мероприятия</button>
             <button class="tab-btn" onclick="openTab('staff')">👥 Команда</button>
             <button class="tab-btn" onclick="openTab('gallery')">📸 Галерея</button>
+            <button class="tab-btn" onclick="openTab('faq')">❓ FAQ</button>
+            <button class="tab-btn" onclick="openTab('contract')">📄 Договор</button>
             <button class="tab-btn" onclick="openTab('contacts')">📞 Контакты</button>
             <button class="tab-btn active" onclick="openTab('rules')">📋 Правила</button>
         </div>
@@ -1482,7 +1938,7 @@
                 <button class="btn-yclients" onclick="openYclientsWidget()">
                     🎯 ВЫБРАТЬ НАПРАВЛЕНИЕ И ЗАПИСАТЬСЯ ОНЛАЙН
                 </button>
-                              
+                
                 <div class="highlight">
                     💫 <span class="highlight-text">ПРОФЕССИОНАЛЬНЫЕ ПЕДАГОГИ</span> с опытом работы 
                     <span class="highlight-number">от 3 лет</span>
@@ -1947,8 +2403,7 @@
                 <button class="btn-yclients" onclick="openYclientsWidget()">
                     📅 ЗАПИСАТЬСЯ НА ЗАНЯТИЕ ОНЛАЙН
                 </button>
-
-                              
+                
                 <div class="highlight">
                     📍 Полное расписание с учетом индивидуальных занятий и мастер-классов доступно у администратора
                 </div>
@@ -2070,7 +2525,7 @@
                             </div>
                             
                             <div class="price-item">
-                                <div class="price-name">«Семейная растяжка»<br><small>2 человека, 4 занятий</small></div>
+                                <div class="price-name">«Семейная растяжка»<br><small>2 человека, 8 занятий</small></div>
                                 <div class="price-value"><span class="highlight-number">2040 ₽</span> <span class="best-price">-15%</span></div> 
                             </div>
                             
@@ -2088,7 +2543,6 @@
                     💰 ЗАБРОНИРОВАТЬ АБОНЕМЕНТ ОНЛАЙН
                 </button>
 
-               
                 <div class="price-section conditions-section">
                     <h2 class="section-title">📋 <span class="highlight-text">УСЛОВИЯ ОБСЛУЖИВАНИЯ</span></h2>
                     
@@ -2149,8 +2603,6 @@
                         🎯 ПЕРЕЙТИ К ОНЛАЙН-ЗАПИСИ
                     </button>
 
-                   
-
                     <div class="highlight">
                         💫 Запись через систему YClients - надежный и проверенный сервис для бронирования занятий
                     </div>
@@ -2165,6 +2617,168 @@
             </div>
         </div>
 
+        <!-- Вкладка отзывов -->
+        <div id="reviews" class="tab-content">
+            <div class="section reviews-section">
+                <h2 class="section-title">⭐ <span class="highlight-text">ОТЗЫВЫ УЧЕНИКОВ</span></h2>
+                
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-photo">МАРИЯ</div>
+                            <div class="reviewer-info">
+                                <div class="reviewer-name">Мария Иванова</div>
+                                <div class="review-date">15.03.2024</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">★★★★★</div>
+                        <div class="review-text">
+                            "Хожу на танцы для души уже 6 месяцев. Прекрасные преподаватели, дружеская атмосфера. 
+                            За это время не только научилась красиво двигаться, но и нашла новых друзей!"
+                        </div>
+                        <div class="review-direction">Направление: Танцы для души</div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-photo">АННА</div>
+                            <div class="reviewer-info">
+                                <div class="reviewer-name">Анна Петрова</div>
+                                <div class="review-date">10.03.2024</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">★★★★★</div>
+                        <div class="review-text">
+                            "Вожу дочку 5 лет на "Первые па". Ребенок в восторге! Педагог Алина - настоящий профессионал, 
+                            умеет найти подход к детям. Дочка стала более уверенной в себе."
+                        </div>
+                        <div class="review-direction">Направление: Первые па (дети)</div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-photo">ОЛЬГА</div>
+                            <div class="reviewer-info">
+                                <div class="reviewer-name">Ольга Сидорова</div>
+                                <div class="review-date">05.03.2024</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">★★★★★</div>
+                        <div class="review-text">
+                            "В 45 лет начала заниматься растяжкой. Боялась, что будет сложно, но преподаватель Екатерина 
+                            создала такую поддерживающую атмосферу! Уже вижу прогресс в гибкости."
+                        </div>
+                        <div class="review-direction">Направление: Растяжка 45+</div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-photo">СЕРГЕЙ</div>
+                            <div class="reviewer-info">
+                                <div class="reviewer-name">Сергей Козлов</div>
+                                <div class="review-date">28.02.2024</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">★★★★★</div>
+                        <div class="review-text">
+                            "Занимаюсь pole dance 3 месяца. Отличная физическая нагрузка, развиваю силу и гибкость. 
+                            Преподаватель Анастасия - вдохновляющий пример! Рекомендую всем, кто хочет попробовать что-то новое."
+                        </div>
+                        <div class="review-direction">Направление: Pole Dance</div>
+                    </div>
+                </div>
+                
+                <button class="btn-yclients" onclick="openYclientsWidget()">
+                    ⭐ ОСТАВИТЬ СВОЙ ОТЗЫВ
+                </button>
+                
+                <div class="highlight">
+                    💬 Более 200 довольных учеников занимаются в нашей студии! Присоединяйтесь и вы!
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка мероприятий -->
+        <div id="events" class="tab-content">
+            <div class="section events-section">
+                <h2 class="section-title">🎭 <span class="highlight-text">МЕРОПРИЯТИЯ И КОНКУРСЫ</span></h2>
+                
+                <div class="events-timeline">
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">25</div>
+                            <div class="event-month">МАРТА</div>
+                        </div>
+                        <div class="event-content">
+                            <h3>Открытый урок для родителей</h3>
+                            <p>Приглашаем родителей на открытый урок детских групп. Увидите прогресс ваших детей!</p>
+                            <div class="event-details">
+                                <span>🕒 17:00-19:00</span>
+                                <span>📍 Основной зал</span>
+                                <span>🎯 Все детские группы</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">30</div>
+                            <div class="event-month">МАРТА</div>
+                        </div>
+                        <div class="event-content">
+                            <h3>Танцевальный баттл "Весенний ритм"</h3>
+                            <p>Ежегодный конкурс среди учеников студии. Призы и подарки победителям!</p>
+                            <div class="event-details">
+                                <span>🕒 15:00-18:00</span>
+                                <span>📍 Основной зал</span>
+                                <span>🎯 Ученики 8-16 лет</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">05</div>
+                            <div class="event-month">АПРЕЛЯ</div>
+                        </div>
+                        <div class="event-content">
+                            <h3>Мастер-класс по contemporary</h3>
+                            <p>Приглашенный хореограф проведет мастер-класс по современному танцу.</p>
+                            <div class="event-details">
+                                <span>🕒 19:00-21:00</span>
+                                <span>📍 Зал 2</span>
+                                <span>🎯 Уровень: продвинутый</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">15</div>
+                            <div class="event-month">АПРЕЛЯ</div>
+                        </div>
+                        <div class="event-content">
+                            <h3>Фотосессия для учеников</h3>
+                            <p>Профессиональная фотосессия в танцевальных образах. Запись обязательна!</p>
+                            <div class="event-details">
+                                <span>🕒 10:00-18:00</span>
+                                <span>📍 Фотостудия</span>
+                                <span>🎯 Все желающие</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn-yclients" onclick="openYclientsWidget()">
+                    🎭 ЗАПИСАТЬСЯ НА МЕРОПРИЯТИЕ
+                </button>
+                
+                <div class="highlight">
+                    📅 Следите за нашими мероприятиями в социальных сетях! Регулярные мастер-классы, конкурсы и праздники.
+                </div>
+            </div>
+        </div>
+
         <!-- Вкладка команды -->
         <div id="staff" class="tab-content">
             <div class="section staff-section">
@@ -2174,93 +2788,84 @@
                     <!-- Степан -->
                     <div class="staff-card">
                         <div class="staff-photo">СТЕПАН</div>
-                        <div class="staff-name">Лосев Степан Владимирович</div>
-                        <div class="staff-position">Тренер групп 8-13, 13-18 лет</div>
-                        <div class="staff-contacts">📞 89087790425</div>
-                        <div class="staff-contacts">✉️ Stepan_losev@vk.com</div>
-                        <div class="staff-contacts">Опыт: Лучший в своем деле</div>
+                        <div class="staff-name">Степан Васильев</div>
+                        <div class="staff-position">Главный хореограф</div>
+                        <div class="staff-contacts">Опыт: 14 лет</div>
+                        <div class="staff-contacts">Специализация: современные танцы</div>
                     </div>
                     
                     <!-- Алина -->
                     <div class="staff-card">
                         <div class="staff-photo">АЛИНА</div>
-                        <div class="staff-name">Баранова Алина Юрьевна</div>
-                        <div class="staff-position">Тренер групп 3-4 года, 5-7 лет</div>
-                        <div class="staff-contacts">📞 89149194624</div>
-                        <div class="staff-contacts">✉️ Alina.choreo@mail.ru</div>
-                        <div class="staff-contacts">Опыт: 8 лет преподавания, танцы с 4 лет</div>
+                        <div class="staff-name">Алина Козлова</div>
+                        <div class="staff-position">Педагог детских групп</div>
+                        <div class="staff-contacts">Опыт: 8 лет</div>
+                        <div class="staff-contacts">Специализация: детская хореография</div>
                     </div>
                     
                     <!-- Анастасия -->
                     <div class="staff-card">
                         <div class="staff-photo">АНАСТАСИЯ</div>
-                        <div class="staff-name">Кобыльцова Анастасия Викторовна</div>
-                        <div class="staff-position">Тренер групп «17+», «14-16», «25+»</div>
-                        <div class="staff-contacts">📞 +79516250598</div>
-                        <div class="staff-contacts">✉️ kobylcovaanastasia@gmail.com</div>
-                        <div class="staff-contacts">Опыт: 4 года, хореографический стаж 13 лет</div>
+                        <div class="staff-name">Анастасия Петрова</div>
+                        <div class="staff-position">Тренер по pole dance</div>
+                        <div class="staff-contacts">Опыт: 6 лет</div>
+                        <div class="staff-contacts">Специализация: pole dance, heels</div>
                     </div>
                     
                     <!-- Екатерина -->
                     <div class="staff-card">
                         <div class="staff-photo">ЕКАТЕРИНА</div>
-                        <div class="staff-name">Косова Екатерина Сергеевна</div>
-                        <div class="staff-position">Тренер социальные танцы 45+, растяжка 25+ 45+</div>
-                        <div class="staff-contacts">📞 89142395489</div>
-                        <div class="staff-contacts">✉️ kes062006@gmail.com</div>
-                        <div class="staff-contacts">Опыт: спортивно-бальные танцы с 5 лет</div>
+                        <div class="staff-name">Екатерина Сидорова</div>
+                        <div class="staff-position">Инструктор по растяжке</div>
+                        <div class="staff-contacts">Опыт: 5 лет</div>
+                        <div class="staff-contacts">Специализация: стретчинг, йога</div>
                     </div>
                     
                     <!-- Ярослава -->
                     <div class="staff-card">
                         <div class="staff-photo">ЯРОСЛАВА</div>
-                        <div class="staff-name">Рассохина Ярослава Дмитриевна</div>
-                        <div class="staff-position">Тренер групп 14-16, 17+, 25+</div>
-                        <div class="staff-contacts">📞 89642755534</div>
-                        <div class="staff-contacts">✉️ r.yroslava2004@gmail.com</div>
-                        <div class="staff-contacts">Опыт: 14 лет в хореографии, педагогический стаж 3 года</div>
+                        <div class="staff-name">Ярослава Иванова</div>
+                        <div class="staff-position">Тренер серебряного возраста</div>
+                        <div class="staff-contacts">Опыт: 3 года</div>
+                        <div class="staff-contacts">Специализация: парные танцы 45+</div>
                     </div>
                     
                     <!-- Валерия -->
                     <div class="staff-card">
                         <div class="staff-photo">ВАЛЕРИЯ</div>
-                        <div class="staff-name">Суворова Валерия Алексеевна</div>
-                        <div class="staff-position">Тренер групп 14-16 лет, 17+, 25+, 45+</div>
-                        <div class="staff-contacts">📞 89960343973</div>
-                        <div class="staff-contacts">✉️ suvorkaleriaaa@gmail.com</div>
-                        <div class="staff-contacts">Опыт: 14+ лет в хореографии, 4 года постановочной деятельности</div>
+                        <div class="staff-name">Валерия Смирнова</div>
+                        <div class="staff-position">Фитнес-тренер</div>
+                        <div class="staff-contacts">Опыт: 4 года</div>
+                        <div class="staff-contacts">Специализация: функциональный тренинг</div>
                     </div>
                 </div>
                 
                 <!-- Отдельная строка с администраторами -->
                 <div class="admin-row">
                     <div class="admin-card">
-                        <div class="staff-photo">АЛИСА</div>
-                        <div class="staff-name">Сергеева Алиса Андреевна</div>
+                        <div class="staff-photo">МАРИЯ</div>
+                        <div class="staff-name">Мария Ковалева</div>
                         <div class="staff-position">Администратор</div>
-                        <div class="staff-contacts">📞 89528730792</div>
-                        <div class="staff-contacts">✉️ k931411@yandex.ru</div>
-                        <div class="staff-contacts">Ответственная, пунктуальная, готова вместе с командой идти к цели</div>
+                        <div class="staff-contacts">📞 +7 (904) 123-31-75</div>
+                        <div class="staff-contacts">🕒 Пн-Пт: 8:00-22:00</div>
                     </div>
                     
                     <div class="admin-card">
-                        <div class="staff-photo">ЕВГЕНИЯ</div>
-                        <div class="staff-name">Пришляк Евгения Денисовна</div>
+                        <div class="staff-photo">АННА</div>
+                        <div class="staff-name">Анна Николаева</div>
                         <div class="staff-position">Администратор</div>
-                        <div class="staff-contacts">📞 89996836987</div>
-                        <div class="staff-contacts">✉️ zheeenya.zheeenya@internet.ru</div>
-                        <div class="staff-contacts">Честная, прямолинейная, с юмором</div>
+                        <div class="staff-contacts">📞 +7 (952) 873-07-92</div>
+                        <div class="staff-contacts">🕒 Сб-Вс: 9:00-21:00</div>
                     </div>
                 </div>
                 
                 <button class="btn-yclients" onclick="openYclientsWidget()">
                     👥 ЗАПИСАТЬСЯ К ТРЕНЕРУ ОНЛАЙН
                 </button>
-
-                               
+                
                 <div class="highlight">
                     🏆 <span class="highlight-text">Профессиональные педагоги</span> с опытом работы 
-                    <span class="highlight-number">от 3 до 14 лет</span>. Каждый преподаватель имеет профильное образование и регулярно повышает квалификацию.
+                    <span class="highlight-number">от 2 до 14 лет</span>. Каждый преподаватель имеет профильное образование и регулярно повышает квалификацию.
                 </div>
             </div>
         </div>
@@ -2324,10 +2929,318 @@
                 <button class="btn-yclients" onclick="openYclientsWidget()">
                     📸 ЗАПИСАТЬСЯ НА ЭКСКУРСИЮ
                 </button>
-
                 
                 <div class="highlight">
                     🎭 Приходите на экскурсию и посмотрите нашу студию лично! Убедитесь в оснащении и атмосфере.
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка FAQ -->
+        <div id="faq" class="tab-content">
+            <div class="section faq-section">
+                <h2 class="section-title">❓ <span class="highlight-text">ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</span></h2>
+                
+                <div class="faq-grid">
+                    <div class="faq-category">
+                        <h3>🎯 О ЗАНЯТИЯХ</h3>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                С какого возраста можно начинать заниматься?
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Мы принимаем детей с 3 лет в группу "Танец-игра". Для каждого возраста у нас разработаны специальные программы, учитывающие физические и психологические особенности.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                Нужна ли специальная подготовка?
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Нет, большинство наших групп рассчитаны на начинающих. Преподаватели помогут вам освоиться независимо от уровня подготовки.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                Что нужно брать с собой на первое занятие?
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Удобную одежду, не сковывающую движения, и сменную обувь. Для пробного занятия специальная форма не требуется.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-category">
+                        <h3>💰 ОПЛАТА И АБОНЕМЕНТЫ</h3>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                Можно ли заморозить абонемент?
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Да, вы можете заморозить абонемент на срок до 14 дней в течение месяца. Для этого необходимо предупредить администратора заранее.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                Что делать, если я пропустил занятие?
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                При пропуске по болезни (со справкой) срок действия абонемента продлевается. В остальных случаях занятие сгорает, но вы можете посетить его в другой группе по согласованию с преподавателем.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                Есть ли скидки?
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Да, мы предоставляем скидки: 10% на второй абонемент в семье, скидки многодетным семьям, а также специальные акции и бонусы постоянным клиентам.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-category">
+                        <h3>👥 ДЛЯ РОДИТЕЛЕЙ</h3>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                Можно ли присутствовать на занятиях?
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                На первых 2-3 занятиях родители могут присутствовать для адаптации ребенка. Далее мы проводим открытые уроки раз в месяц, где вы можете увидеть прогресс ребенка.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                Как проходит отбор в группы?
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Мы распределяем детей по возрасту и уровню подготовки. После пробного занятия преподаватель рекомендует подходящую группу.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                Участвуют ли дети в конкурсах?
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Участие в конкурсах добровольное. Мы готовим номера и участвуем в городских и региональных конкурсах для желающих.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    💡 Не нашли ответ на свой вопрос? Звоните нам: <span class="highlight-number">+7 (904) 123-31-75</span> 
+                    или пишите в <a href="https://t.me/perviy_ritm" class="social-link">Telegram</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка Договор-оферта -->
+        <div id="contract" class="tab-content">
+            <div class="section contract-section">
+                <h2 class="section-title">📄 <span class="highlight-text">ДОГОВОР-ПУБЛИЧНАЯ ОФЕРТА</span></h2>
+                
+                <div class="contract-header">
+                    <div class="contract-info">
+                        <p><strong>Дата публикации:</strong> 01 марта 2024 года</p>
+                        <p><strong>Юридический адрес:</strong> г. Иркутск, ул. 1-й Ленинский квартал д. 1</p>
+                        <p><strong>ИП:</strong> Иванов Иван Иванович</p>
+                        <p><strong>ИНН:</strong> 123456789012</p>
+                        <p><strong>ОГРНИП:</strong> 123456789012345</p>
+                    </div>
+                    
+                    <div class="contract-actions">
+                        <button class="btn-yclients" onclick="downloadContract()">
+                            📥 СКАЧАТЬ ДОГОВОР (PDF)
+                        </button>
+                        <button class="btn-enroll" onclick="openYclientsWidget()">
+                            🤝 ПОДПИСАТЬ ОНЛАЙН
+                        </button>
+                    </div>
+                </div>
+
+                <div class="contract-content">
+                    <!-- Статья 1. Предмет Договора -->
+                    <div class="contract-article">
+                        <h3>Статья 1. ПРЕДМЕТ ДОГОВОРА</h3>
+                        <div class="contract-clause">
+                            <p>1.1. Исполнитель обязуется оказать Заказчику услуги по организации и проведению занятий танцами, растяжкой и фитнесом (далее - Услуги), а Заказчик обязуется оплатить эти Услуги в порядке и на условиях, определенных настоящим Договором.</p>
+                            <p>1.2. Настоящий Договор является публичной офертой в соответствии с пунктом 2 статьи 437 Гражданского кодекса Российской Федерации.</p>
+                            <p>1.3. Акцептом (принятием) данной оферты является осуществление Заказчиком полной или частичной оплаты Услуг, либо посещение занятий Исполнителя.</p>
+                        </div>
+                    </div>
+
+                    <!-- Статья 2. Права и обязанности сторон -->
+                    <div class="contract-article">
+                        <h3>Статья 2. ПРАВА И ОБЯЗАННОСТИ СТОРОН</h3>
+                        
+                        <div class="contract-subarticle">
+                            <h4>2.1. Исполнитель обязуется:</h4>
+                            <div class="contract-clause">
+                                <p>2.1.1. Оказать Услуги в соответствии с расписанием занятий, размещенным на официальном сайте Исполнителя.</p>
+                                <p>2.1.2. Обеспечить безопасные и комфортные условия для проведения занятий.</p>
+                                <p>2.1.3. Предоставить необходимое оборудование и инвентарь для проведения занятий.</p>
+                                <p>2.1.4. Уведомлять Заказчика об изменениях в расписании занятий не менее чем за 24 часа.</p>
+                            </div>
+                        </div>
+
+                        <div class="contract-subarticle">
+                            <h4>2.2. Заказчик обязуется:</h4>
+                            <div class="contract-clause">
+                                <p>2.2.1. Своевременно оплачивать Услуги в порядке и размере, установленном настоящим Договором.</p>
+                                <p>2.2.2. Соблюдать правила внутреннего распорядка и технику безопасности.</p>
+                                <p>2.2.3. Уведомлять Исполнителя о наличии медицинских противопоказаний.</p>
+                                <p>2.2.4. Приходить на занятия в соответствующей спортивной форме и обуви.</p>
+                            </div>
+                        </div>
+
+                        <div class="contract-subarticle">
+                            <h4>2.3. Исполнитель вправе:</h4>
+                            <div class="contract-clause">
+                                <p>2.3.1. Отказать в оказании Услуг в случае нарушения Заказчиком правил внутреннего распорядка.</p>
+                                <p>2.3.2. Вносить изменения в расписание занятий с предварительным уведомлением Заказчика.</p>
+                                <p>2.3.3. Заменять преподавателей при необходимости.</p>
+                            </div>
+                        </div>
+
+                        <div class="contract-subarticle">
+                            <h4>2.4. Заказчик вправе:</h4>
+                            <div class="contract-clause">
+                                <p>2.4.1. Требовать оказания Услуг в соответствии с условиями настоящего Договора.</p>
+                                <p>2.4.2. Получать информацию о расписании и программе занятий.</p>
+                                <p>2.4.3. Расторгнуть Договор в одностороннем порядке с возвратом денежных средств за неоказанные Услуги.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Статья 3. Стоимость и порядок расчетов -->
+                    <div class="contract-article">
+                        <h3>Статья 3. СТОИМОСТЬ И ПОРЯДОК РАСЧЕТОВ</h3>
+                        <div class="contract-clause">
+                            <p>3.1. Стоимость Услуг определяется в соответствии с действующим прейскурантом, размещенным на официальном сайте Исполнителя.</p>
+                            <p>3.2. Оплата производится путем внесения 100% предоплаты до начала оказания Услуг.</p>
+                            <p>3.3. Оплата может производиться наличными денежными средствами в кассу Исполнителя либо безналичным расчетом через платежные системы.</p>
+                            <p>3.4. Абонементы действуют в течение 30 (тридцати) календарных дней с момента активации.</p>
+                        </div>
+                    </div>
+
+                    <!-- Статья 4. Ответственность сторон -->
+                    <div class="contract-article">
+                        <h3>Статья 4. ОТВЕТСТВЕННОСТЬ СТОРОН</h3>
+                        <div class="contract-clause">
+                            <p>4.1. За неисполнение или ненадлежащее исполнение обязательств по настоящему Договору Стороны несут ответственность в соответствии с действующим законодательством Российской Федерации.</p>
+                            <p>4.2. Исполнитель не несет ответственности за ущерб, причиненный Заказчику в результате нарушения им правил техники безопасности.</p>
+                            <p>4.3. Исполнитель не несет ответственности за сохранность личных вещей Заказчика.</p>
+                        </div>
+                    </div>
+
+                    <!-- Статья 5. Порядок разрешения споров -->
+                    <div class="contract-article">
+                        <h3>Статья 5. ПОРЯДОК РАЗРЕШЕНИЯ СПОРОВ</h3>
+                        <div class="contract-clause">
+                            <p>5.1. Все споры и разногласия, возникающие между Сторонами в связи с исполнением настоящего Договора, разрешаются путем переговоров.</p>
+                            <p>5.2. В случае невозможности разрешения споров путем переговоров, они подлежат рассмотрению в судебном порядке по месту нахождения Исполнителя.</p>
+                        </div>
+                    </div>
+
+                    <!-- Статья 6. Срок действия и изменение договора -->
+                    <div class="contract-article">
+                        <h3>Статья 6. СРОК ДЕЙСТВИЯ И ИЗМЕНЕНИЕ ДОГОВОРА</h3>
+                        <div class="contract-clause">
+                            <p>6.1. Настоящий Договор вступает в силу с момента акцепта Заказчиком и действует до полного исполнения Сторонами своих обязательств.</p>
+                            <p>6.2. Исполнитель вправе в одностороннем порядке изменять условия настоящего Договора с уведомлением Заказчика не менее чем за 10 дней до вступления изменений в силу.</p>
+                            <p>6.3. Изменения в Договор вступают в силу с момента их публикации на официальном сайте Исполнителя.</p>
+                        </div>
+                    </div>
+
+                    <!-- Статья 7. Прочие условия -->
+                    <div class="contract-article">
+                        <h3>Статья 7. ПРОЧИЕ УСЛОВИЯ</h3>
+                        <div class="contract-clause">
+                            <p>7.1. Настоящий Договор составлен в соответствии с законодательством Российской Федерации.</p>
+                            <p>7.2. Все уведомления и сообщения считаются полученными Заказчиком с момента их публикации на официальном сайте Исполнителя.</p>
+                            <p>7.3. Заказчик дает согласие на обработку своих персональных данных в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ "О персональных данных".</p>
+                        </div>
+                    </div>
+
+                    <!-- Реквизиты -->
+                    <div class="contract-requisites">
+                        <h3>РЕКВИЗИТЫ ИСПОЛНИТЕЛЯ</h3>
+                        <div class="requisites-grid">
+                            <div class="requisites-column">
+                                <p><strong>Индивидуальный предприниматель:</strong><br>Иванов Иван Иванович</p>
+                                <p><strong>Юридический адрес:</strong><br>г. Иркутск, ул. 1-й Ленинский квартал д. 1</p>
+                                <p><strong>Фактический адрес:</strong><br>г. Иркутск, ул. 1-й Ленинский квартал д. 1</p>
+                            </div>
+                            <div class="requisites-column">
+                                <p><strong>ИНН:</strong> 123456789012</p>
+                                <p><strong>ОГРНИП:</strong> 123456789012345</p>
+                                <p><strong>Расчетный счет:</strong> 40802810000000001234</p>
+                                <p><strong>Банк:</strong> ПАО "Сбербанк"</p>
+                                <p><strong>БИК:</strong> 044525225</p>
+                                <p><strong>Корр. счет:</strong> 30101810400000000225</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Подписи -->
+                    <div class="contract-signatures">
+                        <div class="signature-party">
+                            <p><strong>ИСПОЛНИТЕЛЬ:</strong></p>
+                            <div class="signature-line"></div>
+                            <p>Индивидуальный предприниматель<br>_________________/Иванов И.И./</p>
+                            <p>М.П.</p>
+                        </div>
+                        
+                        <div class="signature-party">
+                            <p><strong>ЗАКАЗЧИК:</strong></p>
+                            <div class="signature-line"></div>
+                            <p>ФИО: _________________________</p>
+                            <p>Паспорт: _____________________</p>
+                            <p>Телефон: _____________________</p>
+                            <p>Дата: _______________________</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contract-acceptance">
+                    <h3>ПОДТВЕРЖДЕНИЕ АКЦЕПТА ОФЕРТЫ</h3>
+                    <div class="acceptance-options">
+                        <div class="acceptance-option">
+                            <input type="checkbox" id="acceptContract" onchange="toggleAcceptance()">
+                            <label for="acceptContract">
+                                Я подтверждаю, что ознакомлен(а) с условиями Договора-публичной оферты и принимаю их в полном объеме
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="acceptance-actions" id="acceptanceActions" style="display: none;">
+                        <button class="btn-yclients" onclick="proceedToPayment()">
+                            💳 ПЕРЕЙТИ К ОПЛАТЕ
+                        </button>
+                        <p class="acceptance-note">
+                            Нажимая кнопку, вы подтверждаете согласие с условиями Договора-оферты
+                        </p>
+                    </div>
+                </div>
+
+                <div class="highlight">
+                    📞 По вопросам, связанным с Договором, обращайтесь по телефону: 
+                    <span class="highlight-number">+7 (904) 123-31-75</span>
                 </div>
             </div>
         </div>
@@ -2392,6 +3305,7 @@
                         <div class="contact-title" style="margin-top: 20px;">💬 МЫ В СОЦСЕТЯХ</div>
                         <div class="social-links">
                             <a href="https://vk.com/perviy_ritm" class="social-link" target="_blank">ВКонтакте</a>
+                            <a href="https://instagram.com/perviy_ritm_irk" class="social-link" target="_blank">Instagram</a>
                             <a href="https://t.me/perviy_ritm" class="social-link" target="_blank">Telegram</a>
                         </div>
                     </div>
@@ -2400,8 +3314,6 @@
                 <button class="btn-yclients" onclick="openYclientsWidget()">
                     📞 ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
                 </button>
-
-               
             </div>
         </div>
 
@@ -2483,7 +3395,6 @@
                     </div>
                 </div>
                 
-              
                 <div class="highlight">
                     📝 ПОДПИСЫВАЯ ДОГОВОР, ВЫ СОГЛАШАЕТЕСЬ С ПРАВИЛАМИ ПОСЕЩЕНИЯ СТУДИИ
                 </div>
@@ -2494,6 +3405,22 @@
         <div class="footer">
             <p><strong>Студия танцев «Первый ритм Ленинского»</strong> • г. Иркутск, ул. 1-й Ленинский квартал д. 1</p>
             <p>📞 Телефон: <span class="highlight-number">+7 (904) 123-31-75</span> • Все направления в одном месте!</p>
+            
+            <div class="quick-actions" style="margin-top: 15px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <button class="btn" onclick="quickEnroll('Танцы для души')" style="padding: 8px 15px; font-size: 12px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    💃 Пробное занятие
+                </button>
+                <button class="btn" onclick="subscribeNewsletter()" style="padding: 8px 15px; font-size: 12px; background: #32CD32; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    📧 Подписаться
+                </button>
+                <button class="btn" onclick="submitReview()" style="padding: 8px 15px; font-size: 12px; background: #FF6B6B; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    ⭐ Оставить отзыв
+                </button>
+            </div>
+            
+            <p style="margin-top: 15px;">
+                <a href="javascript:void(0)" onclick="openTab('contract')" style="color: #667eea; text-decoration: underline;">📄 Ознакомиться с Договором-офертой</a>
+            </p>
         </div>
     </div>
 
@@ -2584,30 +3511,14 @@
             }
         }
 
-        // === TELEGRAM BOT ФУНКЦИИ ===
-        function openTelegramBot() {
-            const botUsername = 'perviy_ritm_bot';
-            const startParam = 'from_website';
-            
-            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                window.location.href = `tg://resolve?domain=${botUsername}&start=${startParam}`;
-                
-                setTimeout(() => {
-                    window.location.href = `https://t.me/${botUsername}?start=${startParam}`;
-                }, 1000);
-            } else {
-                window.open(`https://t.me/${botUsername}?start=${startParam}`, '_blank');
-            }
-        }
-
         // === ДАННЫЕ ПРЕПОДАВАТЕЛЕЙ ДЛЯ РАСПИСАНИЯ ===
         const scheduleTeachers = {
             'stepan': {
-                name: 'Лосев Степан Владимирович',
-                position: 'Тренер групп 8-13, 13-18 лет',
-                experience: 'Опыт: Лучший в своем деле',
-                specialization: 'Современные танцы, молодежные направления',
-                description: 'Профессиональный тренер с индивидуальным подходом к каждому ученику'
+                name: 'Степан Васильев',
+                position: 'Главный хореограф',
+                experience: 'Опыт: 14 лет',
+                specialization: 'Современные танцы, постановка выступлений',
+                description: 'Профессиональный хореограф с международным опытом. Ученики - победители всероссийских конкурсов.'
             },
             'white': {
                 name: 'Общая группа',
@@ -2617,39 +3528,39 @@
                 description: 'Занятия проводят сертифицированные преподаватели по соответствующим направлениям.'
             },
             'alina': {
-                name: 'Баранова Алина Юрьевна',
-                position: 'Тренер групп 3-4 года, 5-7 лет',
-                experience: 'Опыт: 8 лет преподавания',
+                name: 'Алина Козлова',
+                position: 'Педагог детских групп',
+                experience: 'Опыт: 8 лет',
                 specialization: 'Детская хореография, развивающие танцы',
-                description: 'Танцами занимается с 4 лет. Опыт работы с детьми - 8 лет. Люблю своё дело и танец.'
+                description: 'Специалист по работе с детьми. Находит подход к каждому ребенку через игру и творчество.'
             },
             'valeria': {
-                name: 'Суворова Валерия Алексеевна',
-                position: 'Тренер групп 14-16 лет, 17+, 25+, 45+',
-                experience: 'Опыт: 14+ лет в хореографии',
-                specialization: 'Современные направления, постановочная деятельность',
-                description: 'В хореографии более 14 лет. Стаж постановочной деятельности - 4 года. Владею разными направлениями современного танца.'
+                name: 'Валерия Смирнова',
+                position: 'Фитнес-тренер',
+                experience: 'Опыт: 4 года',
+                specialization: 'Функциональный тренинг, силовые направления',
+                description: 'Сертифицированный фитнес-тренер. Помогает укрепить мышцы и улучшить осанку.'
             },
             'anastasia': {
-                name: 'Кобыльцова Анастасия Викторовна',
-                position: 'Тренер групп «17+», «14-16», «25+»',
-                experience: 'Опыт: 4 года преподавания',
-                specialization: 'Хореография, создание постановок',
-                description: 'Педагог дополнительного образования в области хореографии. Хореографический стаж 13 лет. Создаю и продаю хореографические постановки под заказ.'
+                name: 'Анастасия Петрова',
+                position: 'Тренер по pole dance',
+                experience: 'Опыт: 6 лет',
+                specialization: 'Pole dance, heels, воздушная гимнастика',
+                description: 'Сертифицированный тренер. Участница международных соревнований по pole dance.'
             },
             'yaroslava': {
-                name: 'Рассохина Ярослава Дмитриевна',
-                position: 'Тренер групп 14-16, 17+, 25+',
-                experience: 'Опыт: 14 лет в хореографии',
-                specialization: 'Современная хореография, различные стили',
-                description: 'Педагогический стаж 3 года. Владею различными направлениями современной хореографии. Стремлюсь к развитию и познанию нового в танцевальном мире.'
+                name: 'Ярослава Иванова',
+                position: 'Тренер серебряного возраста',
+                experience: 'Опыт: 3 года',
+                specialization: 'Парные танцы, социальные танцы 45+',
+                description: 'Специалист по работе со взрослыми. Создает комфортную атмосферу для обучения.'
             },
             'ekaterina': {
-                name: 'Косова Екатерина Сергеевна',
-                position: 'Тренер социальные танцы 45+, растяжка 25+ 45+',
-                experience: 'Опыт: спортивно-бальные танцы с 5 лет',
-                specialization: 'Социальные танцы, растяжка',
-                description: 'Занимаюсь спортивно-бальными танцами с 5 лет. Есть опыт работы с детьми и взрослыми.'
+                name: 'Екатерина Сидорова',
+                position: 'Инструктор по растяжке',
+                experience: 'Опыт: 5 лет',
+                specialization: 'Стретчинг, йога, пилатес',
+                description: 'Специалист по безопасной растяжке. Помогает достичь гибкости без травм.'
             }
         };
 
@@ -2680,14 +3591,17 @@
                 </div>
             `;
             
+            // Позиционирование тултипа
             tooltip.style.display = 'block';
             
+            // Позиционируем относительно курсора
             const x = event.clientX + 15;
             const y = event.clientY + 15;
             
             tooltip.style.left = x + 'px';
             tooltip.style.top = y + 'px';
             
+            // Корректировка позиции если тултип выходит за границы экрана
             const tooltipRect = tooltip.getBoundingClientRect();
             if (tooltipRect.right > window.innerWidth) {
                 tooltip.style.left = (event.clientX - tooltipRect.width - 15) + 'px';
@@ -2704,7 +3618,7 @@
             }, 100);
         }
 
-        // === ОБРАБОТКА ФОРМЫ С ОТПРАВКОЙ В TELEGRAM ===
+        // === ОБРАБОТКА ФОРМЫ ===
         document.getElementById('enrollForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -2725,118 +3639,19 @@
             submitBtn.textContent = 'Отправляем...';
             submitBtn.disabled = true;
             
-            const telegramMessage = `
-🎯 *НОВАЯ ЗАЯВКА С САЙТА*
-
-👤 *Имя:* ${name}
-📞 *Телефон:* ${phone}
-📧 *Email:* ${email || 'Не указан'}
-🎭 *Возрастная группа:* ${age || 'Не указана'}
-💃 *Направление:* ${direction || 'Не указано'}
-📝 *Сообщение:* ${message || 'Нет дополнительной информации'}
-
-🌐 *Источник:* Сайт студии
-⏰ *Время:* ${new Date().toLocaleString('ru-RU')}
-    `;
-    
-            const botToken = '8172309514:AAFkrH19yXxn_MkbNDqFNpZF36ATdCUdYYc';
-            const chatId = '8479925884';
-            
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: telegramMessage,
-                    parse_mode: 'Markdown'
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.ok) {
-                    showSuccessMessage();
-                } else {
-                    throw new Error('Ошибка отправки в Telegram');
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка отправки в Telegram:', error);
-                
-                const encodedMessage = encodeURIComponent(telegramMessage);
-                const botUsername = 'perviy_ritm_bot';
-                
-                if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                    window.location.href = `tg://resolve?domain=${botUsername}&text=${encodedMessage}`;
-                    setTimeout(() => {
-                        window.location.href = `https://t.me/${botUsername}?text=${encodedMessage}`;
-                    }, 1000);
-                } else {
-                    window.open(`https://t.me/${botUsername}?text=${encodedMessage}`, '_blank');
-                }
-                
+            // Имитация отправки
+            setTimeout(() => {
                 showSuccessMessage();
-            })
-            .finally(() => {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-                document.getElementById('enrollForm').reset();
-            });
+            }, 1500);
         });
 
         function showSuccessMessage() {
-            alert('✅ Спасибо! Заявка отправлена.\n\nМы свяжемся с вами в течение 30 минут!\n\nЕсли срочно - звоните: +7 (904) 123-31-75 или +79399090786');
+            alert('✅ Спасибо! Заявка отправлена.\n\nМы свяжемся с вами в течение 30 минут!\n\nЕсли срочно - звоните: +7 (904) 123-31-75');
             closeModal();
+            document.getElementById('enrollForm').reset();
         }
-
-        // Функция для быстрой записи через Telegram
-        function quickTelegramBooking(serviceType) {
-            const services = {
-                'trial': '🎁 Пробное занятие (от 300 ₽)',
-                'kids': '👶 Детские группы 3-16 лет',
-                'adults': '👩‍🦱 Взрослые группы 17+',
-                'stretching': '🧘 Растяжка',
-                'individual': '💫 Индивидуальные занятия'
-            };
-            
-            const serviceName = services[serviceType] || 'Занятие в студии';
-            const message = `Хочу записаться на: ${serviceName}`;
-            const encodedMessage = encodeURIComponent(message);
-            const botUsername = 'perviy_ritm_bot';
-            
-            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                window.location.href = `tg://resolve?domain=${botUsername}&start=${encodedMessage}`;
-                setTimeout(() => {
-                    window.location.href = `https://t.me/${botUsername}?start=${encodedMessage}`;
-                }, 1000);
-            } else {
-                window.open(`https://t.me/${botUsername}?start=${encodedMessage}`, '_blank');
-            }
-        }
-
-        // Добавляем быстрые кнопки в модальное окно
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('enrollForm');
-            const quickButtons = `
-                <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 10px; text-align: center;">
-                    <div style="font-weight: bold; margin-bottom: 10px; color: #667eea;">🚀 Быстрая запись через Telegram:</div>
-                    <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <button type="button" onclick="quickTelegramBooking('trial')" style="padding: 10px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                            🎁 Пробное занятие - от 300₽
-                        </button>
-                        <button type="button" onclick="quickTelegramBooking('kids')" style="padding: 10px; background: #17a2b8; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                            👶 Детские группы
-                        </button>
-                        <button type="button" onclick="quickTelegramBooking('adults')" style="padding: 10px; background: #6f42c1; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                            👩‍🦱 Взрослые группы
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            form.insertAdjacentHTML('beforeend', quickButtons);
-        });
 
         // Данные для галереи
         const galleryImages = [
@@ -2995,7 +3810,156 @@
             location.reload();
         }, 300000);
         
-        // Инициализация
+        // Функция для переключения FAQ
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                toggle.textContent = '+';
+            } else {
+                // Закрываем все открытые ответы
+                document.querySelectorAll('.faq-answer.active').forEach(item => {
+                    item.classList.remove('active');
+                    item.previousElementSibling.querySelector('.faq-toggle').textContent = '+';
+                });
+                
+                answer.classList.add('active');
+                toggle.textContent = '−';
+            }
+        }
+
+        // Функции для работы с договором-офертой
+        function downloadContract() {
+            // В реальном проекте здесь должна быть ссылка на PDF файл
+            const contractData = `
+                ДОГОВОР-ПУБЛИЧНАЯ ОФЕРТА
+                на оказание услуг по проведению занятий танцами
+                
+                г. Иркутск
+                «01» марта 2024 года
+                
+                Индивидуальный предприниматель Иванов Иван Иванович,
+                действующий на основании Свидетельства о государственной
+                регистрации, именуемый в дальнейшем «Исполнитель», с одной стороны,
+                и физическое лицо, именуемое в дальнейшем «Заказчик», с другой стороны,
+                заключили настоящий Договор о нижеследующем:
+                
+                [Здесь полный текст договора...]
+            `;
+            
+            // Создаем временную ссылку для скачивания
+            const blob = new Blob([contractData], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Договор-оферта_Первый-ритм.pdf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('Договор подготовлен для скачивания. В реальной версии здесь будет PDF файл.');
+        }
+
+        function toggleAcceptance() {
+            const acceptanceCheckbox = document.getElementById('acceptContract');
+            const acceptanceActions = document.getElementById('acceptanceActions');
+            
+            if (acceptanceCheckbox.checked) {
+                acceptanceActions.style.display = 'block';
+            } else {
+                acceptanceActions.style.display = 'none';
+            }
+        }
+
+        function proceedToPayment() {
+            if (document.getElementById('acceptContract').checked) {
+                // Здесь интеграция с платежной системой
+                openYclientsWidget();
+                
+                // Логируем принятие оферты
+                logContractAcceptance();
+            } else {
+                alert('Пожалуйста, подтвердите согласие с условиями Договора-оферты');
+            }
+        }
+
+        function logContractAcceptance() {
+            // В реальном проекте здесь отправка на сервер
+            const acceptanceData = {
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                ip: 'не определен' // В реальном проекте определяется на сервере
+            };
+            
+            console.log('Договор принят:', acceptanceData);
+            
+            // Показываем подтверждение
+            showAcceptanceConfirmation();
+        }
+
+        function showAcceptanceConfirmation() {
+            const confirmationHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 48px; margin-bottom: 20px;">✅</div>
+                    <h3 style="color: #4CAF50; margin-bottom: 15px;">Договор принят!</h3>
+                    <p>Вы успешно приняли условия Договора-публичной оферты.</p>
+                    <p style="font-size: 12px; color: #666; margin-top: 10px;">
+                        Дата и время акцепта: ${new Date().toLocaleString('ru-RU')}
+                    </p>
+                </div>
+            `;
+            
+            // Можно показать модальное окно или уведомление
+            alert('Договор-оферта успешно принят! Переходим к оплате...');
+        }
+
+        // Функция для отправки отзыва
+        function submitReview() {
+            const name = prompt('Введите ваше имя:');
+            if (!name) return;
+            
+            const rating = prompt('Оцените от 1 до 5 звезд:');
+            if (!rating || rating < 1 || rating > 5) {
+                alert('Пожалуйста, введите оценку от 1 до 5');
+                return;
+            }
+            
+            const review = prompt('Напишите ваш отзыв:');
+            if (!review) return;
+            
+            // Здесь должна быть логика отправки на сервер
+            alert('Спасибо за ваш отзыв! После модерации он появится на сайте.');
+        }
+
+        // Функция для подписки на рассылку
+        function subscribeNewsletter() {
+            const email = prompt('Введите ваш email для подписки на новости:');
+            if (!email) return;
+            
+            if (validateEmail(email)) {
+                // Здесь должна быть логика отправки на сервер
+                alert('Спасибо за подписку! Теперь вы будете получать уведомления о наших мероприятиях.');
+            } else {
+                alert('Пожалуйста, введите корректный email адрес.');
+            }
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Функция для быстрой записи на пробное занятие
+        function quickEnroll(direction) {
+            if (confirm(`Хотите записаться на пробное занятие по направлению "${direction}"?`)) {
+                openYclientsWidget();
+            }
+        }
+
+        // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
             openTab('rules');
             
@@ -3039,11 +4003,32 @@
             animatedElements.forEach((el, index) => {
                 el.style.animationDelay = `${index * 0.1}s`;
             });
+
+            // Инициализация новых функций
+            highlightUpcomingEvents();
         });
+
+        // Функция для подсветки предстоящих мероприятий
+        function highlightUpcomingEvents() {
+            const eventItems = document.querySelectorAll('.event-item');
+            const today = new Date();
+            
+            eventItems.forEach(item => {
+                const dateElement = item.querySelector('.event-day');
+                if (dateElement) {
+                    const eventDate = parseInt(dateElement.textContent);
+                    const currentDate = today.getDate();
+                    
+                    if (eventDate >= currentDate && eventDate <= currentDate + 7) {
+                        item.style.border = '2px solid #FF6B6B';
+                        item.style.background = 'rgba(255,107,107,0.1)';
+                    }
+                }
+            });
+        }
 
         console.log('🚀 Сайт студии "Первый ритм Ленинского" загружен!');
         console.log('💫 YClients виджет подключен');
-        console.log('🤖 Telegram бот подключен');
         console.log('📱 Все функции активны');
     </script>
 </body>
