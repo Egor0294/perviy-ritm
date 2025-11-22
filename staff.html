@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наша команда - Первый ритм Ленинского</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-family: 'Courier New', monospace;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .main-title {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: #FF6B6B;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: #FF5252;
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin: 40px 0 30px;
+            color: #2C3E50;
+        }
+        
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .staff-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .staff-card:hover {
+            transform: translateY(-10px);
+            border-color: #667eea;
+        }
+        
+        .staff-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #667eea;
+            margin: 0 auto 20px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            overflow: hidden;
+        }
+        
+        .staff-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .staff-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .staff-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 8px;
+        }
+        
+        .staff-position {
+            font-size: 16px;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .staff-experience {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .staff-specialization {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .staff-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .staff-contacts {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 5px;
+        }
+        
+        .admin-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .admin-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 3px solid #32CD32;
+        }
+        
+        .admin-title {
+            font-size: 24px;
+            color: #2C3E50;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .footer {
+            background: #2C3E50;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .contact-info {
+            margin: 20px 0;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .social-link {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .staff-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 28px;
+            }
+            
+            .main-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">ПЕРВЫЙ РИТМ ЛЕНИНСКОГО</div>
+        <h1 class="main-title">НАША КОМАНДА</h1>
+        <p class="subtitle">Профессиональные педагоги с опытом работы от 3 до 14 лет</p>
+        <a href="https://perviy-ritm.ru" class="back-btn">← Вернуться на главную</a>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">👥 НАШИ ПРЕПОДАВАТЕЛИ</h2>
+        
+        <div id="staffContainer" class="staff-grid">
+            <!-- Данные будут загружены через JavaScript -->
+        </div>
+
+        <h2 class="section-title">📞 АДМИНИСТРАЦИЯ</h2>
+        
+        <div class="admin-row">
+            <div class="admin-card">
+                <div class="staff-photo">
+                    <div class="staff-photo-placeholder">МАРИЯ</div>
+                </div>
+                <div class="staff-name">Мария Ковалева</div>
+                <div class="staff-position">Администратор</div>
+                <div class="staff-contacts">📞 +7 (904) 123-31-75</div>
+                <div class="staff-contacts">🕒 Пн-Пт: 8:00-22:00</div>
+                <div class="staff-description">
+                    Ответит на все ваши вопросы, поможет с выбором направления и запишет на пробное занятие
+                </div>
+            </div>
+            
+            <div class="admin-card">
+                <div class="staff-photo">
+                    <div class="staff-photo-placeholder">АННА</div>
+                </div>
+                <div class="staff-name">Анна Николаева</div>
+                <div class="staff-position">Администратор</div>
+                <div class="staff-contacts">📞 +7 (952) 873-07-92</div>
+                <div class="staff-contacts">🕒 Сб-Вс: 9:00-21:00</div>
+                <div class="staff-description">
+                    Проконсультирует по абонементам и поможет подобрать удобное время для занятий
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <h3>Студия танцев «Первый ритм Ленинского»</h3>
+            <div class="contact-info">
+                <p>г. Иркутск, ул. 1-й Ленинский квартал д. 1</p>
+                <p>📞 Телефон: +7 (904) 123-31-75</p>
+                <p>✉️ Email: info@perviy-ritm.ru</p>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://vk.com/perviy_ritm" class="social-link" target="_blank">ВКонтакте</a>
+                <a href="https://instagram.com/perviy_ritm_irk" class="social-link" target="_blank">Instagram</a>
+                <a href="https://t.me/perviy_ritm" class="social-link" target="_blank">Telegram</a>
+            </div>
+            
+            <p>© 2024 Первый ритм Ленинского. Все права защищены.</p>
+        </div>
+    </div>
+
+    <script>
+        // Функция для отображения команды
+        function renderStaff() {
+            const container = document.getElementById('staffContainer');
+            container.innerHTML = '';
+            
+            const staffData = loadStaffData();
+            
+            staffData.forEach(staff => {
+                const card = document.createElement('div');
+                card.className = 'staff-card';
+                
+                let photoContent = '';
+                if (staff.photoUrl) {
+                    photoContent = `<img src="${staff.photoUrl}" alt="${staff.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy">
+                                   <div class="staff-photo-placeholder" style="display:none;">${getInitials(staff.name)}</div>`;
+                } else {
+                    photoContent = `<div class="staff-photo-placeholder">${getInitials(staff.name)}</div>`;
+                }
+                
+                card.innerHTML = `
+                    <div class="staff-photo">
+                        ${photoContent}
+                    </div>
+                    <div class="staff-name">${staff.name}</div>
+                    <div class="staff-position">${staff.position}</div>
+                    <div class="staff-experience">${staff.experience}</div>
+                    <div class="staff-specialization">${staff.specialization}</div>
+                    <div class="staff-description">${staff.description}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Получить инициалы для заглушки
+        function getInitials(name) {
+            return name.split(' ').map(word => word[0]).join('').toUpperCase();
+        }
+
+        // Загрузка данных из localStorage
+        function loadStaffData() {
+            const savedData = localStorage.getItem('staffData');
+            if (savedData) {
+                return JSON.parse(savedData);
+            }
+            
+            // Данные по умолчанию
+            return [
+                {
+                    id: 1,
+                    name: "Степан Васильев",
+                    position: "Главный хореограф",
+                    experience: "Опыт: 14 лет",
+                    specialization: "Современные танцы, постановка выступлений",
+                    description: "Профессиональный хореограф с международным опытом. Ученики - победители всероссийских конкурсов. Специализируется на contemporary, модерне и джазе.",
+                    photoUrl: ""
+                },
+                {
+                    id: 2,
+                    name: "Алина Козлова",
+                    position: "Педагог детских групп",
+                    experience: "Опыт: 8 лет",
+                    specialization: "Детская хореография, развивающие танцы",
+                    description: "Специалист по работе с детьми. Находит подход к каждому ребенку через игру и творчество. Выпускница Иркутского хореографического училища.",
+                    photoUrl: ""
+                }
+            ];
+        }
+
+        // Загрузка данных при открытии страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            renderStaff();
+            
+            // Анимация появления карточек
+            const cards = document.querySelectorAll('.staff-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        // Обработка ошибок загрузки изображений
+        document.addEventListener('error', function(e) {
+            if (e.target.tagName === 'IMG' && e.target.parentElement.classList.contains('staff-photo')) {
+                const placeholder = e.target.nextElementSibling;
+                if (placeholder && placeholder.classList.contains('staff-photo-placeholder')) {
+                    e.target.style.display = 'none';
+                    placeholder.style.display = 'flex';
+                }
+            }
+        }, true);
+    </script>
+</body>
+</html>
