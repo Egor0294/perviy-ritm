@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Первый Ритм - Студия танцев | Договор оферты</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --purple-color: #9b59b6;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .studio-info {
+            background: var(--secondary-color);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Progress Indicator */
+        .progress-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .progress-line {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #e1e5e9;
+            z-index: 1;
+        }
+        
+        .progress-step {
+            text-align: center;
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e1e5e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+            color: #7f8c8d;
+            transition: all 0.3s ease;
+            border: 3px solid white;
+        }
+        
+        .step-active .step-number {
+            background: var(--accent-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .step-complete .step-number {
+            background: var(--success-color);
+            color: white;
+        }
+        
+        .step-label {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+        
+        .step-active .step-label {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        /* Main App Layout */
+        .app-body {
+            display: grid;
+            grid-template-columns: 450px 1fr;
+            min-height: 800px;
+        }
+        
+        /* Form Panel */
+        .form-panel {
+            background: var(--light-color);
+            padding: 30px;
+            border-right: 3px solid #ddd;
+            overflow-y: auto;
+            height: 100%;
+        }
+        
+        .form-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--secondary-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+            font-size: 0.95rem;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        .required::after {
+            content: " *";
+            color: var(--secondary-color);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+        }
+        
+        .checkbox-group input {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 14px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-success {
+            background: var(--success-color);
+            color: white;
+        }
+        
+        .btn-warning {
+            background: var(--warning-color);
+            color: white;
+        }
+        
+        .btn-danger {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-purple {
+            background: var(--purple-color);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.15);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Preview Panel */
+        .preview-panel {
+            padding: 30px;
+            background: #f8f9fa;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent-color);
+        }
+        
+        .preview-header h2 {
+            color: var(--primary-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .preview-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        /* СТИЛИ ДЛЯ ДОКУМЕНТА ПО ГОСТ А4 */
+        .document-preview {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            font-family: 'Times New Roman', serif;
+            font-size: 14pt;
+            line-height: 1.5;
+            min-height: 700px;
+            flex-grow: 1;
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            box-sizing: border-box;
+            position: relative;
+        }
+        
+        /* Заголовок документа по ГОСТ */
+        .document-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #000;
+        }
+        
+        .document-header h1 {
+            font-size: 16pt;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+        
+        .document-header h2 {
+            font-size: 14pt;
+            margin-bottom: 15px;
+            font-weight: bold;
+            line-height: 1.3;
+        }
+        
+        /* Основной текст документа */
+        .document-section {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .document-section h2 {
+            font-size: 14pt;
+            margin: 25px 0 15px 0;
+            font-weight: bold;
+            text-align: left;
+            page-break-after: avoid;
+        }
+        
+        .clause {
+            margin-bottom: 12px;
+            text-align: justify;
+            line-height: 1.5;
+        }
+        
+        .clause-number {
+            font-weight: bold;
+        }
+        
+        .subclause {
+            margin-left: 25px;
+            margin-bottom: 8px;
+            text-align: justify;
+        }
+        
+        /* Таблица подписей по ГОСТ */
+        .signature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0 20px 0;
+            page-break-inside: avoid;
+        }
+        
+        .signature-table td {
+            padding: 20px 15px;
+            border: 1px solid #000;
+            vertical-align: top;
+            width: 50%;
+            height: 120px;
+            position: relative;
+        }
+        
+        .signature-table .signature-area {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            text-align: center;
+            width: calc(100% - 30px);
+        }
+        
+        .signature-table .signature-line {
+            border-top: 1px solid #000;
+            width: 200px;
+            margin: 0 auto;
+            padding-top: 5px;
+        }
+        
+        /* Поля ввода данных */
+        .field-highlight {
+            background-color: transparent;
+            border-bottom: 1px dashed #000;
+            padding: 0 4px;
+            display: inline-block;
+            min-width: 100px;
+        }
+        
+        /* Нумерация страниц */
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            font-size: 12pt;
+        }
+        
+        /* Контролы */
+        .controls {
+            text-align: center;
+            margin: 25px 0;
+            padding: 25px;
+            background: var(--light-color);
+            border-radius: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        /* Payment Info */
+        .payment-info {
+            background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid var(--success-color);
+        }
+        
+        .payment-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #e1e5e9;
+        }
+        
+        .payment-method i {
+            font-size: 1.5rem;
+            color: var(--success-color);
+        }
+        
+        /* Additional Options */
+        .additional-options {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid var(--warning-color);
+        }
+        
+        .auto-fill-btn {
+            background: var(--purple-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-left: 10px;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .auto-fill-btn:hover {
+            background: #8e44ad;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-info {
+            text-align: left;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .app-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-panel {
+                border-right: none;
+                border-bottom: 3px solid #ddd;
+            }
+            
+            .preview-actions {
+                justify-content: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-info {
+                text-align: center;
+            }
+            
+            .document-preview {
+                width: 100%;
+                min-height: auto;
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .preview-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .document-preview {
+                padding: 15px;
+                font-size: 12pt;
+            }
+        }
+        
+        /* Стили для печати */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                margin: 0;
+                max-width: none;
+            }
+            .form-panel, .controls, .studio-info, .footer, .preview-header,
+            .progress-indicator, .header, .auto-fill-btn {
+                display: none;
+            }
+            .app-body {
+                grid-template-columns: 1fr;
+                display: block;
+            }
+            .document-preview {
+                box-shadow: none;
+                padding: 20mm;
+                margin: 0;
+                width: 210mm;
+                min-height: 297mm;
+                page-break-after: always;
+            }
+            .preview-panel {
+                padding: 0;
+                background: white;
+            }
+            .field-highlight {
+                border-bottom: 1px solid #000;
+            }
+        }
+
+        /* Help Text */
+        .help-text {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 5px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-music logo-icon"></i>
+                <div>
+                    <h1>Первый ритм Ленинского</h1>
+                    <p>Договор онлайн</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="studio-info">
+            <i class="fas fa-star"></i>
+            <span>Студия танцев в Иркутске</span>
+        </div>
+
+        <div class="progress-indicator">
+            <div class="progress-line"></div>
+            <div class="progress-step step-active">
+                <div class="step-number">1</div>
+                <div class="step-label">Данные участника</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-number">2</div>
+                <div class="step-label">Условия участия</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-number">3</div>
+                <div class="step-label">Дополнительно</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-number">4</div>
+                <div class="step-label">Готово</div>
+            </div>
+        </div>
+
+        <div class="app-body">
+            <!-- Панель формы -->
+            <div class="form-panel">
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Данные участника</h3>
+                    
+                    <div class="form-group">
+                        <label class="required">ФИО полностью</label>
+                        <input type="text" id="customerName" placeholder="Иванов Иван Иванович">
+                        <button class="auto-fill-btn" onclick="fillExampleData()">
+                            <i class="fas fa-magic"></i> Заполнить пример
+                        </button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Паспортные данные</label>
+                        <input type="text" id="passportData" placeholder="серия 1234 № 567890, выдан ...">
+                        <div class="help-text">Пример: серия 4510 № 123456, выдан ОВД района Тверской г. Москвы</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Дата выдачи паспорта</label>
+                        <input type="date" id="passportDate">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Код подразделения</label>
+                        <input type="text" id="divisionCode" placeholder="123-456">
+                        <div class="help-text">Формат: 123-456 или 123456</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Телефон</label>
+                        <input type="tel" id="customerPhone" placeholder="+7 (999) 123-45-67">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="customerEmail" placeholder="client@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Адрес проживания</label>
+                        <input type="text" id="customerAddress" placeholder="г. Москва, ул. Примерная, д. 1">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-dancing"></i> Условия участия</h3>
+                    
+                    <div class="form-group">
+                        <label class="required">Направление танцев</label>
+                        <select id="danceDirection">
+                            <option value="children">Детские группы (3-16 лет)</option>
+                            <option value="adult_beginner">Взрослые группы (17+)</option>
+                            <option value="individual">Индивидуальные занятия</option>
+                            <option value="wedding">Растяжка</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Тип абонемента</label>
+                        <select id="subscriptionType">
+                            <option value="single">Разовое посещение</option>
+                            <option value="month4">Месяц (4 посещения)</option>
+                            <option value="month8">Месяц (8 посещений)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="payment-info">
+                        <h4><i class="fas fa-credit-card"></i> Способы оплаты</h4>
+                        <p>Оплата производится ежемесячно одним из способов:</p>
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <i class="fas fa-globe"></i>
+                                <span>Онлайн оплата на сайте</span>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Банковской картой в студии</span>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fas fa-qrcode"></i>
+                                <span>QR-код для перевода</span>
+                            </div>
+                        </div>
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+                            <i class="fas fa-info-circle"></i>
+                            Продолжительность занятия: 60 минут
+                        </p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Дата начала занятий</label>
+                        <input type="date" id="startDate">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-cog"></i> Дополнительные условия</h3>
+
+                    <div class="form-group">
+                        <label>Особые условия (если есть)</label>
+                        <textarea id="specialConditions" rows="3" placeholder="Дополнительные пожелания или условия..."></textarea>
+                    </div>
+                  
+                    <div class="additional-options">
+                        <h4><i class="fas fa-list-check"></i> Дополнительные опции</h4>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="freezeOption">
+                            <label for="freezeOption">Возможность заморозки абонемента</label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="groupChangeOption">
+                            <label for="groupChangeOption">Возможность смены группы</label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="personalTrainerOption">
+                            <label for="personalTrainerOption">Индивидуальные консультации</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-check-circle"></i> Согласия и подтверждения</h3>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="personalDataConsent" checked>
+                        <label for="personalDataConsent">Согласие на обработку персональных данных</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="photoVideoConsent" checked>
+                        <label for="photoVideoConsent">Согласие на фото- и видеосъемку</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="medicalConsent">
+                        <label for="medicalConsent">Подтверждаю отсутствие медицинских противопоказаний</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="rulesConsent">
+                        <label for="rulesConsent">Ознакомлен с правилами студии</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="liabilityConsent">
+                        <label for="liabilityConsent">Согласие с условиями ответственности</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="contractTermsConsent">
+                        <label for="contractTermsConsent">Подтверждаю ознакомление с договором</label>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="generateDocument()">
+                        <i class="fas fa-sync-alt"></i> Обновить документ
+                    </button>
+                    <button class="btn btn-danger" onclick="resetForm()">
+                        <i class="fas fa-trash-alt"></i> Очистить форму
+                    </button>
+                </div>
+            </div>
+
+            <!-- Панель предпросмотра -->
+            <div class="preview-panel">
+                <div class="preview-header">
+                    <h2><i class="fas fa-file-contract"></i> Предпросмотр документа</h2>
+                    <div class="preview-actions">
+                        <button class="btn btn-success" onclick="printDocument()">
+                            <i class="fas fa-print"></i> Печать
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="document-preview" id="documentPreview">
+                    <!-- Документ будет генерироваться здесь -->
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Студия танцев "Первый ритм Ленинского"</h3>
+                    <p>г. Иркутск, Территория Первый Ленинский Квартал дом 1</p>
+                    <p>+7 (904) 123-31-75 | egor.denunn@yandex.ru</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-globe"></i> Сайт студии</a>
+                    <a href="#"><i class="fas fa-phone"></i> Контакты</a>
+                    <a href="#"><i class="fas fa-question-circle"></i> Помощь</a>
+                </div>
+            </div>
+            <p style="margin-top: 20px; opacity: 0.8;">© 2024 Студия танцев "Первый ритм Ленинского". Все права защищены.</p>
+        </div>
+    </div>
+
+    <script>
+        // Данные студии "Первый Ритм"
+        const studioData = {
+            name: "Первый ритм Ленинского",
+            director: "Демин Егор Александрович",
+            inn: "382708957262",
+            ogrnip: "325385000115492",
+            address: "664514, Иркутская область, Иркутский район, с. Хомутово, ул. Строителей, д. 74",
+            phone: "+7 (904) 123-31-75",
+            email: "egor.denunn@yandex.ru",
+            website: "https://egor0294.github.io/perviy-ritm/",
+            bank: "ООО Банк Точка",
+            account: "40802810120000787160",
+            bik: "044525104"
+        };
+
+        // Справочники для преобразования значений
+        const directionNames = {
+            'children': 'Детские группы (3-16 лет)',
+            'adult_beginner': 'Взрослые группы (17+)',
+            'individual': 'Индивидуальные занятия',
+            'wedding': 'Растяжка',
+
+        };
+        
+        const subscriptionNames = {
+            'single': 'Разовое посещение',
+            'month4': 'Абонемент на 4 посещения в месяц',
+            'month8': 'Абонемент на 8 посещений в месяц',
+        };
+
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            document.getElementById('passportDate').valueAsDate = today;
+            document.getElementById('startDate').valueAsDate = today;
+            generateDocument();
+            
+            // Автообновление при изменении полей
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    clearTimeout(this._timer);
+                    this._timer = setTimeout(() => generateDocument(), 300);
+                });
+            });
+            
+            // Обновление прогресса при изменении данных
+            document.getElementById('customerName').addEventListener('input', updateProgress);
+            document.getElementById('passportData').addEventListener('input', updateProgress);
+        });
+
+        // Заполнение примера данных
+        function fillExampleData() {
+            const examples = [
+                {
+                    name: "Иванова Мария Сергеевна",
+                    phone: "+7 (999) 123-45-67",
+                    email: "maria.ivanova@example.com",
+                    passport: "серия 4510 № 123456, выдан ОВД района Тверской г. Москвы",
+                    code: "770-123",
+                    address: "г. Москва, ул. Тверская, д. 25, кв. 14"
+                },
+                {
+                    name: "Петров Алексей Владимирович",
+                    phone: "+7 (916) 234-56-78", 
+                    email: "alexey.petrov@example.com",
+                    passport: "серия 4611 № 654321, выдан УФМС России по г. Москве",
+                    code: "770-456",
+                    address: "г. Москва, пр-т Мира, д. 108, кв. 76"
+                }
+            ];
+            
+            const example = examples[Math.floor(Math.random() * examples.length)];
+            
+            document.getElementById('customerName').value = example.name;
+            document.getElementById('customerPhone').value = example.phone;
+            document.getElementById('customerEmail').value = example.email;
+            document.getElementById('passportData').value = example.passport;
+            document.getElementById('divisionCode').value = example.code;
+            document.getElementById('customerAddress').value = example.address;
+            
+            generateDocument();
+        }
+
+        // Генерация документа
+        function generateDocument() {
+            const data = collectFormData();
+            const preview = document.getElementById('documentPreview');
+            
+            preview.innerHTML = createDocumentHTML(data);
+            updateProgress();
+        }
+
+        // Сбор данных формы
+        function collectFormData() {
+            return {
+                customerName: document.getElementById('customerName').value,
+                passportData: document.getElementById('passportData').value,
+                passportDate: document.getElementById('passportDate').value,
+                divisionCode: document.getElementById('divisionCode').value,
+                customerPhone: document.getElementById('customerPhone').value,
+                customerEmail: document.getElementById('customerEmail').value,
+                customerAddress: document.getElementById('customerAddress').value,
+                danceDirection: document.getElementById('danceDirection').value,
+                subscriptionType: document.getElementById('subscriptionType').value,
+                startDate: document.getElementById('startDate').value,
+                specialConditions: document.getElementById('specialConditions').value,
+                freezeOption: document.getElementById('freezeOption').checked,
+                groupChangeOption: document.getElementById('groupChangeOption').checked,
+                personalTrainerOption: document.getElementById('personalTrainerOption').checked,
+                personalDataConsent: document.getElementById('personalDataConsent').checked,
+                photoVideoConsent: document.getElementById('photoVideoConsent').checked,
+                medicalConsent: document.getElementById('medicalConsent').checked,
+                rulesConsent: document.getElementById('rulesConsent').checked,
+                liabilityConsent: document.getElementById('liabilityConsent').checked,
+                contractTermsConsent: document.getElementById('contractTermsConsent').checked
+            };
+        }
+
+        // Обновление индикатора прогресса
+        function updateProgress() {
+            const data = collectFormData();
+            const steps = document.querySelectorAll('.progress-step');
+            let completedSteps = 0;
+            
+            // Шаг 1: Данные участника
+            if (data.customerName && data.passportData && data.divisionCode) completedSteps = 1;
+            
+            // Шаг 2: Условия участия
+            if (completedSteps >= 1 && data.subscriptionType) completedSteps = 2;
+            
+            // Шаг 3: Дополнительно
+            if (completedSteps >= 2 && (data.personalDataConsent || data.photoVideoConsent)) completedSteps = 3;
+            
+            // Шаг 4: Готово
+            if (completedSteps >= 3) completedSteps = 4;
+            
+            steps.forEach((step, index) => {
+                step.classList.remove('step-active', 'step-complete');
+                if (index < completedSteps) {
+                    step.classList.add('step-complete');
+                } else if (index === completedSteps) {
+                    step.classList.add('step-active');
+                }
+            });
+        }
+
+        // Создание HTML документа с полным текстом договора
+        function createDocumentHTML(data) {
+            const currentDate = new Date();
+
+            // Если данные не заполнены, показываем инструкцию
+            if (!data.customerName || !data.passportData) {
+                return `
+                    <div style="text-align: center; padding: 100px 50px; color: #6c757d;">
+                        <i class="fas fa-file-contract" style="font-size: 4rem; margin-bottom: 20px; color: #bdc3c7;"></i>
+                        <h2 style="color: #2c3e50; margin-bottom: 15px;">Договор будет здесь</h2>
+                        <p style="font-size: 1.1rem; max-width: 500px; margin: 0 auto;">
+                            Заполните данные участника в левой панели, чтобы сгенерировать договор.
+                        </p>
+                        <div style="margin-top: 30px;">
+                            <button class="btn btn-primary" onclick="fillExampleData()">
+                                <i class="fas fa-magic"></i> Заполнить пример данных
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="document-header">
+                    <h1>ДОГОВОР ПУБЛИЧНОЙ ОФЕРТЫ</h1>
+                    <h2>на оказание досуговых услуг в области танцев</h2>
+                    <p>г. Иркутск</p>
+                    <p>«${currentDate.getDate()}» ${currentDate.toLocaleString('ru-RU', { month: 'long' })} ${currentDate.getFullYear()} г.</p>
+                </div>
+
+                <div class="document-section">
+                    <div class="clause">
+                        <p><strong>Индивидуальный предприниматель ${studioData.director}</strong> (ИНН ${studioData.inn}, ОГРНИП ${studioData.ogrnip}), действующий на основании Свидетельства о государственной регистрации, именуемый в дальнейшем «Исполнитель», с одной стороны, и</p>
+                        
+                        <p><strong>Заказчик:</strong><br>
+                        ФИО: <span class="field-highlight">${data.customerName}</span><br>
+                        Паспорт: <span class="field-highlight">${data.passportData}</span><br>
+                        дата выдачи «${data.passportDate ? new Date(data.passportDate).getDate() : '______'}» ${data.passportDate ? new Date(data.passportDate).toLocaleString('ru-RU', { month: 'long' }) : '________________'} 20___ г., код подразделения <span class="field-highlight">${data.divisionCode}</span>,<br>
+                        ${data.customerPhone ? `Телефон: <span class="field-highlight">${data.customerPhone}</span><br>` : ''}
+                        ${data.customerEmail ? `Email: <span class="field-highlight">${data.customerEmail}</span><br>` : ''}
+                        ${data.customerAddress ? `Адрес: <span class="field-highlight">${data.customerAddress}</span><br>` : ''}
+                        именуемый в дальнейшем «Заказчик», с другой стороны,<br>
+                        совместно именуемые «Стороны», заключили настоящий договор о нижеследующем:</p>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h2>1. ОБЩИЕ ПОЛОЖЕНИЯ</h2>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">1.1.</span> Настоящий договор является официальной публичной офертой (предложением) Исполнителя заключить договор на предоставление досуговых услуг в области танцев с любым полностью дееспособным физическим лицом, которое примет настоящее предложение на условиях, указанных в договоре.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">1.2.</span> В соответствии с пунктом 2 статьи 437 Гражданского кодекса Российской Федерации, в случае принятия изложенных ниже условий и оплаты услуг, лицо, производящее акцепт этой оферты, становится Заказчиком.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">1.3.</span> Акцептом оферты считается осуществление Заказчиком действий, предусмотренных договором, включая полную предоплату за выбранную услугу и заполнение регистрационной формы на сайте Исполнителя или в студии.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">1.4.</span> Факт оформления заказа и оплаты услуг подтверждает, что Заказчик ознакомлен и безоговорочно принимает все условия настоящего договор в том виде, в каком они изложены в тексте договора.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">1.5.</span> Настоящий договор считается заключенным в простой письменной форме и не требует нотариального удостоверения.</p>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h2>2. ПРЕДМЕТ ДОГОВОРА</h2>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">2.1.</span> Исполнитель обязуется предоставить Заказчику доступ к досуговым занятиям танцами в соответствии с выбранным направлением: <strong>${directionNames[data.danceDirection]}</strong>, а Заказчик обязуется оплатить данные услуги.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">2.2.</span> Формат участия: <strong>${subscriptionNames[data.subscriptionType]}</strong></p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">2.3.</span> Продолжительность одного занятия составляет: <strong>60 минут</strong></p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">2.4.</span> Дата начала занятий: <strong>${data.startDate ? new Date(data.startDate).toLocaleDateString('ru-RU') : 'не определена'}</strong></p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">2.5.</span> Срок действия договора: с момента акцепта оферты до полного исполнения обязательств Сторонами.</p>
+                    </div>
+                    
+                    ${data.specialConditions ? `
+                    <div class="clause">
+                        <p><span class="clause-number">2.6.</span> Дополнительные условия: ${data.specialConditions}</p>
+                    </div>
+                    ` : ''}
+                </div>
+
+                <div class="document-section">
+                    <h2>3. ПРАВА И ОБЯЗАННОСТИ СТОРОН</h2>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">3.1.</span> Исполнитель обязуется:</p>
+                        <div class="subclause">
+                            <p><strong>3.1.1.</strong> Организовывать досуговые занятия в соответствии с утвержденным расписанием, опубликованным на официальном сайте Исполнителя и в помещении студии</p>
+                            <p><strong>3.1.2.</strong> Обеспечивать безопасные и комфортные условия для проведения занятий, соответствующие санитарно-гигиеническим нормам и правилам противопожарной безопасности</p>
+                            <p><strong>3.1.3.</strong> Предоставлять оборудованные помещения для занятий, оснащенные необходимым инвентарем и звуковой аппаратурой</p>
+                            <p><strong>3.1.4.</strong> Обеспечивать квалифицированное сопровождение занятий профессиональными инструкторами</p>
+                            <p><strong>3.1.5.</strong> Своевременно уведомлять Заказчика об изменениях в расписании занятий, замене инструкторов или переносе занятий не менее чем за 24 часа до начала занятия</p>
+                            <p><strong>3.1.6.</strong> Соблюдать конфиденциальность персональных данных Заказчика в соответствии с законодательством Российской Федерации</p>
+                        </div>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">3.2.</span> Заказчик обязуется:</p>
+                        <div class="subclause">
+                            <p><strong>3.2.1.</strong> Своевременно оплачивать услуги в соответствии с условиями договора и выбранным тарифом</p>
+                            <p><strong>3.2.2.</strong> Соблюдать правила внутреннего распорядка студии, технику безопасности и рекомендации инструкторов</p>
+                            <p><strong>3.2.3.</strong> Следовать рекомендациям ведущего занятий и соблюдать дисциплину во время проведения занятий</p>
+                            <p><strong>3.2.4.</strong> Бережно относиться к имуществу студии и возмещать причиненный ущерб в полном объеме</p>
+                            <p><strong>3.2.5.</strong> Соблюдать чистоту и порядок в помещениях студии</p>
+                            <p><strong>3.2.6.</strong> Предоставлять достоверную информацию при заключении договора и своевременно сообщать об ее изменении</p>
+                        </div>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">3.3.</span> Исполнитель вправе:</p>
+                        <div class="subclause">
+                            <p><strong>3.3.1.</strong> Вносить изменения в расписание занятий, предварительно уведомив Заказчика любым доступным способом (SMS, email, сообщение в мессенджере)</p>
+                            <p><strong>3.3.2.</strong> Приостанавливать оказание услуг в случае нарушения Заказчиком условий договора или правил внутреннего распорядка</p>
+                            <p><strong>3.3.3.</strong> Заменять инструктора занятий при необходимости, обеспечивая услуг</p>
+                            <p><strong>3.3.4.</strong> Отказать в предоставлении услуг Заказчику в состоянии алкогольного, наркотического или токсического опьянения</p>
+                        </div>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">3.4.</span> Заказчик вправе:</p>
+                        <div class="subclause">
+                            <p><strong>3.4.1.</strong> Получать услуги в соответствии с условиями договора и выбранным тарифом</p>
+                            <p><strong>3.4.2.</strong> Требовать предоставления информации о порядке оказания услуг, расписании занятий и квалификации инструкторов</p>
+                            ${data.groupChangeOption ? `<p><strong>3.4.3.</strong> Переходить в другие группы при наличии свободных мест и согласовании с администрацией студии</p>` : ''}
+                            ${data.freezeOption ? `<p><strong>3.4.4.</strong> Замораживать абонемент на срок до 14 дней в течение действия договора не более одного раза в месяц</p>` : ''}
+                            ${data.personalTrainerOption ? `<p><strong>3.4.5.</strong> Получать индивидуальные консультации по предварительной записи и согласованию с администрацией</p>` : ''}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h2>4. СТОИМОСТЬ УСЛУГ И ПОРЯДОК РАСЧЕТОВ</h2>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">4.1.</span> Стоимость услуг определяется в соответствии с действующим прайс-листом, опубликованным на официальном сайте Исполнителя ${studioData.website} и/или в помещении студии.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">4.2.</span> Оплата услуг производится путем 100% предоплаты выбранного абонемента или разового занятия.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">4.3.</span> Расчеты по договору производятся в рублях Российской Федерации.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">4.4.</span> Оплата производится ежемесячно одним из следующих способов:</p>
+                        <div class="subclause">
+                            <p><strong>4.4.1.</strong> Онлайн оплата на официальном сайте Исполнителя через защищенные платежные системы</p>
+                            <p><strong>4.4.2.</strong> Банковской картой в терминале, установленном в помещении студии</p>
+                            <p><strong>4.4.3.</strong> QR-код для банковского перевода через мобильное приложение банка</p>
+                        </div>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">4.5.</span> Датой оплаты считается дата поступления денежных средств на расчетный счет Исполнителя.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">4.6.</span> В случае несвоевременной оплаты Исполнитель вправе приостановить оказание услуг до момента полной оплаты.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">4.7.</span> Абонементы действуют в течение определенного срока, указанного в прайс-листе. Пропущенные занятия не компенсируются и не переносятся, если иное не предусмотрено условиями конкретного абонемента.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">4.8.</span> Возврат денежных средств за неиспользованные занятия возможен в случае, предусмотренном законодательством Российской Федерации о защите прав потребителей.</p>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h2>5. СРОК ДЕЙСТВИЯ ДОГОВОРА</h2>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">5.1.</span> Настоящий договор вступает в силу с момента акцепта оферты Заказчиком и действует до полного исполнения обязательств Сторонами.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">5.2.</span> Договор считается исполненным надлежащим образом после оказания всех услуг, предусмотренных выбранным абонементом, или по истечении срока его действия.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">5.3.</span> Договор может быть расторгнут досрочно по соглашению Сторон.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">5.4.</span> Исполнитель вправе расторгнуть договор в одностороннем порядке в случае существенного нарушения Заказчиком условий договора, включая неоднократные нарушения правил внутреннего распорядка.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">5.5.</span> Заказчик вправе расторгнуть договор в одностороннем порядке, уведомив Исполнителя не менее чем за 10 календарных дней.</p>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h2>6. ОТВЕТСТВЕННОСТЬ СТОРОН</h2>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">6.1.</span> За неисполнение или ненадлежащее исполнение обязательств по настоящему договору Стороны несут ответственность в соответствии с действующим законодательством Российской Федерации.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">6.2.</span> Исполнитель не несет ответственности за травмы и повреждения здоровья, полученные Заказчиком в результате несоблюдения правил техники безопасности, невыполнения указаний инструктора или сокрытия информации о медицинских противопоказаниях.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">6.3.</span> Исполнитель не несет ответственности за утерю или повреждение личных вещей Заказчика, оставленных в раздевалках или помещениях студии.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">6.4.</span> Заказчик несет полную ответственность за достоверность предоставленных при заключении договора персональных данных.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">6.5.</span> Исполнитель не несет ответственности за неисполнение обязательств по договору, если такое неисполнение вызвано действиями или бездействием Заказчика.</p>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h2>7. ФОРС-МАЖОР</h2>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">7.1.</span> Стороны освобождаются от ответственности за неисполнение обязательств по договору, если такое неисполнение вызвано обстоятельствами непреодолимой силы (форс-мажор), включая: стихийные бедствия, войны, военные действия, террористические акты, решения государственных органов, забастовки, эпидемии, пандемии и другие обстоятельства, которые Сторона не могла ни предвидеть, ни предотвратить разумными мерами.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">7.2.</span> Сторона, подвергшаяся действию форс-мажорных обстоятельств, обязана уведомить другую Сторону о наступлении таких обстоятельств в течение 5 календарных дней с момента их наступления.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">7.3.</span> В случае действия форс-мажорных обстоятельств более 30 календарных дней, каждая из Сторон вправе отказаться от исполнения договора.</p>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h2>8. РАЗРЕШЕНИЕ СПОРОВ</h2>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">8.1.</span> Все споры и разногласия, возникающие из настоящего договора или в связи с ним, разрешаются Сторонами путем переговоров.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">8.2.</span> В случае невозможности разрешения споров путем переговоров, они подлежат рассмотрению в судебном порядке по месту нахождения Исполнителя в соответствии с действующим законодательством Российской Федерации.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">8.3.</span> Претензионный порядок разрешения споров является обязательным. Срок рассмотрения претензии составляет 10 (десять) рабочих дней с даты ее получения.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">8.4.</span> До обращения в суд Заказчик обязан направить Исполнителю письменную претензию с изложением сути спора и требований.</p>
+                    </div>
+                </div>
+
+                ${data.personalDataConsent ? `
+                <div class="document-section">
+                    <h2>9. СОГЛАСИЕ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ</h2>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">9.1.</span> Заказчик дает свое согласие Исполнителю на обработку своих персональных данных, предоставленных при заключении настоящего договора, включая: фамилию, имя, отчество, данные документа, удостоверяющего личность, контактную информацию (телефон, электронная почта, адрес), а также иные данные, необходимые для исполнения договора.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">9.2.</span> Обработка персональных данных осуществляется в следующих целях: исполнение настоящего договор, информирование о предоставляемых услугах, ведение учета клиентов, направление информации рекламного и информационного характера, проведение маркетинговых исследований, а также для выполнения требований законодательства Российской Федерации.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">9.3.</span> Настоящее согласие предоставляется на осуществление следующих действий в отношении персональных данных: сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание, блокирование, удаление, уничтожение персональных данных с использованием средств автоматизации и без использования таких средств.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">9.4.</span> Обработка персональных данных может быть поручена Исполнителем третьим лицам, оказывающим услуги по обработке данных для Исполнителя, при условии заключения с такими лицами соответствующих договоров и соблюдения требований законодательства о защите персональных данных.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">9.5.</span> Настоящее согласие действует со дня его подписания до дня отзыва в письменной форме. Отзыв согласия на обработку персональных данных осуществляется путем подачи соответствующего письменного заявления по адресу: ${studioData.address}.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">9.6.</span> Заказчик подтверждает, что ознакомлен с положениями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных», права и обязанности в области защиты персональных данных ему разъяснены.</p>
+                    </div>
+                </div>
+                ` : ''}
+
+                ${data.photoVideoConsent ? `
+                <div class="document-section">
+                    <h2>10. СОГЛАСИЕ НА ФОТО- И ВИДЕОСЪЕМКУ</h2>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">10.1.</span> Заказчик дает свое согласие Исполнителю на проведение фото- и видеосъемки во время занятий в студии танцев, а также на последующее использование полученных материалов.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">10.2.</span> Исполнитель вправе использовать фото- и видеоматериалы с изображением Заказчика в следующих целях: размещение на официальном сайте студии танцев и в официальных аккаунтах в социальных сетях; создание рекламных и информационных материалов (буклеты, листовки, баннеры); проведение презентаций и мастер-классов; освещение деятельности студии в средствах массовой информации; иные законные цели, связанные с продвижением услуг студии танцев.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">10.3.</span> Исполнитель обязуется использовать материалы с уважением к достоинству Заказчика и не нарушающие его законные права и интересы.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">10.4.</span> Настоящее согласие действует на весь срок действия настоящего договора и может быть отозвано путем подачи письменного заявления по адресу: ${studioData.address}.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">10.5.</span> Заказчик подтверждает, что настоящее согласие предоставлено им добровольно, без какого-либо принуждения.</p>
+                    </div>
+                </div>
+                ` : ''}
+
+                ${data.medicalConsent ? `
+                <div class="document-section">
+                    <h2>11. ПОДТВЕРЖДЕНИЕ ОТСУТСТВИЯ ПРОТИВОПОКАЗАНИЙ</h2>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">11.1.</span> Заказчик подтверждает отсутствие медицинских противопоказаний к занятиям танцами и принимает на себя всю ответственность за состояние своего здоровья во время посещения занятий.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">11.2.</span> Заказчик обязуется незамедлительно информировать инструктора о любом ухудшении самочувствия во время занятия.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">11.3.</span> Заказчик подтверждает, что перед началом занятий проконсультировался с врачом и получил разрешение на занятия танцами.</p>
+                    </div>
+                </div>
+                ` : ''}
+
+                <div class="document-section">
+                    <h2>12. ПРОЧИЕ УСЛОВИЯ</h2>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">12.1.</span> Настоящий договор составлен в двух экземплярах, имеющих одинаковую юридическую силу, по одному для каждой из Сторон.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">12.2.</span> Все изменения и дополнения к настоящему договору действительны лишь в том случае, если они совершены в письменной форме и подписаны обеими Сторонами.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">12.3.</span> Во всем остальном, что не предусмотрено настоящим договором, Стороны руководствуются действующим законодательством Российской Федерации.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">12.4.</span> Признание судом какого-либо положения настоящего договора недействительным не влечет недействительности остальных положений договора.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">12.5.</span> Стороны признают юридическую силу документов, направленных по электронной почте, смс-сообщений и уведомлений в мессенджерах, при условии возможности достоверно установить, что сообщение исходит от Стороны по договору.</p>
+                    </div>
+                    
+                    <div class="clause">
+                        <p><span class="clause-number">12.6.</span> Заказчик подтверждает, что до заключения настоящего договора ему были разъяснены все условия договора, а также то, что условия договора ему понятны.</p>
+                    </div>
+                </div>
+
+                <table class="signature-table">
+                    <tr>
+                        <td>
+                            <strong>ИСПОЛНИТЕЛЬ:</strong><br><br>
+                            Индивидуальный предприниматель<br>
+                            ${studioData.director}<br><br>
+                            
+                            <strong>ИНН:</strong> ${studioData.inn}<br>
+                            <strong>ОГРНИП:</strong> ${studioData.ogrnip}<br><br>
+                            
+                            <strong>Адрес:</strong> ${studioData.address}<br>
+                            <strong>Телефон:</strong> ${studioData.phone}<br>
+                            <strong>Email:</strong> ${studioData.email}<br><br>
+                            <br><br><br>
+                            <div class="signature-area">
+                                <div class="signature-line"></div>
+                                <div>${studioData.director.split(' ')[0]} ${studioData.director.split(' ')[1].substring(0,1)}.${studioData.director.split(' ')[2].substring(0,1)}.</div>
+                                <div style="font-size: 11pt; margin-top: 10px;">(подпись)</div>
+                            </div>
+                        </td>
+                        <td>
+                            <strong>ЗАКАЗЧИК:</strong><br><br>
+                            <strong>ФИО:</strong> <span class="field-highlight">${data.customerName}</span><br><br>
+                            <strong>Паспорт:</strong> <span class="field-highlight">${data.passportData.split(',')[0]}</span><br>
+                            <strong>Код подразделения:</strong> <span class="field-highlight">${data.divisionCode}</span><br><br>
+                            
+                            <div class="signature-area">
+                                <div class="signature-line"></div>
+                                <div>${data.customerName.split(' ').slice(0,2).map(n => n.substring(0,1) + '.').join('')}</div>
+                                <div style="font-size: 11pt; margin-top: 5px;">(подпись)</div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="page-number">1</div>
+            `;
+        }
+
+        // Печать документа
+        function printDocument() {
+            const data = collectFormData();
+            if (!data.customerName || !data.passportData || !data.divisionCode) {
+                alert('Пожалуйста, заполните все обязательные поля перед печатью');
+                return;
+            }
+            window.print();
+        }
+
+        // Сброс формы
+        function resetForm() {
+            if (confirm('Вы уверены, что хотите очистить все поля формы?')) {
+                document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea').forEach(input => {
+                    input.value = '';
+                });
+                document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                // Оставляем согласия отмеченными по умолчанию
+                document.getElementById('personalDataConsent').checked = true;
+                document.getElementById('photoVideoConsent').checked = true;
+                const today = new Date();
+                document.getElementById('passportDate').valueAsDate = today;
+                document.getElementById('startDate').valueAsDate = today;
+                generateDocument();
+            }
+        }
+    </script>
+</body>
+</html>
