@@ -2,120 +2,729 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>FAQ - Первый ритм Ленинского</title>
+    <title>Правила - Первый ритм Ленинского</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body onload="initIframe()">
-    <div class="section faq-section">
-        <h2 class="section-title">❓ <span class="highlight-text">ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</span></h2>
+    <style>
+        /* Дополнительные стили для правил */
+        .rules-hero {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
         
-        <div class="faq-grid">
-            <div class="faq-category">
-                <h3>🎯 О ЗАНЯТИЯХ</h3>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        С какого возраста можно начинать заниматься?
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Мы принимаем детей с 3 лет в группу "Танец-игра". Для каждого возраста у нас разработаны специальные программы, учитывающие физические и психологические особенности.
+        .rules-important {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            border: 2px solid #FF9800;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+        
+        .rules-note {
+            background: #E8F5E9;
+            border-left: 4px solid #4CAF50;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .rules-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .rules-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .rules-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .rules-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .rules-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .penalty-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 6px;
+            border-left: 3px solid #FF6B6B;
+        }
+        
+        .penalty-icon {
+            color: #FF6B6B;
+            font-size: 18px;
+            min-width: 24px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 6px;
+            border-left: 3px solid #4CAF50;
+        }
+        
+        .benefit-icon {
+            color: #4CAF50;
+            font-size: 18px;
+            min-width: 24px;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+            border: 2px solid #F44336;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        .warning-box:before {
+            content: "⚠";
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            background: #F44336;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .rules-accordion {
+            margin: 25px 0;
+        }
+        
+        .accordion-item {
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .accordion-header {
+            padding: 18px 20px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: #2C3E50;
+            border-bottom: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background: #f8f9fa;
+        }
+        
+        .accordion-header.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .accordion-icon {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-header.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+        
+        .accordion-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-content.active {
+            padding: 20px;
+            max-height: 1000px;
+        }
+        
+        .rules-checklist {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 30px 0;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        
+        .checklist-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .checklist-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #667eea;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .checklist-checkbox.checked {
+            background: #667eea;
+        }
+        
+        @media print {
+            .btn-yclients, .btn-enroll { display: none !important; }
+            .rules-hero { background: white !important; border: 1px solid #ccc !important; }
+        }
+        
+        @media (max-width: 768px) {
+            .rules-table { font-size: 14px; }
+            .rules-table th, .rules-table td { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="section directions-section">
+        <!-- Герой-секция правил -->
+        <div class="rules-hero">
+            <h1 style="color: #2C3E50; margin-bottom: 15px;">📋 ПРАВИЛА ПОСЕЩЕНИЯ СТУДИИ</h1>
+            <p style="font-size: 18px; color: #666; max-width: 800px; margin: 0 auto;">
+                Ознакомьтесь с правилами для комфортного и безопасного посещения занятий
+            </p>
+        </div>
+        
+        <!-- Важное примечание -->
+        <div class="rules-important">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <div style="font-size: 24px;">📢</div>
+                <div>
+                    <h3 style="color: #2C3E50; margin: 0;">ВАЖНАЯ ИНФОРМАЦИЯ</h3>
+                    <p style="margin: 5px 0 0 0; color: #666;">
+                        Все ученики и их родители обязаны ознакомиться с правилами до начала занятий.
+                        Посещение студии означает принятие данных правил.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="rules-grid">
+            <!-- Левый столбец -->
+            <div>
+                <div class="rules-category">
+                    <div class="rules-title">✅ ОБЩИЕ ПРАВИЛА</div>
+                    <ul class="rules-list">
+                        <li>Запись на занятия осуществляется через администратора или онлайн-запись</li>
+                        <li>Приходите на занятия за 10-15 минут до начала для подготовки</li>
+                        <li>Иметь при себе сменную обувь для занятий (чешки, балетки, джазовки)</li>
+                        <li>Соблюдайте тишину в раздевалках и холле</li>
+                        <li>Бережно относитесь к имуществу студии</li>
+                        <li>Сообщайте тренеру о проблемах со здоровьем перед занятием</li>
+                        <li>Не приводите на занятия посторонних лиц без согласования</li>
+                        <li>Соблюдайте чистоту в помещениях студии</li>
+                    </ul>
+                </div>
+                
+                <div class="rules-category">
+                    <div class="rules-title">💰 ОПЛАТА И АБОНЕМЕНТЫ</div>
+                    <ul class="rules-list">
+                        <li>Оплата производится до начала занятия или в день приобретения абонемента</li>
+                        <li>Абонементы действуют в течение 30 дней с момента покупки</li>
+                        <li>Возврат средств за неиспользованные занятия возможен при наличии уважительной причины</li>
+                        <li>При пропуске занятия по болезни (при наличии справки) срок действия абонемента продлевается</li>
+                        <li>Замораживание абонемента возможно на срок до 14 дней в течение месяца</li>
+                        <li>Пропущенные занятия без уважительной причины не компенсируются</li>
+                        <li>Абонементы именные и не подлежат передаче другим лицам</li>
+                        <li>При оплате онлайн сохраняйте чеки и квитанции</li>
+                    </ul>
+                    
+                    <!-- Таблица стоимости пропусков -->
+                    <div style="margin-top: 20px;">
+                        <h4 style="color: #2C3E50; margin-bottom: 10px;">📊 Порядок списания пропусков:</h4>
+                        <table class="rules-table">
+                            <tr>
+                                <th>Причина пропуска</th>
+                                <th>Списание занятия</th>
+                                <th>Действия</th>
+                            </tr>
+                            <tr>
+                                <td>По болезни (со справкой)</td>
+                                <td>Не списывается</td>
+                                <td>Продление абонемента</td>
+                            </tr>
+                            <tr>
+                                <td>Без уведомления</td>
+                                <td>Списывается</td>
+                                <td>Занятие сгорает</td>
+                            </tr>
+                            <tr>
+                                <td>Уведомление за 12+ часов</td>
+                                <td>Не списывается</td>
+                                <td>Возможность отработки</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Нужна ли специальная подготовка?
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Нет, большинство наших групп рассчитаны на начинающих. Преподаватели помогут вам освоиться независимо от уровня подготовки.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Что нужно брать с собой на первое занятие?
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Удобную одежду, не сковывающую движения, и сменную обувь. Для пробного занятия специальная форма не требуется.
+                <div class="rules-category">
+                    <div class="rules-title">👶 ПРАВИЛА ДЛЯ ДЕТСКИХ ГРУПП</div>
+                    <ul class="rules-list">
+                        <li>Родители могут присутствовать на первых 2-3 занятиях для адаптации ребенка</li>
+                        <li>Одежда для занятий: удобная, не сковывающая движения, чешки или балетки</li>
+                        <li>Девочкам - волосы должны быть убраны в пучок или хвост</li>
+                        <li>Забирать детей необходимо сразу после окончания занятия</li>
+                        <li>Сообщайте тренеру об особенностях здоровья ребенка</li>
+                        <li>Не давайте детям с собой ценные вещи и крупные суммы денег</li>
+                        <li>Для детей до 7 лет сопровождение родителя обязательно</li>
+                        <li>В случае болезни ребенка не приводите его на занятия</li>
+                    </ul>
+                    
+                    <!-- Детский чек-лист -->
+                    <div class="rules-checklist">
+                        <h4 style="color: #2C3E50; margin-bottom: 20px; text-align: center;">
+                            📋 Чек-лист для родителей
+                        </h4>
+                        
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox checked">✓</div>
+                            <div>
+                                <strong>Сменная обувь</strong>
+                                <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">
+                                    Чешки, балетки или специальные танцевальные туфли
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox checked">✓</div>
+                            <div>
+                                <strong>Удобная одежда</strong>
+                                <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">
+                                    Леггинсы, шорты, футболка, не сковывающая движения
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox checked">✓</div>
+                            <div>
+                                <strong>Прическа</strong>
+                                <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">
+                                    Волосы убраны в пучок или хвост
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox checked">✓</div>
+                            <div>
+                                <strong>Вода</strong>
+                                <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">
+                                    Бутылка негазированной воды
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="faq-category">
-                <h3>💰 ОПЛАТА И АБОНЕМЕНТЫ</h3>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Можно ли заморозить абонемент?
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Да, вы можете заморозить абонемент на срок до 14 дней в течение месяца. Для этого необходимо предупредить администратора заранее.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Что делать, если я пропустил занятие?
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        При пропуске по болезни (со справкой) срок действия абонемента продлевается. В остальных случаях занятие сгорает, но вы можете посетить его в другой группе по согласованию с преподавателем.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Есть ли скидки?
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Да, мы предоставляем скидки: 10% на второй абонемент в семье, скидки многодетным семьям, а также специальные акции и бонусы постоянным клиентам.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="faq-category">
-                <h3>👥 ДЛЯ РОДИТЕЛЕЙ</h3>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Можно ли присутствовать на занятиях?
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        На первых 2-3 занятиях родители могут присутствовать для адаптации ребенка. Далее мы проводим открытые уроки раз в месяц, где вы можете увидеть прогресс ребенка.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Как проходит отбор в группы?
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Мы распределяем детей по возрасту и уровню подготовки. После пробного занятия преподаватель рекомендует подходящую группу.
+            <!-- Правый столбец -->
+            <div>
+                <div class="rules-category">
+                    <div class="rules-title">⚠️ ТЕХНИКА БЕЗОПАСНОСТИ</div>
+                    <ul class="rules-list warning-list">
+                        <li>Запрещено заниматься в состоянии алкогольного или наркотического опьянения</li>
+                        <li>Соблюдайте указания тренера при выполнении сложных элементов</li>
+                        <li>Используйте только исправное оборудование и инвентарь</li>
+                        <li>При плохом самочувствии немедленно сообщите тренеру</li>
+                        <li>Запрещено самостоятельно использовать сложное оборудование без разрешения тренера</li>
+                        <li>Не выполняйте элементы, которые не были изучены на занятиях</li>
+                        <li>Соблюдайте дистанцию между танцующими</li>
+                        <li>При травме немедленно сообщите тренеру</li>
+                    </ul>
+                    
+                    <!-- Аккордеон с деталями -->
+                    <div class="rules-accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span>🔄 Порядок действий при травме</span>
+                                <span class="accordion-icon">+</span>
+                            </div>
+                            <div class="accordion-content">
+                                <ol style="margin: 0; padding-left: 20px;">
+                                    <li>Немедленно прекратить движение</li>
+                                    <li>Сообщить тренеру о травме</li>
+                                    <li>Следовать указаниям тренера</li>
+                                    <li>При необходимости вызвать скорую помощь</li>
+                                    <li>Заполнить акт о несчастном случае</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span>🚫 Запрещенные действия</span>
+                                <span class="accordion-icon">+</span>
+                            </div>
+                            <div class="accordion-content">
+                                <ul style="margin: 0; padding-left: 20px;">
+                                    <li>Самостоятельное использование тренажеров</li>
+                                    <li>Выполнение сложных элементов без разминки</li>
+                                    <li>Занятия в украшениях и часах</li>
+                                    <li>Питье газированных напитков во время занятия</li>
+                                    <li>Прием пищи в танцевальном зале</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Участвуют ли дети в конкурсах?
-                        <span class="faq-toggle">+</span>
+                <div class="rules-category">
+                    <div class="rules-title">🏆 ПРАВИЛА ДЛЯ ВЫСТУПЛЕНИЙ</div>
+                    <ul class="rules-list">
+                        <li>Участие в концертах и конкурсах добровольное</li>
+                        <li>Для участия в выступлениях необходима регулярная посещаемость</li>
+                        <li>Стоимость костюмов для выступлений оплачивается отдельно</li>
+                        <li>Обязательное посещение дополнительных репетиций перед выступлениями</li>
+                        <li>Соблюдение дисциплины во время выездных мероприятий</li>
+                        <li>Своевременная явка на репетиции и выступления</li>
+                        <li>Бережное отношение к костюмам и реквизиту</li>
+                        <li>Соблюдение дресс-кода для выступлений</li>
+                    </ul>
+                    
+                    <!-- Таблица подготовки к выступлениям -->
+                    <div style="margin-top: 20px;">
+                        <h4 style="color: #2C3E50; margin-bottom: 10px;">🎭 Этапы подготовки к выступлению:</h4>
+                        <table class="rules-table">
+                            <tr>
+                                <th>Этап</th>
+                                <th>Срок</th>
+                                <th>Обязанности</th>
+                            </tr>
+                            <tr>
+                                <td>Отбор участников</td>
+                                <td>За 2 месяца</td>
+                                <td>Регулярное посещение</td>
+                            </tr>
+                            <tr>
+                                <td>Постановка номера</td>
+                                <td>1.5 месяца</td>
+                                <td>Посещение всех репетиций</td>
+                            </tr>
+                            <tr>
+                                <td>Генеральные репетиции</td>
+                                <td>2 недели</td>
+                                <td>Обязательное присутствие</td>
+                            </tr>
+                            <tr>
+                                <td>Выступление</td>
+                                <td>День выступления</td>
+                                <td>Явка за 2 часа</td>
+                            </tr>
+                        </table>
                     </div>
-                    <div class="faq-answer">
-                        Участие в конкурсах добровольное. Мы готовим номера и участвуем в городских и региональных конкурсах для желающих.
+                </div>
+                
+                <div class="rules-category">
+                    <div class="rules-title">🎁 БОНУСЫ И АКЦИИ</div>
+                    <ul class="rules-list">
+                        <li>Приведи друга - получи одно бесплатное занятие</li>
+                        <li>Скидка 10% на второй абонемент в семье</li>
+                        <li>Бесплатные мастер-классы для постоянных клиентов</li>
+                        <li>Система лояльности: накапливайте баллы за посещения</li>
+                        <li>Участие в фотосессиях и мероприятиях студии</li>
+                        <li>Скидки именинникам в день рождения</li>
+                        <li>Накопительная система скидок</li>
+                        <li>Специальные условия для многодетных семей</li>
+                    </ul>
+                    
+                    <!-- Система лояльности -->
+                    <div style="margin-top: 20px;">
+                        <h4 style="color: #2C3E50; margin-bottom: 15px;">⭐ Система лояльности:</h4>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div>
+                                <strong>5 посещений</strong>
+                                <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">
+                                    Скидка 5% на следующий абонемент
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div>
+                                <strong>10 посещений</strong>
+                                <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">
+                                    Бесплатная индивидуальная консультация
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div>
+                                <strong>20 посещений</strong>
+                                <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">
+                                    Подарочный сертификат на 1000₽
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         
+        <!-- Предупреждение о нарушениях -->
+        <div class="warning-box">
+            <h3 style="color: #2C3E50; margin-bottom: 15px; padding-left: 20px;">🚫 НАРУШЕНИЕ ПРАВИЛ</h3>
+            
+            <div class="penalty-item">
+                <div class="penalty-icon">⚠</div>
+                <div>
+                    <strong>Первое нарушение</strong>
+                    <p style="margin: 5px 0 0 0; color: #666;">
+                        Устное предупреждение и разъяснение правил
+                    </p>
+                </div>
+            </div>
+            
+            <div class="penalty-item">
+                <div class="penalty-icon">⚠</div>
+                <div>
+                    <strong>Повторное нарушение</strong>
+                    <p style="margin: 5px 0 0 0; color: #666;">
+                        Отстранение от занятия без возврата средств
+                    </p>
+                </div>
+            </div>
+            
+            <div class="penalty-item">
+                <div class="penalty-icon">⚠</div>
+                <div>
+                    <strong>Систематические нарушения</strong>
+                    <p style="margin: 5px 0 0 0; color: #666;">
+                        Расторжение договора без возврата средств
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Примечание -->
+        <div class="rules-note">
+            <div style="display: flex; align-items: flex-start; gap: 15px;">
+                <div style="font-size: 24px;">💡</div>
+                <div>
+                    <h4 style="color: #2C3E50; margin: 0 0 10px 0;">Полезная информация</h4>
+                    <p style="margin: 0; color: #666; line-height: 1.6;">
+                        Правила могут быть изменены администрацией студии. Актуальная версия всегда доступна 
+                        на сайте и у администратора. При возникновении вопросов обращайтесь к администратору 
+                        или тренеру.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Важное сообщение -->
         <div class="highlight">
-            💡 Не нашли ответ на свой вопрос? Звоните нам: <span class="highlight-number">+7 (904) 123-31-75</span> 
-            или пишите в <a href="https://t.me/perviy_ritm" class="social-link" target="_blank">Telegram</a>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <div style="font-size: 32px;">📝</div>
+                <div style="text-align: center;">
+                    <strong style="color: #2C3E50; font-size: 18px;">
+                        ПОДПИСЫВАЯ ДОГОВОР, ВЫ СОГЛАШАЕТЕСЬ С ПРАВИЛАМИ ПОСЕЩЕНИЯ СТУДИИ
+                    </strong>
+                    <p style="margin: 10px 0 0 0; color: #666;">
+                        Ознакомление с правилами является обязательным условием для начала занятий
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Кнопки действий -->
+        <div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
+            <button class="btn-yclients" onclick="acceptRules()">
+                ✅ ПРИНЯТЬ ПРАВИЛА И ЗАПИСАТЬСЯ
+            </button>
+            
+            <button class="btn-enroll" onclick="printRules()">
+                🖨️ РАСПЕЧАТАТЬ ПРАВИЛА
+            </button>
+            
+            <button class="btn" onclick="openContract()" style="background: #6c757d;">
+                📄 ПРОЧИТАТЬ ДОГОВОР
+            </button>
         </div>
     </div>
     
-    <script src="scripts.js"></script>
+    <script>
+        // Функции для аккордеона
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const isActive = header.classList.contains('active');
+            
+            // Закрыть все открытые аккордеоны
+            document.querySelectorAll('.accordion-header.active').forEach(item => {
+                if (item !== header) {
+                    item.classList.remove('active');
+                    item.nextElementSibling.classList.remove('active');
+                }
+            });
+            
+            // Переключить текущий аккордеон
+            header.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+        
+        // Функция принятия правил
+        function acceptRules() {
+            if (confirm('Вы подтверждаете, что ознакомились с правилами посещения студии и принимаете их?')) {
+                // Отметить в localStorage, что правила приняты
+                localStorage.setItem('rulesAccepted', 'true');
+                localStorage.setItem('rulesAcceptedDate', new Date().toISOString());
+                
+                // Открыть запись
+                if (window.parent && window.parent.openYclientsWidget) {
+                    window.parent.openYclientsWidget();
+                } else {
+                    openYclientsWidget();
+                }
+            }
+        }
+        
+        // Функция печати правил
+        function printRules() {
+            window.print();
+        }
+        
+        // Функция открытия договора
+        function openContract() {
+            if (window.parent && window.parent.loadPage) {
+                window.parent.loadPage('contract.html');
+            } else {
+                window.location.href = 'contract.html';
+            }
+        }
+        
+        // Функция для YClients
+        function openYclientsWidget() {
+            const companyId = 1729530;
+            if (typeof yclientsWidget !== 'undefined') {
+                yclientsWidget.open(companyId);
+            } else {
+                window.open('https://n1729530.yclients.com/', '_blank');
+            }
+        }
+        
+        // Проверка принятия правил при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            const rulesAccepted = localStorage.getItem('rulesAccepted');
+            const acceptedDate = localStorage.getItem('rulesAcceptedDate');
+            
+            if (rulesAccepted && acceptedDate) {
+                const date = new Date(acceptedDate);
+                const now = new Date();
+                const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+                
+                if (diffDays > 180) { // 6 месяцев
+                    // Правила приняты давно, предлагаем обновить знания
+                    const updateBtn = document.createElement('button');
+                    updateBtn.className = 'btn';
+                    updateBtn.style.background = '#FF9800';
+                    updateBtn.style.margin = '15px auto';
+                    updateBtn.style.display = 'block';
+                    updateBtn.textContent = '🔄 ОБНОВИТЬ ЗНАНИЯ ПРАВИЛ';
+                    updateBtn.onclick = function() {
+                        alert('Вы приняли правила более 6 месяцев назад. Рекомендуем освежить знания.');
+                    };
+                    
+                    const highlight = document.querySelector('.highlight');
+                    highlight.parentNode.insertBefore(updateBtn, highlight);
+                }
+            }
+            
+            // Анимация появления элементов
+            const animatedElements = document.querySelectorAll('.rules-category, .rules-table, .rules-checklist');
+            animatedElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Интерактивные чекбоксы
+            const checkboxes = document.querySelectorAll('.checklist-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('click', function() {
+                    this.classList.toggle('checked');
+                    this.textContent = this.classList.contains('checked') ? '✓' : '';
+                });
+            });
+            
+            // Автоматическое открытие аккордеона при клике на предупреждение
+            document.querySelectorAll('.warning-list li').forEach(item => {
+                item.addEventListener('click', function() {
+                    const accordionHeader = document.querySelector('.accordion-header');
+                    if (accordionHeader && !accordionHeader.classList.contains('active')) {
+                        toggleAccordion(accordionHeader);
+                    }
+                });
+            });
+            
+            console.log('📋 Страница правил загружена');
+        });
+        
+        // Добавляем возможность навигации с клавиатуры
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const activeAccordion = document.querySelector('.accordion-header.active');
+                if (activeAccordion) {
+                    toggleAccordion(activeAccordion);
+                }
+            }
+            
+            if (e.key === 'Enter' && e.target.classList.contains('accordion-header')) {
+                toggleAccordion(e.target);
+            }
+        });
+    </script>
 </body>
 </html>
