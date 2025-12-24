@@ -1,0 +1,97 @@
+/* Стили редактора */
+.editor-header {
+    background: linear-gradient(135deg, #2C3E50 0%, #34495e 100%);
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+}
+
+.editor-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.editor-logo h1 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.editor-logo p {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Основной контейнер редактора */
+.editor-container {
+    display: grid;
+    grid-template-columns: 250px 1fr 300px;
+    height: calc(100vh - 70px);
+    overflow: hidden;
+}
+
+/* Боковая панель */
+.editor-sidebar {
+    background: #f8f9fa;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.sidebar-section {
+    margin-bottom: 30px;
+}
+
+.sidebar-section h3 {
+    color: #2C3E50;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Список страниц */
+.pages-list {
+    margin-bottom: 20px;
+}
+
+.page-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-item:hover {
+    border-color: #667eea;
+    transform: translateX(5px);
+}
+
+.page-info {
+    flex: 1;
+}
+
+.page-title {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.page-url {
+    font-size: 0.8rem;
+    color:
